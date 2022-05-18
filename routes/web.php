@@ -15,4 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('products');
-});
+})->name('products');
+
+Route::get('/stores', function(){
+    return 'em construção';
+})->name('stores');
+
+Route::get('/orders', function(){
+    return 'em construção';
+})->name('orders');
