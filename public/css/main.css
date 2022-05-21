@@ -1,7 +1,47 @@
 /** Powered by Anderson Arruda and Sysborg - sysborg.com.br | andersonarruda.com.br **/
+body{
+    background: #BFBFBF;
+}
 .header-top li{ font-size:14px; }
 .header-top-menu li{ font-size:16px; font-weight: bold; }
 a{ 
     color: #000 !important;
     text-decoration: none !important;
+}
+
+a:hover{
+    text-decoration: underline !important;
+}
+
+.search-btn{
+    background: #404040;
+    border-color: #404040;
+    color: #BFBFBF;
+}
+
+.search-btn:hover{
+    background: #0D0D0D;
+    border-color: #0D0D0D;
+    color: #BFBFBF;
+}
+
+.menu-icons i, .menu-icons svg{
+    font-size: 36px;
+    margin: 0;
+}
+
+.menu-bg{
+    background: #404040;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.menu-bg .nav-link{
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#sbshowcase-banner{
+    margin-top: 20px;
 }

@@ -15,7 +15,7 @@
                 @include('template.includes.footer')
             </footer>
         </div>
-        <script src="{{asset('js/bootstrap.bundle.min.js')}}" type="text/javascript">
-        <script src="{{asset('js/fontawesome/all.min.js')}}" type="text/javascript">
+        <script src="{{asset('js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('js/fontawesome/all.min.js')}}" type="text/javascript"></script>
     </body>
 </html>
