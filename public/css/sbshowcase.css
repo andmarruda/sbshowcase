@@ -1,0 +1,92 @@
+header a, footer a{
+    color:#000;
+    font-weight:bold;
+}
+
+header a:hover, footer a:hover{
+    color: #222;
+}
+
+.quick-menu a{
+    font-weight: normal !important;
+}
+
+.main-menu{
+    border-top-left-radius: 1.5em !important;
+    border-bottom-left-radius: 1.5em !important;
+}
+
+.banner{
+    text-align: center;
+    margin-top: 2.5em;
+}
+
+footer{
+    margin-top: 2.5em;
+    background-color: #F8F8F8;
+    padding: 1em 0;
+}
+
+#banner-promotion{
+    border-radius: 1.5rem;
+    font-weight: bold;
+}
+
+.product-list{
+    padding: 1rem;
+    border-radius: 20px;
+    margin: 0 auto;
+}
+
+.product-list section{
+    text-align: center;
+    position: relative;
+}
+
+.product-list section h2{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.product-list section .infos{
+    text-align: left;
+    margin: 0 auto;
+}
+
+.product-list section .infos .old-price{
+    text-decoration: line-through;
+    margin-bottom: 0.5rem;
+}
+
+.product-list section .infos .price{
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.product-list section .action{
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.product-list .row{
+    margin-bottom: 2rem;
+}
+
+.free-shipping{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    border: 1px solid transparent;
+}
+
+@media screen and (min-width:992px){
+    #aside-menu{
+        display: block !important;
+    }
+}
+
+.cart-info{
+    text-align: right;
+}

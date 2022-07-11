@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('products');
-})->name('products');
+    return view('template.public');
+})->name('news');
 
 Route::get('/stores', function(){
     return 'em construção';
