@@ -16,6 +16,7 @@ jobs:
           server: ${{ secrets.SFTP_SERVER }}
           port: 2222
           ssh_private_key: ${{ secrets.SFTP_PRIV_KEY }}
+          sftp_only: true
           local_path: './*'
           remote_path: '/'
           sftpArgs: '-o ConnectTimeout=20'
