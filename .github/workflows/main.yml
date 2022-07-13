@@ -1,0 +1,20 @@
+name: SFTP-Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: deploy
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          username: ${{ secrets.SFTP_USERNAME }}
+          server: '35.197.54.235'
+          ssh_private_key: ${{ secrets.SFTP_PRIV_KEY }}
+          local_pash: './*'
+          remote_path: '/'
+          sftpArgs: '-o ConnectTimeout=20'
