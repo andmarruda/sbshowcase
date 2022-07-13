@@ -15,6 +15,6 @@ jobs:
           username: ${{ secrets.SFTP_USERNAME }}
           server: '35.197.54.235'
           ssh_private_key: ${{ secrets.SFTP_PRIV_KEY }}
-          local_pash: './*'
+          local_path: './*'
           remote_path: '/'
           sftpArgs: '-o ConnectTimeout=20'
