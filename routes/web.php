@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,19 @@ Route::get('/stores', function(){
 Route::get('/orders', function(){
     return 'em construção';
 })->name('orders');
+
+Route::get('/admin', function(){
+    return 'em construção';
+})->name('admin');
+
+Route::prefix('/admin')->group(function(){
+    Route::get('/dashboard', function(){
+        return 'em construção';
+    })->name('dashboard');
+
+    Route::get('/category', [CategoryController::class, 'adminView'])->name('category');
+
+    Route::get('/config/template', function(){
+        return 'em construção';
+    })->name('config.template');
+});
