@@ -90,3 +90,19 @@ footer{
 .cart-info{
     text-align: right;
 }
+
+.body-admin{
+    background-color: #ffffff;
+    opacity: 1;
+    background: repeating-linear-gradient( 45deg, #ecedff, #ecedff 2px, #ffffff 2px, #ffffff 10px );
+}
+
+.body-admin footer{
+    background: #fff;
+}
+
+.admin-content{
+    background: #fff;
+    padding-top: 1rem;
+    min-height: 600px;
+}
