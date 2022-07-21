@@ -20,6 +20,7 @@
     <div class="mb-3">
         <button type="submit" class="btn btn-primary"><i class="fa-regular fa-floppy-disk"></i> Salvar</button>
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalSearchCategory">Pesquisar</button>
+        <button type="button" class="btn btn-outline-danger">Desativar</button>
     </div>
 </form>
 @endsection
