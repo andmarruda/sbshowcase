@@ -35,7 +35,11 @@ Route::prefix('/admin')->group(function(){
         return 'em construção';
     })->name('dashboard');
 
+    //category routes
     Route::get('/category', [CategoryController::class, 'adminView'])->name('category');
+    Route::post('/category/save', [CategoryController::class, 'saveCategory'])->name('category.save');
+    Route::post('/category/delete', [CategoryController::class, 'deleteCategory'])->name('category.delete');
+    Route::post('/category/search', [CategoryController::class, 'searchCategory'])->name('category.search');
 
     Route::get('/config/template', function(){
         return 'em construção';
