@@ -42,7 +42,7 @@ Route::prefix('/admin')->group(function(){
     Route::post('/category/search', [CategoryController::class, 'searchCategory'])->name('category.search');
 
     //measurement routes
-    Route::get('/measurement/{id?}', [MeasurementController::class, 'adminView'])->name('measurement')->where('id', '[0-9]+');
+    Route::get('/measurement/{id?}', [MeasuresController::class, 'adminView'])->name('measurement')->where('id', '[0-9]+');
 
     Route::get('/config/template', function(){
         return 'em construção';
