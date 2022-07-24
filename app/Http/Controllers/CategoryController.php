@@ -18,6 +18,22 @@ class CategoryController extends Controller
      ];
 
     /**
+     * Search category inside of admin including disabled categories
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $r
+     * @return          \Illuminate\Http\Response
+     */
+    public function searchCategory(Request $r)
+    {
+        $finded = ($r->input('searchType') == '' || $r->input('searchType') == '1') 
+            ? Category::withTrashed()->where('name', 'like', '%' . $r->input('search') . '%')->get() 
+            : Category::where('name', 'like', '%' . $r->input('search') . '%')->where('status', 1)->get();
+
+        return response()->json($finded->toArray());
+    }
+
+    /**
      * Returns the view of category form inside the admin
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >

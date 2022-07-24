@@ -12,6 +12,13 @@
                         <input type="text" class="form-control" id="searchInput" name="searchInput" placeholder="{{$placeholder}}" required="">
                     </div>
                     <div class="col-auto">
+                        <select class="form-control" id="searchType" name="searchType">
+                            <option value="">Todos</option>
+                            <option value="1">Somente ativos</option>
+                            <option value="0">Somente desativados</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
                         <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
                     </div>
                 </form>
