@@ -21,12 +21,12 @@ class CategoryController extends Controller
      * Returns the view of category form inside the admin
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
-     * @param           
+     * @param           ?bool $saved
      * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-     public function adminView() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     public function adminView(?bool $saved=NULL) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      {
-         return view('admin.category');
+         return view('admin.category', ['saved' => $saved]);
      }
 
      /**
@@ -34,9 +34,9 @@ class CategoryController extends Controller
       * @version        1.0.0
       * @author         Anderson Arruda < andmarruda@gmail.com >
       * @param          Request $r
-      * @return         void
+      * @return         \Illuminate\Http\RedirectResponse
       */
-    public function saveCategory(Request $r) : void
+    public function saveCategory(Request $r) : \Illuminate\Http\RedirectResponse
     {
         $r->validate([
             'category' => 'required|min:3|max:100'
@@ -45,5 +45,9 @@ class CategoryController extends Controller
         $category->fill([
             'name' => $r->input('category')
         ]);
+        if($category->save())
+            return redirect()->route('category')->with('saved', true);
+
+        return redirect()->route('category')->with('saved', false);
     }
 }

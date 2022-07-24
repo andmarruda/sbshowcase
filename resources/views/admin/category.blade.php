@@ -14,15 +14,21 @@
 
     <div class="mb-3">
         <label for="category" class="form-label">Nome da categoria</label>
-        <input type="text" maxlength="100" class="form-control" id="category" name="category" placeholder="Nome da categoria" required value="">
+        <input type="text" minlength="3" maxlength="100" class="form-control" id="category" name="category" placeholder="Nome da categoria" required value="">
     </div>
 
     @include('template.includes.alert-error')
 
+    @if(!is_null(session('saved')))
+        @include('template.includes.alert-saved', ['success' => 'Categoria salva com sucesso!', 'error' => 'Erro ao salvar categoria!', 'saved' => session('saved')])
+    @endif
+
     <div class="mb-3">
         <button type="submit" class="btn btn-primary"><i class="fa-regular fa-floppy-disk"></i> Salvar</button>
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalSearchCategory">Pesquisar</button>
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#searchModal">Pesquisar</button>
         <button type="button" class="btn btn-outline-danger">Desativar</button>
     </div>
 </form>
+
+@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar categoria', 'placeholder' => 'Categoria', 'route' => route('category.search'), 'ths' => ['#', 'Categoria', 'Ativa?']])
 @endsection
