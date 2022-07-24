@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
      public function adminView(?int $id=NULL) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      {
-        $category = is_null($id) ? NULL : Category::find($id);
+        $category = is_null($id) ? NULL : Category::withTrashed()->find($id);
          return view('admin.category', ['Category' => $category]);
      }
 
