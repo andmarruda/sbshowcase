@@ -2,7 +2,7 @@
 
 @section('page')
 <form method="post" action="{{route('category.save')}}" autocomplete="off">
-    <input type="hidden" name="id" id="id" value="">
+    <input type="hidden" name="id" id="id" value="{{$Category->id ?? ''}}">
     @csrf
 
     <nav aria-label="breadcrumb">
@@ -14,7 +14,7 @@
 
     <div class="mb-3">
         <label for="category" class="form-label">Nome da categoria</label>
-        <input type="text" minlength="3" maxlength="100" class="form-control" id="category" name="category" placeholder="Nome da categoria" required value="">
+        <input type="text" minlength="3" maxlength="100" class="form-control" id="category" name="category" placeholder="Nome da categoria" required value="{{$Category->name ?? ''}}">
     </div>
 
     @include('template.includes.alert-error')
