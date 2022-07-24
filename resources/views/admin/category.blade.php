@@ -29,7 +29,7 @@
         @endif
 
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#searchModal">Pesquisar</button>
-        
+
         @if(!is_null($Category))
         @include('template.includes.disable-enable', ['enabled' => is_null($Category->deleted_at), 'route' => route('category.delete'), 'id' => $Category->id, 'token' => csrf_token()])
         @endif
@@ -37,5 +37,4 @@
 </form>
 
 @include('template.includes.search-modal', ['modalTitle' => 'Pesquisar categoria', 'placeholder' => 'Categoria', 'route' => route('category.search'), 'loadRoute' => route('category'), 'ths' => ['#', 'Categoria', 'Ativa?']])
-@include('template.includes.disable-modal', ['modalTitle' => 'Desativar categoria', 'message' => 'Deseja desativar a categoria? Ao desativar todos os produtos dessa categoria não aparecerão mais na vitrine.', 'route' => route('category.delete'), 'id' => NULL])
 @endsection
