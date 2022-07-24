@@ -26,6 +26,7 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="{{route('category')}}">Categoria</a></li>
+                                        <li><a class="dropdown-item" href="{{route('measurement')}}">Medidas</a></li>
                                     </ul>
                                 </li>
 
