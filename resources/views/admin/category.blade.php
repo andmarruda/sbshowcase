@@ -26,9 +26,10 @@
     <div class="mb-3">
         <button type="submit" class="btn btn-primary"><i class="fa-regular fa-floppy-disk"></i> Salvar</button>
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#searchModal">Pesquisar</button>
-        <button type="button" class="btn btn-outline-danger">Desativar</button>
+        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#disableModal">Desativar</button>
     </div>
 </form>
 
 @include('template.includes.search-modal', ['modalTitle' => 'Pesquisar categoria', 'placeholder' => 'Categoria', 'route' => route('category.search'), 'ths' => ['#', 'Categoria', 'Ativa?']])
+@include('template.includes.disable-modal', ['modalTitle' => 'Desativar categoria', 'message' => 'Deseja desativar a categoria?', 'route' => route('category.delete'), 'id' => NULL])
 @endsection

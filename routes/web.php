@@ -36,7 +36,7 @@ Route::prefix('/admin')->group(function(){
     })->name('dashboard');
 
     //category routes
-    Route::get('/category', [CategoryController::class, 'adminView'])->name('category');
+    Route::get('/category/{id?}', [CategoryController::class, 'adminView'])->name('category')->where('id', '[0-9]+');
     Route::post('/category/save', [CategoryController::class, 'saveCategory'])->name('category.save');
     Route::post('/category/delete', [CategoryController::class, 'deleteCategory'])->name('category.delete');
     Route::post('/category/search', [CategoryController::class, 'searchCategory'])->name('category.search');
