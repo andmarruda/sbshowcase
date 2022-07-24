@@ -25,7 +25,7 @@
 
                 <div class="alert alert-info">Clique 2x no registro desejado para carregá-lo.</div>
 
-                <table class="table table-bordered table-striped" id="gridSearch" ondblclick="javascript: loadDataForm(event);">
+                <table class="table table-bordered table-striped" id="gridSearch" ondblclick="javascript: loadDataForm(event, '{{$loadRoute}}');">
                     <thead>
                         <tr>
                             @foreach($ths as $th)

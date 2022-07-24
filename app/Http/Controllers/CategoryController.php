@@ -27,8 +27,8 @@ class CategoryController extends Controller
     public function searchCategory(Request $r)
     {
         $finded = ($r->input('searchType') == '' || $r->input('searchType') == '1') 
-            ? Category::withTrashed()->where('name', 'like', '%' . $r->input('search') . '%')->get() 
-            : Category::where('name', 'like', '%' . $r->input('search') . '%')->where('status', 1)->get();
+            ? Category::withTrashed()->where('name', 'ilike', '%' . $r->input('searchInput') . '%')->get() 
+            : Category::where('name', 'ilike', '%' . $r->input('searchInput') . '%')->get();
 
         return response()->json($finded->toArray());
     }

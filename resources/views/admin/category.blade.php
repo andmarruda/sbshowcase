@@ -30,6 +30,6 @@
     </div>
 </form>
 
-@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar categoria', 'placeholder' => 'Categoria', 'route' => route('category.search'), 'ths' => ['#', 'Categoria', 'Ativa?']])
-@include('template.includes.disable-modal', ['modalTitle' => 'Desativar categoria', 'message' => 'Deseja desativar a categoria?', 'route' => route('category.delete'), 'id' => NULL])
+@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar categoria', 'placeholder' => 'Categoria', 'route' => route('category.search'), 'loadRoute' => route('category'), 'ths' => ['#', 'Categoria', 'Ativa?']])
+@include('template.includes.disable-modal', ['modalTitle' => 'Desativar categoria', 'message' => 'Deseja desativar a categoria? Ao desativar todos os produtos dessa categoria não aparecerão mais na vitrine.', 'route' => route('category.delete'), 'id' => NULL])
 @endsection
