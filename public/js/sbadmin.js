@@ -31,6 +31,9 @@ const loadDataForm = (event, route) => {
 };
 
 const confirmEnableDisable = async (route, id, token) => {
+    if(!confirm('Deseja desativar esse registro?'))
+        return;
+        
     let h = new Headers();
     h.append('X-CSRF-TOKEN', token);
 
