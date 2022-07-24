@@ -29,3 +29,23 @@ const loadDataForm = (event, route) => {
     let id = line.children[0].innerText;
     location.href = route + '/' + id;
 };
+
+const confirmEnableDisable = async (route, id, token) => {
+    let h = new Headers();
+    h.append('X-CSRF-TOKEN', token);
+
+    let fd = new FormData();
+    fd.append('id', id);
+
+    let f = await fetch(route, {
+        method: 'POST',
+        headers: h,
+        body: fd
+    });
+
+    let j = await f.json();
+    alert('Categoria ativada / desativada com sucesso!');
+    setTimeout(() => {
+        location.reload();
+    }, 1000);
+};
