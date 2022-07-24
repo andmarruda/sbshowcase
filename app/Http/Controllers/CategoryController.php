@@ -34,6 +34,24 @@ class CategoryController extends Controller
     }
 
     /**
+     * Disable category or enable category depending on his actual status
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $r
+     * @return          \Illuminate\Http\Response
+     */
+    public function deleteCategory(Request $r)
+    {
+        $category = Category::withTrashed()->find($r->input('id'));
+        if(!is_null($category->deleted_at))
+            $category->restore();
+        else
+            $category->delete();
+
+        return response()->json(['success' => true]);
+    }
+
+    /**
      * Returns the view of category form inside the admin
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >

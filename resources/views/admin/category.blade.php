@@ -24,7 +24,9 @@
     @endif
 
     <div class="mb-3">
+        @if(is_null($Category) || is_null($Category->deleted_at))
         <button type="submit" class="btn btn-primary"><i class="fa-regular fa-floppy-disk"></i> Salvar</button>
+        @endif
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#searchModal">Pesquisar</button>
         @if(!is_null($Category))
         @include('template.includes.disable-enable', ['enabled' => is_null($Category->deleted_at), 'route' => route('category.delete'), 'id' => $Category->id, 'token' => csrf_token()])

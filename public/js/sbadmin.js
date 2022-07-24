@@ -33,7 +33,7 @@ const loadDataForm = (event, route) => {
 const confirmEnableDisable = async (route, id, token) => {
     if(!confirm('Deseja desativar esse registro?'))
         return;
-        
+
     let h = new Headers();
     h.append('X-CSRF-TOKEN', token);
 
@@ -47,7 +47,12 @@ const confirmEnableDisable = async (route, id, token) => {
     });
 
     let j = await f.json();
-    alert('Categoria ativada / desativada com sucesso!');
+    if(!j.success){
+        alert('Erro ao desativar o registro');
+        return;
+    }
+
+    alert('Registro ativado / desativado com sucesso!');
     setTimeout(() => {
         location.reload();
     }, 1000);
