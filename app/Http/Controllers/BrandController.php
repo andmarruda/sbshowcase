@@ -50,4 +50,38 @@ class BrandController extends Controller
         $saved = $brand->save();
         return redirect()->route('brand')->with('saved', $saved);
     }
+
+    /**
+     * Search brand inside of admin including disabled brand
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $r
+     * @return          \Illuminate\Http\Response
+     */
+    public function searchBrand(Request $r)
+    {
+        $finded = ($r->input('searchType') == '' || $r->input('searchType') == '1') 
+            ? Brand::withTrashed()->where('name', 'ilike', '%' . $r->input('searchInput') . '%')->get() 
+            : Brand::where('name', 'ilike', '%' . $r->input('searchInput') . '%')->get();
+
+        return response()->json($finded->toArray());
+    }
+
+    /**
+     * Disable brand or enable brand depending on his actual status
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $r
+     * @return          \Illuminate\Http\Response
+     */
+    public function deleteBrand(Request $r)
+    {
+        $brand = Brand::withTrashed()->find($r->input('id'));
+        if(!is_null($brand->deleted_at))
+            $brand->restore();
+        else
+            $brand->delete();
+
+        return response()->json(['success' => true]);
+    }
 }

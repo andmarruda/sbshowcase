@@ -50,4 +50,38 @@ class TypeController extends Controller
         $saved = $type->save();
         return redirect()->route('type')->with('saved', $saved);
     }
+
+    /**
+     * Search type inside of admin including disabled type
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $r
+     * @return          \Illuminate\Http\Response
+     */
+    public function searchType(Request $r)
+    {
+        $finded = ($r->input('searchType') == '' || $r->input('searchType') == '1') 
+            ? Type::withTrashed()->where('name', 'ilike', '%' . $r->input('searchInput') . '%')->get() 
+            : Type::where('name', 'ilike', '%' . $r->input('searchInput') . '%')->get();
+
+        return response()->json($finded->toArray());
+    }
+
+    /**
+     * Disable type or enable type depending on his actual status
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $r
+     * @return          \Illuminate\Http\Response
+     */
+    public function deleteType(Request $r)
+    {
+        $type = Type::withTrashed()->find($r->input('id'));
+        if(!is_null($type->deleted_at))
+            $type->restore();
+        else
+            $type->delete();
+
+        return response()->json(['success' => true]);
+    }
 }
