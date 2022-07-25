@@ -80,9 +80,8 @@ class CategoryController extends Controller
         $category->fill([
             'name' => $r->input('category')
         ]);
-        if($category->save())
-            return redirect()->route('category')->with('saved', true);
 
-        return redirect()->route('category')->with('saved', false);
+        $saved = $category->save();
+        return redirect()->route('category')->with('saved', $saved);
     }
 }

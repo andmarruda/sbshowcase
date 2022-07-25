@@ -13,23 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('measures', function (Blueprint $table) {
-            $table->id();
-            $table->timestampsTz();
-            $table->integer('width');
-            $table->integer('height');
-            $table->integer('length');
-            $table->unique(['width', 'height', 'length']);
+        //Adding soft delete on measures
+        Schema::table('measures', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
     /**
-     * Reverse the migrations. 
+     * Reverse the migrations.
      *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('measures');
+        //Remove soft delete on measures
+        Schema::table('measures', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };
