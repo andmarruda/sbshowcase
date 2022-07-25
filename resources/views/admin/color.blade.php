@@ -19,7 +19,7 @@
 
     <div class="mb-3">
         <label for="hex_color" class="form-label">Cor</label>
-        <input type="color" required class="form-control" id="hex_color" name="hex_color" placeholder="Cor" value="{{$Color->hex_code ?? ''}}">
+        <input type="color" required class="form-control" id="hex_code" name="hex_code" placeholder="Cor" value="{{$Color->hex_code ?? ''}}">
     </div>
 
     @include('template.includes.alert-error')
