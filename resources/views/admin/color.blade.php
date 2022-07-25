@@ -25,7 +25,7 @@
     @include('template.includes.alert-error')
 
     @if(!is_null(session('saved')))
-        @include('template.includes.alert-saved', ['success' => 'Medida salva com sucesso!', 'error' => 'Erro ao salvar medida!', 'saved' => session('saved')])
+        @include('template.includes.alert-saved', ['success' => 'Cor salva com sucesso!', 'error' => 'Erro ao salvar cor!', 'saved' => session('saved')])
     @endif
 
     <div class="mb-3">
