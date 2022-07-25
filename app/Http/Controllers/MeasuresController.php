@@ -48,6 +48,24 @@ class MeasuresController extends Controller
     }
 
     /**
+     * Disable measure or enable measure depending on his actual status
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $request
+     * @return          \Illuminate\Http\Response
+     */
+    public function deleteMeasurement(Request $request)
+    {
+        $measure = Measure::withTrashed()->find($request->input('id'));
+        if(!is_null($measure->deleted_at))
+            $measure->restore();
+        else
+            $measure->delete();
+
+        return response()->json(['success' => true]);
+    }
+
+    /**
      * Saves a new measure
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
