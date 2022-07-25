@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Measure;
 
@@ -28,6 +29,22 @@ class MeasuresController extends Controller
     {
        $measure = is_null($id) ? NULL : Measure::withTrashed()->find($id);
         return view('admin.measurement', ['Measurement' => $measure]);
+    }
+
+    /**
+     * Search measure inside of admin including disabled measures
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $request
+     * @return          \Illuminate\Http\Response
+     */
+    public function searchMeasurement(Request $request)
+    {
+        $finded = ($request->input('searchType') == '' || $request->input('searchType') == '1') 
+            ? Measure::select(DB::raw('length::varchar || \'x\' || width::varchar || \'x\' || height::varchar AS name, *'))->withTrashed()->where('width', '=', $request->input('searchInput'))->orWhere('height', '=', $request->input('searchInput'))->orWhere('length', '=', $request->input('searchInput'))->get() 
+            : Measure::select(DB::raw('length::varchar || \'x\' || width::varchar || \'x\' || height::varchar AS name, *'))->where('width', '=', $request->input('searchInput'))->orWhere('height', '=', $request->input('searchInput'))->orWhere('length', '=', $request->input('searchInput'))->get();
+
+        return response()->json($finded->toArray());
     }
 
     /**
