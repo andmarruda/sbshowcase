@@ -55,6 +55,18 @@ Route::prefix('/admin')->group(function(){
     Route::post('/color/delete', [ColorController::class, 'deleteColor'])->name('color.delete');
     Route::post('/color/search', [ColorController::class, 'searchColor'])->name('color.search');
 
+    //brand routes
+    Route::get('/brand/{id?}', [BrandController::class, 'adminView'])->name('brand')->where('id', '[0-9]+');
+    Route::post('/brand/save', [BrandController::class, 'saveBrand'])->name('brand.save');
+    Route::post('/brand/delete', [BrandController::class, 'deleteBrand'])->name('brand.delete');
+    Route::post('/brand/search', [BrandController::class, 'searchBrand'])->name('brand.search');
+
+    //type routes
+    Route::get('/type/{id?}', [TypeController::class, 'adminView'])->name('type')->where('id', '[0-9]+');
+    Route::post('/type/save', [TypeController::class, 'saveType'])->name('type.save');
+    Route::post('/type/delete', [TypeController::class, 'deleteType'])->name('type.delete');
+    Route::post('/type/search', [TypeController::class, 'searchType'])->name('type.search');
+
     Route::get('/config/template', function(){
         return 'em construção';
     })->name('config.template');
