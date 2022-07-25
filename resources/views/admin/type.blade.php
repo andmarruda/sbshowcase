@@ -24,14 +24,14 @@
     @endif
 
     <div class="mb-3">
-        @if(is_null($Brand) || is_null($Brand->deleted_at))
+        @if(is_null($Type) || is_null($Type->deleted_at))
         <button type="submit" class="btn btn-primary"><i class="fa-regular fa-floppy-disk"></i> Salvar</button>
         @endif
 
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#searchModal">Pesquisar</button>
 
-        @if(!is_null($Brand))
-        @include('template.includes.disable-enable', ['enabled' => is_null($Type->deleted_at), 'route' => route('type.delete'), 'id' => $Brand->id, 'token' => csrf_token()])
+        @if(!is_null($Type))
+        @include('template.includes.disable-enable', ['enabled' => is_null($Type->deleted_at), 'route' => route('type.delete'), 'id' => $Type->id, 'token' => csrf_token()])
         @endif
     </div>
 </form>
