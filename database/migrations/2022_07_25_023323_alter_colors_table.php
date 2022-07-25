@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('colors', function (Blueprint $table) {
-            $table->id();
-            $table->timestampsTz();
-            $table->string('name', 50);
-            $table->string('hex_code', 7);
+        //adding soft delete
+        Schema::table('colors', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('colors'); 
+        //removing soft delete
+        Schema::table('colors', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };

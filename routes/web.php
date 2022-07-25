@@ -48,6 +48,9 @@ Route::prefix('/admin')->group(function(){
     Route::post('/measurement/delete', [MeasuresController::class, 'deleteMeasurement'])->name('measurement.delete');
     Route::post('/measurement/search', [MeasuresController::class, 'searchMeasurement'])->name('measurement.search');
 
+    //colors routes
+    Route::get('/color/{id?}', [ColorController::class, 'adminView'])->name('color')->where('id', '[0-9]+');
+
     Route::get('/config/template', function(){
         return 'em construção';
     })->name('config.template');
