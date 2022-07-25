@@ -14,12 +14,12 @@
 
     <div class="mb-3">
         <label for="name" class="form-label">Nome da cor</label>
-        <input type="text" required step="1" maxlength="15" class="form-control" id="name" name="name" placeholder="Nome da cor" required value="{{$Color->name ?? ''}}">
+        <input type="text" required step="1" maxlength="15" class="form-control" id="name" name="name" placeholder="Nome da cor" value="{{$Color->name ?? ''}}">
     </div>
 
     <div class="mb-3">
         <label for="hex_color" class="form-label">Cor</label>
-        <input type="color" required class="form-control" id="hex_color" name="hex_color" placeholder="Cor" required value="{{$Color->hex_code ?? ''}}">
+        <input type="color" required class="form-control" id="hex_color" name="hex_color" placeholder="Cor" value="{{$Color->hex_code ?? ''}}">
     </div>
 
     @include('template.includes.alert-error')
