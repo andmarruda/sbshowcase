@@ -19,7 +19,7 @@ const jsSearchModal = async (route) => {
         grid.querySelector('TBODY').innerHTML += '<tr>\
             <td>'+i.id+'</td>\
             <td>'+i.name+'</td>\
-            <td>'+(i.deleted_at===null ? 'Não' : 'Sim')+'</td>\
+            <td>'+(i.deleted_at!==null ? 'Não' : 'Sim')+'</td>\
         </tr>';
     }
 };
