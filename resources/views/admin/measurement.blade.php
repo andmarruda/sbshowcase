@@ -2,7 +2,7 @@
 
 @section('page')
 <form method="post" action="{{route('measurement.save')}}" autocomplete="off">
-    <input type="hidden" name="id" id="id" value="{{$Category->id ?? ''}}">
+    <input type="hidden" name="id" id="id" value="{{$Measurement->id ?? ''}}">
     @csrf
 
     <nav aria-label="breadcrumb">
@@ -30,7 +30,7 @@
     @include('template.includes.alert-error')
 
     @if(!is_null(session('saved')))
-        @include('template.includes.alert-saved', ['success' => 'Categoria salva com sucesso!', 'error' => 'Erro ao salvar categoria!', 'saved' => session('saved')])
+        @include('template.includes.alert-saved', ['success' => 'Medida salva com sucesso!', 'error' => 'Erro ao salvar medida!', 'saved' => session('saved')])
     @endif
 
     <div class="mb-3">
@@ -46,5 +46,5 @@
     </div>
 </form>
 
-@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar categoria', 'placeholder' => 'Categoria', 'route' => route('category.search'), 'loadRoute' => route('category'), 'ths' => ['#', 'Categoria', 'Ativa?']])
+@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar medida', 'placeholder' => 'Medida', 'route' => route('measurement.search'), 'loadRoute' => route('measurement'), 'ths' => ['#', 'Medida', 'Ativa?']])
 @endsection
