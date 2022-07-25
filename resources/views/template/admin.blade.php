@@ -28,6 +28,9 @@
                                         <li><a class="dropdown-item" href="{{route('category')}}">Categoria</a></li>
                                         <li><a class="dropdown-item" href="{{route('measurement')}}">Medidas</a></li>
                                         <li><a class="dropdown-item" href="{{route('color')}}">Cores</a></li>
+                                        <li><a class="dropdown-item" href="{{route('color')}}">Marcas</a></li>
+                                        <li><a class="dropdown-item" href="{{route('color')}}">Tipos</a></li>
+                                        <li><a class="dropdown-item" href="{{route('color')}}">Produtos</a></li>
                                     </ul>
                                 </li>
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MeasuresController;
+use App\Http\Controllers\ColorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,9 @@ Route::prefix('/admin')->group(function(){
 
     //colors routes
     Route::get('/color/{id?}', [ColorController::class, 'adminView'])->name('color')->where('id', '[0-9]+');
+    Route::post('/color/save', [ColorController::class, 'saveColor'])->name('color.save');
+    Route::post('/color/delete', [ColorController::class, 'deleteColor'])->name('color.delete');
+    Route::post('/color/search', [ColorController::class, 'searchColor'])->name('color.search');
 
     Route::get('/config/template', function(){
         return 'em construção';
