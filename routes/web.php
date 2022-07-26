@@ -69,7 +69,19 @@ Route::prefix('/admin')->group(function(){
     Route::post('/type/delete', [TypeController::class, 'deleteType'])->name('type.delete');
     Route::post('/type/search', [TypeController::class, 'searchType'])->name('type.search');
 
-    Route::get('/config/template', function(){
-        return 'em construção';
-    })->name('config.template');
+    //products
+
+    //stores
+    Route::get('/store/{id?}', [StoreController::class, 'adminView'])->name('store')->where('id', '[0-9]+');
+    Route::post('/store/save', [StoreController::class, 'saveStore'])->name('store.save');
+    Route::post('/store/delete', [StoreController::class, 'deleteStore'])->name('store.delete');
+    Route::post('/store/search', [StoreController::class, 'searchStore'])->name('store.search');
+
+    //template
+    Route::get('/template/{id?}', [TemplateController::class, 'adminView'])->name('template')->where('id', '[0-9]+');
+    Route::post('/template/save', [TemplateController::class, 'saveTemplate'])->name('template.save');
+
+    //general
+    Route::get('/general/{id?}', [GeneralController::class, 'adminView'])->name('general')->where('id', '[0-9]+');
+    Route::post('/general/save', [GeneralController::class, 'saveGeneral'])->name('general.save');
 });

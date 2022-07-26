@@ -39,7 +39,9 @@
                                         Configurações
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Template</a></li>
+                                        <li><a class="dropdown-item" href="{{route('template')}}">Template</a></li>
+                                        <li><a class="dropdown-item" href="{{route('store')}}">Lojas</a></li>
+                                        <li><a class="dropdown-item" href="{{route('general')}}">Geral</a></li>
                                     </ul>
                                 </li>
 
