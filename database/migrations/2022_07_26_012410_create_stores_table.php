@@ -17,17 +17,17 @@ return new class extends Migration
             $table->id();
             $table->timestampsTz();
             $table->softDeletes();
-            $table->string('name');
-            $table->string('address');
-            $table->string('address_number');
-            $table->string('address_complement')->nullable();
-            $table->string('address_neighborhood');
-            $table->string('address_city');
-            $table->string('address_state');
-            $table->string('address_zipcode');
-            $table->string('address_country');
+            $table->string('name', 50);
+            $table->string('address', 60);
+            $table->string('address_number', 60);
+            $table->string('address_complement', 60)->nullable();
+            $table->string('address_neighborhood', 60);
+            $table->string('address_city', 60);
+            $table->string('address_state', 3);
+            $table->string('address_zipcode', 10);
+            $table->string('address_country', 30);
             $table->string('google_maps_embeded');
-            $table->string('phone');
+            $table->string('phone', 20);
         });
     }
 

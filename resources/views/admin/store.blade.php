@@ -12,8 +12,20 @@
         </ol>
     </nav>
 
+    $table->string('name');
+            $table->string('address');
+            $table->string('address_number');
+            $table->string('address_complement')->nullable();
+            $table->string('address_neighborhood');
+            $table->string('address_city');
+            $table->string('address_state');
+            $table->string('address_zipcode');
+            $table->string('address_country');
+            $table->string('google_maps_embeded');
+            $table->string('phone');
+
     <div class="mb-3">
-        <label for="name" class="form-label">Nome da marca</label>
+        <label for="name" class="form-label">Nome da loja</label>
         <input type="text" minlength="3" maxlength="50" class="form-control" id="name" name="name" placeholder="Nome da marca" required value="{{$Brand->name ?? ''}}">
     </div>
 
