@@ -6,6 +6,9 @@ use App\Http\Controllers\MeasuresController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\TemplateController;
 
 /*
 |--------------------------------------------------------------------------
