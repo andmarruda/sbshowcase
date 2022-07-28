@@ -24,12 +24,12 @@
 
     <div class="mb-3">
         <label for="address_number" class="form-label">Número</label>
-        <input type="text" minlength="3" maxlength="60" class="form-control" id="address_number" name="address_number" placeholder="Número" required value="{{$Store->address_number ?? ''}}">
+        <input type="text" minlength="1" maxlength="60" class="form-control" id="address_number" name="address_number" placeholder="Número" required value="{{$Store->address_number ?? ''}}">
     </div>
 
     <div class="mb-3">
         <label for="address_complement" class="form-label">Complemento</label>
-        <input type="text" class="form-control" id="address_complement" name="address_complement" placeholder="Complemento" required value="{{$Store->address_complement ?? ''}}">
+        <input type="text" class="form-control" id="address_complement" name="address_complement" placeholder="Complemento" value="{{$Store->address_complement ?? ''}}">
     </div>
 
     <div class="mb-3">
@@ -59,7 +59,7 @@
 
     <div class="mb-3">
         <label for="address_country" class="form-label">País</label>
-        <input type="text" maxlength="30" class="form-control" id="address_country" name="address_country" placeholder="País" required value="{{$Store->address_country ?? ''}}">
+        <input type="text" maxlength="30" class="form-control" id="address_country" name="address_country" placeholder="País" required value="{{$Store->address_country ?? 'Brasil'}}">
     </div>
 
     <div class="mb-3">
