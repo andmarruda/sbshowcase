@@ -38,13 +38,7 @@
 
             @include('template.includes.header-bottom', [
                 'priBg'      => '#3D8DCB',
-                'menu'       => [
-                    ['Cama Box', 'rota', 'parametros'],
-                    ['Colchão', 'rota', 'parametros'],
-                    ['Conjunto', 'rota', 'parametros'],
-                    ['Estofados', 'rota', 'parametros'],
-                    ['Acessórios', 'rota', 'parametros']
-                ]
+                'menu'       => $template['categories']
             ])
         </header>
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\TypeController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\ShowcaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,17 +22,9 @@ use App\Http\Controllers\TemplateController;
 |
 */
 
-Route::get('/', function () {
-    return view('template.public');
-})->name('news');
-
-Route::get('/stores', function(){
-    return 'em construção';
-})->name('stores');
-
-Route::get('/orders', function(){
-    return 'em construção';
-})->name('orders');
+Route::get('/', [ShowcaseController::class, 'main'])->name('main');
+Route::get('/menu/{id}/{name?}', [ShowcaseController::class, 'category'])->name('menu');
+Route::get('/our-stores', [ShowcaseController::class, 'stores'])->name('stores');
 
 Route::get('/admin', function(){
     return 'em construção';
