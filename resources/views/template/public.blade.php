@@ -31,8 +31,6 @@
 
             @include('template.includes.header-middle', [
                 'template'   => $template['templates'],
-                'secBg'      => '#C9E8FF',
-                'secColor'   => '#000',
                 'brandImage' => 'images/logo.png',
                 'brandAlt'   => 'Biosono'
             ])
