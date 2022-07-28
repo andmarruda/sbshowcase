@@ -55,8 +55,7 @@
                     'alt' => 'Icone de atendimento'
                 ],
 
-                'template'   => $template['templates'],
-                'highlightBg' => '#B39C7B'
+                'template'   => $template['templates']
             ])
         </div>
 
