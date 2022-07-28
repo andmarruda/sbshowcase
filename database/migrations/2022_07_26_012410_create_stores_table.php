@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('address_state', 3);
             $table->string('address_zipcode', 10);
             $table->string('address_country', 30);
-            $table->string('google_maps_embeded');
+            $table->text('google_maps_embeded');
             $table->string('phone', 20);
         });
     }

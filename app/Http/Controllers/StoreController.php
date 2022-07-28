@@ -39,7 +39,7 @@ class StoreController extends Controller
         'google_maps_embeded.min' => 'O código do mapa do google deve ter no mínimo 50 caracteres',
         'google_maps_embeded.max' => 'O código do mapa do google deve ter no máximo 500 caracteres',
         'phone.required' => 'O telefone da loja é obrigatório',
-        'phone.min' => 'O telefone da loja deve ter no mínimo 15 caracteres',
+        'phone.min' => 'O telefone da loja deve ter no mínimo 13 caracteres',
         'phone.max' => 'O telefone da loja deve ter no máximo 20 caracteres'
     ];
 
@@ -109,7 +109,7 @@ class StoreController extends Controller
             'address_zipcode' => 'required|max:10',
             'address_country' => 'required|min:3|max:30',
             'google_maps_embeded' => 'required|min:50|max:500',
-            'phone' => 'required|min:15|max:20',
+            'phone' => 'required|min:13|max:20',
         ], $this->requestMessages);
         $store = is_null($r->input('id')) ? new Store() : Store::find($r->input('id'));
         $store->fill([

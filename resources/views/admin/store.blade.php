@@ -54,7 +54,7 @@
 
     <div class="mb-3">
         <label for="phone" class="form-label">Telefone</label>
-        <input type="text" minlength="15" maxlength="20" class="form-control" id="phone" name="phone" placeholder="Número" required value="{{$Store->phone ?? ''}}">
+        <input type="text" minlength="13" maxlength="20" class="form-control" id="phone" name="phone" placeholder="Número" required value="{{$Store->phone ?? ''}}">
     </div>
 
     <div class="mb-3">
@@ -70,7 +70,7 @@
     @include('template.includes.alert-error')
 
     @if(!is_null(session('saved')))
-        @include('template.includes.alert-saved', ['success' => 'Marca salva com sucesso!', 'error' => 'Erro ao salvar marca!', 'saved' => session('saved')])
+        @include('template.includes.alert-saved', ['success' => 'Loja salva com sucesso!', 'error' => 'Erro ao salvar loja!', 'saved' => session('saved')])
     @endif
 
     <div class="mb-3">
@@ -86,5 +86,5 @@
     </div>
 </form>
 
-@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar marca', 'placeholder' => 'Marca', 'route' => route('store.search'), 'loadRoute' => route('store'), 'ths' => ['#', 'Marca', 'Ativa?']])
+@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar loja', 'placeholder' => 'Loja', 'route' => route('store.search'), 'loadRoute' => route('store'), 'ths' => ['#', 'Loja', 'Ativa?']])
 @endsection
