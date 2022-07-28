@@ -30,6 +30,7 @@
             ])
 
             @include('template.includes.header-middle', [
+                'template'   => $template['templates'],
                 'secBg'      => '#C9E8FF',
                 'secColor'   => '#000',
                 'brandImage' => 'images/logo.png',
@@ -37,7 +38,7 @@
             ])
 
             @include('template.includes.header-bottom', [
-                'priBg'      => '#3D8DCB',
+                'template'   => $template['templates'],
                 'menu'       => $template['categories']
             ])
         </header>
@@ -56,6 +57,7 @@
                     'alt' => 'Icone de atendimento'
                 ],
 
+                'template'   => $template['templates'],
                 'highlightBg' => '#B39C7B'
             ])
         </div>

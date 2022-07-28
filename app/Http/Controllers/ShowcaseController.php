@@ -19,6 +19,7 @@ class ShowcaseController extends Controller
     {
         return [
             'categories' => Category::orderBy('id')->get(),
+            'templates' => Template::find(1)
         ];
     }
 
