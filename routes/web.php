@@ -24,7 +24,7 @@ use App\Http\Controllers\ShowcaseController;
 
 Route::get('/', [ShowcaseController::class, 'main'])->name('main');
 Route::get('/menu/{id}/{name?}', [ShowcaseController::class, 'category'])->name('menu');
-Route::get('/our-stores', [ShowcaseController::class, 'stores'])->name('stores');
+Route::get('/our-stores', [ShowcaseController::class, 'stores'])->name('our-stores');
 
 Route::get('/admin', function(){
     return 'em construção';
