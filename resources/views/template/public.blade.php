@@ -62,8 +62,8 @@
         <footer class="container-lg">
             @include('template.includes.footer-infos', [
                 'imgPagamento' => 'images/meio-pagamento.png',
-                'cnpj' => '10.561.781/0001-47',
-                'razaoSocial' => 'Alex Manolito Arteman'
+                'cnpj' => $template['general']->company_doc,
+                'razaoSocial' => $template['general']->company_name
             ])
 
             @include('template.includes.footer-poweredby', ['blog' => $template['general']->blog_url, 'sitemap' => null])
