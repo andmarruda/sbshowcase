@@ -74,10 +74,10 @@ Route::prefix('/admin')->group(function(){
     Route::post('/store/search', [StoreController::class, 'searchStore'])->name('store.search');
 
     //template
-    Route::get('/template/{id?}', [TemplateController::class, 'adminView'])->name('template')->where('id', '[0-9]+');
+    Route::get('/template', [TemplateController::class, 'adminView'])->name('template');
     Route::post('/template/save', [TemplateController::class, 'saveTemplate'])->name('template.save');
 
     //general
-    Route::get('/general/{id?}', [GeneralController::class, 'adminView'])->name('general')->where('id', '[0-9]+');
+    Route::get('/general', [GeneralController::class, 'adminView'])->name('general');
     Route::post('/general/save', [GeneralController::class, 'saveGeneral'])->name('general.save');
 });
