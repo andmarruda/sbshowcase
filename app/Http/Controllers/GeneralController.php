@@ -104,7 +104,7 @@ class GeneralController extends Controller
 
         $general = General::find(1);
         $general->fill([
-            'brand'                     => $r->input('brand'),, 
+            'brand'                     => $r->input('brand'),
             'brand_image'               => $brand_filepath, 
             'slogan'                    => $r->input('slogan'),
             'section'                   => $r->input('section'), 
