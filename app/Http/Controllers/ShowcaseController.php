@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Template;
+use App\Models\General;
 
 class ShowcaseController extends Controller
 {
@@ -18,8 +19,9 @@ class ShowcaseController extends Controller
     public function templateInfo()
     {
         return [
-            'categories' => Category::orderBy('id')->get(),
-            'templates' => Template::find(1)
+            'categories'    => Category::orderBy('id')->get(),
+            'templates'     => Template::find(1),
+            'general'       => General::find(1)
         ];
     }
 
