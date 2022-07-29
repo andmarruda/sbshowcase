@@ -56,22 +56,6 @@ class ImageController extends Controller
             return;
 
         $this->vars['file'] = $file;
-
-        if(!$file->isValid()){
-            $this->vars['error'] = 'INVALID_FILE';
-            return;
-        }
-
-        if(!in_array($file->extension(), self::ALLOWED_EXTENSION)){
-            $this->vars['error'] = 'EXTENSION_ERROR';
-            return;
-        }
-
-        if($file->getSize() > self::ALLOWED_SIZE){
-            $this->vars['error'] = 'SIZE_ERROR';
-            return;
-        }
-
         $uploaded = $file->store($this->store);
         $this->vars['name'] = basename($uploaded);
         $this->convertWebp($uploaded);
@@ -119,7 +103,7 @@ class ImageController extends Controller
      * @param           
      * @return          float
      */
-    public function byteToMb() : float
+    public static function byteToMb() : float
     {
         return self::ALLOWED_SIZE * 0.000001;
     }

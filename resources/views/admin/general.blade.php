@@ -67,17 +67,17 @@
 
     <div class="mb-3">
         <label for="blog_url" class="form-label">URL Blog</label>
-        <input type="text" minlength="30" maxlength="200" class="form-control" id="blog_url" name="blog_url" placeholder="Texto destaque 2" required value="{{$General->blog_url}}">
+        <input type="text" minlength="30" maxlength="200" class="form-control" id="blog_url" name="blog_url" placeholder="URL Blog" value="{{$General->blog_url}}">
     </div>
 
     <div class="mb-3">
         <label for="company_name" class="form-label">Razão Social</label>
-        <input type="text" minlength="15" maxlength="50" class="form-control" id="company_name" name="company_name" placeholder="Razão social" required value="{{$General->company_name}}">
+        <input type="text" minlength="15" maxlength="50" class="form-control" id="company_name" name="company_name" placeholder="Razão social" value="{{$General->company_name}}">
     </div>
 
     <div class="mb-3">
         <label for="company_doc" class="form-label">CNPJ</label>
-        <input type="number" step="1" minlength="15" maxlength="16" class="form-control" id="company_doc" name="company_doc" placeholder="CNPJ" required value="{{$General->company_doc}}">
+        <input type="number" step="1" minlength="15" maxlength="16" class="form-control" id="company_doc" name="company_doc" placeholder="CNPJ" value="{{$General->company_doc}}">
     </div>
 
     @include('template.includes.alert-error')
