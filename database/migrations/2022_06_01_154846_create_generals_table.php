@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('brand_image', 50);
             $table->string('slogan', 200);
             $table->string('section', 100);
-            $table->string('google_analytics', 255);
-            $table->string('google_optimize_script', 255);
+            $table->string('google_analytics', 255)->nullable();
+            $table->string('google_optimize_script', 255)->nullable();
             $table->string('highlight_img_1', 50);
             $table->string('highlight_text_1', 255);
             $table->string('highlight_img_2', 50);

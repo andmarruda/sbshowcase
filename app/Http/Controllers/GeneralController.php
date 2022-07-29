@@ -68,7 +68,7 @@ class GeneralController extends Controller
      * @param           Request $r
      * @return          \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
-    public function saveTemplate(Request $r) : \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+    public function saveGeneral(Request $r) : \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
         $filetypes = implode(',', ImageController::ALLOWED_EXTENSION);
         $this->requestMessages['brand_image.mimes'] = "O campo imagem da marca deve ser do tipo: $filetypes";
@@ -81,7 +81,7 @@ class GeneralController extends Controller
         $r->validate([
             'brand'             => 'required|min:5|max:100',
             'slogan'            => 'required|min:50|max:200',
-            'section'           => 'required|min:15|max:100',
+            'section'           => 'required|min:5|max:100',
             'highlight_text_1'  => 'required|min:15|max:50',
             'highlight_text_2'  => 'required|min:15|max:50',
             'brand_image'       => 'nullable|mimes:'. $filetypes. '|max:'. ImageController::ALLOWED_SIZE,

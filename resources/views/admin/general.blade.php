@@ -32,7 +32,7 @@
 
     <div class="mb-3">
         <label for="section" class="form-label">Categoria do site</label>
-        <input type="text" minlength="15" maxlength="100" class="form-control" id="section" name="section" placeholder="Categoria do site" required value="{{$General->section}}">
+        <input type="text" minlength="5" maxlength="100" class="form-control" id="section" name="section" placeholder="Categoria do site" required value="{{$General->section}}">
     </div>
 
     <div class="mb-3">
@@ -67,7 +67,7 @@
 
     <div class="mb-3">
         <label for="blog_url" class="form-label">URL Blog</label>
-        <input type="text" minlength="30" maxlength="200" class="form-control" id="blog_url" name="blog_url" placeholder="URL Blog" value="{{$General->blog_url}}">
+        <input type="text" minlength="15" maxlength="200" class="form-control" id="blog_url" name="blog_url" placeholder="URL Blog" value="{{$General->blog_url}}">
     </div>
 
     <div class="mb-3">
