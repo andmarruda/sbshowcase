@@ -66,30 +66,7 @@
                 'razaoSocial' => 'Alex Manolito Arteman'
             ])
 
-            @include('template.includes.footer-poweredby', [
-                'socialNetworks' => [
-                    'Facebook' => [
-                        'img' => 'images/facebook.png',
-                        'width' => '20px',
-                        'height' => '20px',
-                        'url' => 'https://facebook.com/biosonocolchoesrp'
-                    ],
-
-                    'Instagram' => [
-                        'img' => 'images/instagram.png',
-                        'width' => '20px',
-                        'height' => '20px',
-                        'url' => 'https://instagram.com/biosonocolchoesrp'
-                    ],
-
-                    'Whatsapp' => [
-                        'img' => 'images/icon-zap.png',
-                        'width' => '20px',
-                        'height' => '20px',
-                        'url' => 'javascript: void(0);'
-                    ]
-                ]
-            ])
+            @include('template.includes.footer-poweredby')
         </footer>
     </body>
 </html>
