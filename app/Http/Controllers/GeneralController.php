@@ -119,6 +119,6 @@ class GeneralController extends Controller
             'blog_url'                  => $r->input('blog_url')
         ]);
         $saved = $general->save();
-        return redirect()->route('template')->with('saved', $saved);
+        return redirect()->route('general')->with('saved', $saved);
     }
 }
