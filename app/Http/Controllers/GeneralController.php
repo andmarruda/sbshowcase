@@ -116,7 +116,8 @@ class GeneralController extends Controller
             'highlight_text_2'          => $r->input('highlight_text_2'), 
             'company_name'              => $r->input('company_name'), 
             'company_doc'               => $r->input('company_doc'), 
-            'blog_url'                  => $r->input('blog_url')
+            'blog_url'                  => $r->input('blog_url'),
+            'whatsapp_number'           => $r->input('whatsapp_number')
         ]);
         $saved = $general->save();
         return redirect()->route('general')->with('saved', $saved);
