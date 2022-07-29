@@ -66,7 +66,7 @@
                 'razaoSocial' => 'Alex Manolito Arteman'
             ])
 
-            @include('template.includes.footer-poweredby')
+            @include('template.includes.footer-poweredby', ['blog' => $template['general']->blog_url, 'sitemap' => null])
         </footer>
     </body>
 </html>
