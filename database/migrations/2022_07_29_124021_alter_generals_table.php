@@ -15,9 +15,9 @@ return new class extends Migration
     {
         //adding extra columns
         Schema::table('generals', function (Blueprint $table) {
-            $table->string('company_name', 60);
-            $table->string('company_doc', 20);
-            $table->string('blog_url', 200);
+            $table->string('company_name', 60)->nullable();
+            $table->string('company_doc', 20)->nullable();
+            $table->string('blog_url', 200)->nullable();
         });
     }
 
