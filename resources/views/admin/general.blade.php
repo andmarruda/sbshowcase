@@ -82,7 +82,7 @@
 
     <div class="mb-3">
         <label for="whatsapp_number" class="form-label">Whatsapp</label>
-        <input type="number" step="1" minlength="15" maxlength="16" class="form-control" id="whatsapp_number" name="whatsapp_number" placeholder="Whatsapp" value="{{$General->whatsapp_number}}">
+        <input type="text" minlength="14" maxlength="16" class="form-control" id="whatsapp_number" name="whatsapp_number" placeholder="Whatsapp" value="{{$General->whatsapp_number}}">
     </div>
 
     @include('template.includes.alert-error')
