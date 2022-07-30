@@ -14,7 +14,7 @@
     @foreach($SocialMedia as $sm)
     <div class="input-group mb-3">
         <span class="input-group-text"><img src="{{asset($sm->icon)}}" alt="{{$sm->name}}"></span>
-        <input type="text" class="form-control" placeholder="URL da rede social" aria-label="Username" aria-describedby="basic-addon1">
+        <input type="text" class="form-control" name="social_media[{{$sm->id}}]" id="social_media_{{$sm->id}}" placeholder="URL da rede social" value="{{$sm->urls()->first()->url ?? ''}}">
     </div>
     @endforeach
 

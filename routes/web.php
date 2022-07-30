@@ -84,5 +84,5 @@ Route::prefix('/admin')->group(function(){
 
     //social-media
     Route::get('/social-media', [SocialMediaController::class, 'adminView'])->name('social-media');
-    Route::get('/social-media/save', [SocialMediaController::class, 'saveSocialMedia'])->name('social-media.save');
+    Route::post('/social-media/save', [SocialMediaController::class, 'saveSocialMedia'])->name('social-media.save');
 });

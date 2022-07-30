@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SocialMedia;
+use App\Models\SocialMediaUrl;
 use Illuminate\Http\Request;
 
 class SocialMediaController extends Controller
@@ -27,17 +28,26 @@ class SocialMediaController extends Controller
      * @param          Request $r
      * @return         \Illuminate\Http\RedirectResponse
      */
-      public function saveCategory(Request $r) : \Illuminate\Http\RedirectResponse
+      public function saveSocialMedia(Request $r) : \Illuminate\Http\RedirectResponse
       {
-          /*$r->validate([
-              'category' => 'required|min:3|max:100'
-          ], $this->requestMessages);
-          $category = is_null($r->input('id')) ? new Category() : Category::find($r->input('id'));
-          $category->fill([
-              'name' => $r->input('category')
-          ]);
-  
-          $saved = $category->save();*/
-          return redirect()->route('category')->with('saved', $saved ?? false);
+        foreach($r->input('social_media') as $id => $sm)
+        {
+            $socialMediaUrl = SocialMediaUrl::where('social_media_id', '=', $id);
+            if($socialMediaUrl->count() > 0 && (is_null($sm) || $sm=='')){
+                $socialMediaUrl->delete();
+                continue;
+            }
+
+            if(is_null($sm) || $sm=='')
+                continue;
+
+            $socialMediaUrl = $socialMediaUrl->count() > 0 ? $socialMediaUrl->first() : new SocialMediaUrl();
+            $socialMediaUrl->fill([
+                'url' => $sm,
+                'social_media_id' => $id
+            ]);
+            $socialMediaUrl->save();
+        }
+        return redirect()->route('social-media')->with('saved', true);
       }
 }
