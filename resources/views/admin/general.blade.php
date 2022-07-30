@@ -21,6 +21,11 @@
     </div>
 
     <div class="mb-3">
+        <h5>Logo atual</h5><hr>
+        <img src="{{asset($General->brand_image)}}" class="img-thumbnail" alt="Logomarca atual">
+    </div>
+
+    <div class="mb-3">
         <label for="brand_image" class="form-label">Logo</label>
         <input type="file" class="form-control" id="brand_image" name="brand_image" placeholder="Logo">
     </div>
@@ -46,6 +51,11 @@
     </div>
 
     <div class="mb-3">
+        <h5>Icone de destaque 1 atual</h5><hr>
+        <img src="{{asset($General->highlight_img_1)}}" class="img-thumbnail" alt="Logomarca atual">
+    </div>
+
+    <div class="mb-3">
         <label for="highlight_img_1" class="form-label">Icone destaque 1</label>
         <input type="file" class="form-control" id="highlight_img_1" name="highlight_img_1" placeholder="Icone destaque 1">
     </div>
@@ -53,6 +63,11 @@
     <div class="mb-3">
         <label for="highlight_text_1" class="form-label">Texto destaque 1</label>
         <input type="text" minlength="15" maxlength="50" class="form-control" id="highlight_text_1" name="highlight_text_1" placeholder="Texto destaque 1" required value="{{$General->highlight_text_1}}">
+    </div>
+
+    <div class="mb-3">
+        <h5>Icone de destaque 2 atual</h5><hr>
+        <img src="{{asset($General->highlight_img_2)}}" class="img-thumbnail" alt="Logomarca atual">
     </div>
 
     <div class="mb-3">
