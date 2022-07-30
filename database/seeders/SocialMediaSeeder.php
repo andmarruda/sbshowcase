@@ -18,37 +18,37 @@ class SocialMediaSeeder extends Seeder
         //creates all social media available at package
         SocialMedia::create([
             'name' => 'Facebook',
-            'icon' => 'images/socialmedia/facebook.png'
+            'icon' => 'images/socialmedia/facebook.webp'
         ]);
 
         SocialMedia::create([
             'name' => 'Instagram',
-            'icon' => 'images/socialmedia/instagram.png'
+            'icon' => 'images/socialmedia/instagram.webp'
         ]);
 
         SocialMedia::create([
             'name' => 'Linkedin',
-            'icon' => 'images/socialmedia/linkedin.png'
+            'icon' => 'images/socialmedia/linkedin.webp'
         ]);
 
         SocialMedia::create([
             'name' => 'Github',
-            'icon' => 'images/socialmedia/github.png'
+            'icon' => 'images/socialmedia/github.webp'
         ]);
 
         SocialMedia::create([
             'name' => 'Twitter',
-            'icon' => 'images/socialmedia/twitter.png'
+            'icon' => 'images/socialmedia/twitter.webp'
         ]);
 
         SocialMedia::create([
             'name' => 'Vimeo',
-            'icon' => 'images/socialmedia/vimeo.png'
+            'icon' => 'images/socialmedia/vimeo.webp'
         ]);
 
         SocialMedia::create([
             'name' => 'Youtube',
-            'icon' => 'images/socialmedia/youtube.png'
+            'icon' => 'images/socialmedia/youtube.webp'
         ]);
     }
 }
