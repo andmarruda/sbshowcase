@@ -1,0 +1,724 @@
+[{
+  "country_id": "00132",
+  "country_name": "AFEGANISTAO"
+}, {
+  "country_id": "00175",
+  "country_name": "ALBANIA, REPUBLICA  DA"
+}, {
+  "country_id": "00230",
+  "country_name": "ALEMANHA"
+}, {
+  "country_id": "00310",
+  "country_name": "BURKINA FASO"
+}, {
+  "country_id": "00370",
+  "country_name": "ANDORRA"
+}, {
+  "country_id": "00400",
+  "country_name": "ANGOLA"
+}, {
+  "country_id": "00418",
+  "country_name": "ANGUILLA"
+}, {
+  "country_id": "00434",
+  "country_name": "ANTIGUA E BARBUDA"
+}, {
+  "country_id": "00477",
+  "country_name": "ANTILHAS HOLANDESAS"
+}, {
+  "country_id": "00531",
+  "country_name": "ARABIA SAUDITA"
+}, {
+  "country_id": "00590",
+  "country_name": "ARGELIA"
+}, {
+  "country_id": "00639",
+  "country_name": "ARGENTINA"
+}, {
+  "country_id": "00647",
+  "country_name": "ARMENIA, REPUBLICA DA"
+}, {
+  "country_id": "00655",
+  "country_name": "ARUBA"
+}, {
+  "country_id": "00698",
+  "country_name": "AUSTRALIA"
+}, {
+  "country_id": "00728",
+  "country_name": "AUSTRIA"
+}, {
+  "country_id": "00736",
+  "country_name": "AZERBAIJAO, REPUBLICA DO"
+}, {
+  "country_id": "00779",
+  "country_name": "BAHAMAS, ILHAS"
+}, {
+  "country_id": "00809",
+  "country_name": "BAHREIN, ILHAS"
+}, {
+  "country_id": "00817",
+  "country_name": "BANGLADESH"
+}, {
+  "country_id": "00833",
+  "country_name": "BARBADOS"
+}, {
+  "country_id": "00850",
+  "country_name": "BELARUS, REPUBLICA DA"
+}, {
+  "country_id": "00876",
+  "country_name": "BELGICA"
+}, {
+  "country_id": "00884",
+  "country_name": "BELIZE"
+}, {
+  "country_id": "00906",
+  "country_name": "BERMUDAS"
+}, {
+  "country_id": "00930",
+  "country_name": "MIANMAR (BIRMANIA)"
+}, {
+  "country_id": "00973",
+  "country_name": "BOLIVIA, ESTADO PLURINACIONAL DA"
+}, {
+  "country_id": "00981",
+  "country_name": "BOSNIA-HERZEGOVINA (REPUBLICA DA)"
+}, {
+  "country_id": "01015",
+  "country_name": "BOTSUANA"
+}, {
+  "country_id": "01082",
+  "country_name": "BRUNEI"
+}, {
+  "country_id": "01112",
+  "country_name": "BULGARIA, REPUBLICA DA"
+}, {
+  "country_id": "01155",
+  "country_name": "BURUNDI"
+}, {
+  "country_id": "01198",
+  "country_name": "BUTAO"
+}, {
+  "country_id": "01279",
+  "country_name": "CABO VERDE, REPUBLICA DE"
+}, {
+  "country_id": "01376",
+  "country_name": "CAYMAN, ILHAS"
+}, {
+  "country_id": "01414",
+  "country_name": "CAMBOJA"
+}, {
+  "country_id": "01457",
+  "country_name": "CAMAROES"
+}, {
+  "country_id": "01490",
+  "country_name": "CANADA"
+}, {
+  "country_id": "01504",
+  "country_name": "GUERNSEY, ILHA DO CANAL (INCLUI ALDERNEY E SARK)"
+}, {
+  "country_id": "01508",
+  "country_name": "JERSEY, ILHA DO CANAL"
+}, {
+  "country_id": "01511",
+  "country_name": "CANARIAS, ILHAS"
+}, {
+  "country_id": "01538",
+  "country_name": "CAZAQUISTAO, REPUBLICA DO"
+}, {
+  "country_id": "01546",
+  "country_name": "CATAR"
+}, {
+  "country_id": "01589",
+  "country_name": "CHILE"
+}, {
+  "country_id": "01600",
+  "country_name": "CHINA, REPUBLICA POPULAR"
+}, {
+  "country_id": "01619",
+  "country_name": "FORMOSA (TAIWAN)"
+}, {
+  "country_id": "01635",
+  "country_name": "CHIPRE"
+}, {
+  "country_id": "01651",
+  "country_name": "COCOS(KEELING),ILHAS"
+}, {
+  "country_id": "01694",
+  "country_name": "COLOMBIA"
+}, {
+  "country_id": "01732",
+  "country_name": "COMORES, ILHAS"
+}, {
+  "country_id": "01775",
+  "country_name": "CONGO"
+}, {
+  "country_id": "01830",
+  "country_name": "COOK, ILHAS"
+}, {
+  "country_id": "01872",
+  "country_name": "COREIA (DO NORTE), REP.POP.DEMOCRATICA"
+}, {
+  "country_id": "01902",
+  "country_name": "COREIA (DO SUL), REPUBLICA DA"
+}, {
+  "country_id": "01937",
+  "country_name": "COSTA DO MARFIM"
+}, {
+  "country_id": "01953",
+  "country_name": "CROACIA (REPUBLICA DA)"
+}, {
+  "country_id": "01961",
+  "country_name": "COSTA RICA"
+}, {
+  "country_id": "01988",
+  "country_name": "COVEITE"
+}, {
+  "country_id": "01996",
+  "country_name": "CUBA"
+}, {
+  "country_id": "02291",
+  "country_name": "BENIN"
+}, {
+  "country_id": "02321",
+  "country_name": "DINAMARCA"
+}, {
+  "country_id": "02356",
+  "country_name": "DOMINICA,ILHA"
+}, {
+  "country_id": "02399",
+  "country_name": "EQUADOR"
+}, {
+  "country_id": "02402",
+  "country_name": "EGITO"
+}, {
+  "country_id": "02437",
+  "country_name": "ERITREIA"
+}, {
+  "country_id": "02445",
+  "country_name": "EMIRADOS ARABES UNIDOS"
+}, {
+  "country_id": "02453",
+  "country_name": "ESPANHA"
+}, {
+  "country_id": "02461",
+  "country_name": "ESLOVENIA, REPUBLICA DA"
+}, {
+  "country_id": "02470",
+  "country_name": "ESLOVACA, REPUBLICA"
+}, {
+  "country_id": "02496",
+  "country_name": "ESTADOS UNIDOS"
+}, {
+  "country_id": "02518",
+  "country_name": "ESTONIA, REPUBLICA DA"
+}, {
+  "country_id": "02534",
+  "country_name": "ETIOPIA"
+}, {
+  "country_id": "02550",
+  "country_name": "FALKLAND (ILHAS MALVINAS)"
+}, {
+  "country_id": "02593",
+  "country_name": "FEROE, ILHAS"
+}, {
+  "country_id": "02674",
+  "country_name": "FILIPINAS"
+}, {
+  "country_id": "02712",
+  "country_name": "FINLANDIA"
+}, {
+  "country_id": "02755",
+  "country_name": "FRANCA"
+}, {
+  "country_id": "02810",
+  "country_name": "GABAO"
+}, {
+  "country_id": "02852",
+  "country_name": "GAMBIA"
+}, {
+  "country_id": "02895",
+  "country_name": "GANA"
+}, {
+  "country_id": "02917",
+  "country_name": "GEORGIA, REPUBLICA DA"
+}, {
+  "country_id": "02933",
+  "country_name": "GIBRALTAR"
+}, {
+  "country_id": "02976",
+  "country_name": "GRANADA"
+}, {
+  "country_id": "03018",
+  "country_name": "GRECIA"
+}, {
+  "country_id": "03050",
+  "country_name": "GROENLANDIA"
+}, {
+  "country_id": "03093",
+  "country_name": "GUADALUPE"
+}, {
+  "country_id": "03131",
+  "country_name": "GUAM"
+}, {
+  "country_id": "01058",
+  "country_name": "BRASIL"
+}, {
+  "country_id": "03174",
+  "country_name": "GUATEMALA"
+}, {
+  "country_id": "03255",
+  "country_name": "GUIANA FRANCESA"
+}, {
+  "country_id": "03298",
+  "country_name": "GUINE"
+}, {
+  "country_id": "03310",
+  "country_name": "GUINE-EQUATORIAL"
+}, {
+  "country_id": "03344",
+  "country_name": "GUINE-BISSAU"
+}, {
+  "country_id": "03379",
+  "country_name": "GUIANA"
+}, {
+  "country_id": "03417",
+  "country_name": "HAITI"
+}, {
+  "country_id": "03450",
+  "country_name": "HONDURAS"
+}, {
+  "country_id": "03514",
+  "country_name": "HONG KONG"
+}, {
+  "country_id": "03557",
+  "country_name": "HUNGRIA, REPUBLICA DA"
+}, {
+  "country_id": "03573",
+  "country_name": "IEMEN"
+}, {
+  "country_id": "03595",
+  "country_name": "MAN, ILHA DE"
+}, {
+  "country_id": "03611",
+  "country_name": "INDIA"
+}, {
+  "country_id": "03654",
+  "country_name": "INDONESIA"
+}, {
+  "country_id": "03697",
+  "country_name": "IRAQUE"
+}, {
+  "country_id": "03727",
+  "country_name": "IRA, REPUBLICA ISLAMICA DO"
+}, {
+  "country_id": "03751",
+  "country_name": "IRLANDA"
+}, {
+  "country_id": "03794",
+  "country_name": "ISLANDIA"
+}, {
+  "country_id": "03832",
+  "country_name": "ISRAEL"
+}, {
+  "country_id": "03867",
+  "country_name": "ITALIA"
+}, {
+  "country_id": "03913",
+  "country_name": "JAMAICA"
+}, {
+  "country_id": "03964",
+  "country_name": "JOHNSTON, ILHAS"
+}, {
+  "country_id": "03999",
+  "country_name": "JAPAO"
+}, {
+  "country_id": "04030",
+  "country_name": "JORDANIA"
+}, {
+  "country_id": "04111",
+  "country_name": "KIRIBATI"
+}, {
+  "country_id": "04200",
+  "country_name": "LAOS, REP.POP.DEMOCR.DO"
+}, {
+  "country_id": "04235",
+  "country_name": "LEBUAN,ILHAS"
+}, {
+  "country_id": "04260",
+  "country_name": "LESOTO"
+}, {
+  "country_id": "04278",
+  "country_name": "LETONIA, REPUBLICA DA"
+}, {
+  "country_id": "04316",
+  "country_name": "LIBANO"
+}, {
+  "country_id": "04340",
+  "country_name": "LIBERIA"
+}, {
+  "country_id": "04383",
+  "country_name": "LIBIA"
+}, {
+  "country_id": "04405",
+  "country_name": "LIECHTENSTEIN"
+}, {
+  "country_id": "04421",
+  "country_name": "LITUANIA, REPUBLICA DA"
+}, {
+  "country_id": "04456",
+  "country_name": "LUXEMBURGO"
+}, {
+  "country_id": "04472",
+  "country_name": "MACAU"
+}, {
+  "country_id": "04499",
+  "country_name": "MACEDONIA, ANT.REP.IUGOSLAVA"
+}, {
+  "country_id": "04502",
+  "country_name": "MADAGASCAR"
+}, {
+  "country_id": "04525",
+  "country_name": "MADEIRA, ILHA DA"
+}, {
+  "country_id": "04553",
+  "country_name": "MALASIA"
+}, {
+  "country_id": "04588",
+  "country_name": "MALAVI"
+}, {
+  "country_id": "04618",
+  "country_name": "MALDIVAS"
+}, {
+  "country_id": "04642",
+  "country_name": "MALI"
+}, {
+  "country_id": "04677",
+  "country_name": "MALTA"
+}, {
+  "country_id": "04723",
+  "country_name": "MARIANAS DO NORTE"
+}, {
+  "country_id": "04740",
+  "country_name": "MARROCOS"
+}, {
+  "country_id": "04766",
+  "country_name": "MARSHALL,ILHAS"
+}, {
+  "country_id": "04774",
+  "country_name": "MARTINICA"
+}, {
+  "country_id": "04855",
+  "country_name": "MAURICIO"
+}, {
+  "country_id": "04880",
+  "country_name": "MAURITANIA"
+}, {
+  "country_id": "04885",
+  "country_name": "MAYOTTE (ILHAS FRANCESAS)"
+}, {
+  "country_id": "04901",
+  "country_name": "MIDWAY, ILHAS"
+}, {
+  "country_id": "04936",
+  "country_name": "MEXICO"
+}, {
+  "country_id": "04944",
+  "country_name": "MOLDAVIA, REPUBLICA DA"
+}, {
+  "country_id": "04952",
+  "country_name": "MONACO"
+}, {
+  "country_id": "04979",
+  "country_name": "MONGOLIA"
+}, {
+  "country_id": "04985",
+  "country_name": "MONTENEGRO"
+}, {
+  "country_id": "04995",
+  "country_name": "MICRONESIA"
+}, {
+  "country_id": "05010",
+  "country_name": "MONTSERRAT,ILHAS"
+}, {
+  "country_id": "05053",
+  "country_name": "MOCAMBIQUE"
+}, {
+  "country_id": "05070",
+  "country_name": "NAMIBIA"
+}, {
+  "country_id": "05088",
+  "country_name": "NAURU"
+}, {
+  "country_id": "05118",
+  "country_name": "CHRISTMAS,ILHA (NAVIDAD)"
+}, {
+  "country_id": "05177",
+  "country_name": "NEPAL"
+}, {
+  "country_id": "05215",
+  "country_name": "NICARAGUA"
+}, {
+  "country_id": "05258",
+  "country_name": "NIGER"
+}, {
+  "country_id": "05282",
+  "country_name": "NIGERIA"
+}, {
+  "country_id": "05312",
+  "country_name": "NIUE,ILHA"
+}, {
+  "country_id": "05355",
+  "country_name": "NORFOLK,ILHA"
+}, {
+  "country_id": "05380",
+  "country_name": "NORUEGA"
+}, {
+  "country_id": "05428",
+  "country_name": "NOVA CALEDONIA"
+}, {
+  "country_id": "05452",
+  "country_name": "PAPUA NOVA GUINE"
+}, {
+  "country_id": "05487",
+  "country_name": "NOVA ZELANDIA"
+}, {
+  "country_id": "05517",
+  "country_name": "VANUATU"
+}, {
+  "country_id": "05568",
+  "country_name": "OMA"
+}, {
+  "country_id": "05665",
+  "country_name": "PACIFICO,ILHAS DO (POSSESSAO DOS EUA)"
+}, {
+  "country_id": "05738",
+  "country_name": "PAISES BAIXOS (HOLANDA)"
+}, {
+  "country_id": "05754",
+  "country_name": "PALAU"
+}, {
+  "country_id": "05762",
+  "country_name": "PAQUISTAO"
+}, {
+  "country_id": "05800",
+  "country_name": "PANAMA"
+}, {
+  "country_id": "05860",
+  "country_name": "PARAGUAI"
+}, {
+  "country_id": "05894",
+  "country_name": "PERU"
+}, {
+  "country_id": "05932",
+  "country_name": "PITCAIRN,ILHA"
+}, {
+  "country_id": "05991",
+  "country_name": "POLINESIA FRANCESA"
+}, {
+  "country_id": "06033",
+  "country_name": "POLONIA, REPUBLICA DA"
+}, {
+  "country_id": "06076",
+  "country_name": "PORTUGAL"
+}, {
+  "country_id": "06114",
+  "country_name": "PORTO RICO"
+}, {
+  "country_id": "06238",
+  "country_name": "QUENIA"
+}, {
+  "country_id": "06254",
+  "country_name": "QUIRGUIZ, REPUBLICA"
+}, {
+  "country_id": "06289",
+  "country_name": "REINO UNIDO"
+}, {
+  "country_id": "06408",
+  "country_name": "REPUBLICA CENTRO-AFRICANA"
+}, {
+  "country_id": "06475",
+  "country_name": "REPUBLICA DOMINICANA"
+}, {
+  "country_id": "06602",
+  "country_name": "REUNIAO, ILHA"
+}, {
+  "country_id": "06653",
+  "country_name": "ZIMBABUE"
+}, {
+  "country_id": "06700",
+  "country_name": "ROMENIA"
+}, {
+  "country_id": "06750",
+  "country_name": "RUANDA"
+}, {
+  "country_id": "06769",
+  "country_name": "RUSSIA, FEDERACAO DA"
+}, {
+  "country_id": "06777",
+  "country_name": "SALOMAO, ILHAS"
+}, {
+  "country_id": "06858",
+  "country_name": "SAARA OCIDENTAL"
+}, {
+  "country_id": "06874",
+  "country_name": "EL SALVADOR"
+}, {
+  "country_id": "06904",
+  "country_name": "SAMOA"
+}, {
+  "country_id": "06912",
+  "country_name": "SAMOA AMERICANA"
+}, {
+  "country_id": "06955",
+  "country_name": "SAO CRISTOVAO E NEVES,ILHAS"
+}, {
+  "country_id": "06971",
+  "country_name": "SAN MARINO"
+}, {
+  "country_id": "07005",
+  "country_name": "SAO PEDRO E MIQUELON"
+}, {
+  "country_id": "07056",
+  "country_name": "SAO VICENTE E GRANADINAS"
+}, {
+  "country_id": "07102",
+  "country_name": "SANTA HELENA"
+}, {
+  "country_id": "07153",
+  "country_name": "SANTA LUCIA"
+}, {
+  "country_id": "07200",
+  "country_name": "SAO TOME E PRINCIPE, ILHAS"
+}, {
+  "country_id": "07285",
+  "country_name": "SENEGAL"
+}, {
+  "country_id": "07315",
+  "country_name": "SEYCHELLES"
+}, {
+  "country_id": "07358",
+  "country_name": "SERRA LEOA"
+}, {
+  "country_id": "07370",
+  "country_name": "SERVIA"
+}, {
+  "country_id": "07412",
+  "country_name": "CINGAPURA"
+}, {
+  "country_id": "07447",
+  "country_name": "SIRIA, REPUBLICA ARABE DA"
+}, {
+  "country_id": "07480",
+  "country_name": "SOMALIA"
+}, {
+  "country_id": "07501",
+  "country_name": "SRI LANKA"
+}, {
+  "country_id": "07544",
+  "country_name": "SUAZILANDIA"
+}, {
+  "country_id": "07560",
+  "country_name": "AFRICA DO SUL"
+}, {
+  "country_id": "07595",
+  "country_name": "SUDAO"
+}, {
+  "country_id": "07641",
+  "country_name": "SUECIA"
+}, {
+  "country_id": "07676",
+  "country_name": "SUICA"
+}, {
+  "country_id": "07706",
+  "country_name": "SURINAME"
+}, {
+  "country_id": "07722",
+  "country_name": "TADJIQUISTAO, REPUBLICA DO"
+}, {
+  "country_id": "07765",
+  "country_name": "TAILANDIA"
+}, {
+  "country_id": "07803",
+  "country_name": "TANZANIA, REP.UNIDA DA"
+}, {
+  "country_id": "07820",
+  "country_name": "TERRITORIO BRIT.OC.INDICO"
+}, {
+  "country_id": "07838",
+  "country_name": "DJIBUTI"
+}, {
+  "country_id": "07889",
+  "country_name": "CHADE"
+}, {
+  "country_id": "07919",
+  "country_name": "TCHECA, REPUBLICA"
+}, {
+  "country_id": "07951",
+  "country_name": "TIMOR LESTE"
+}, {
+  "country_id": "08001",
+  "country_name": "TOGO"
+}, {
+  "country_id": "08052",
+  "country_name": "TOQUELAU,ILHAS"
+}, {
+  "country_id": "08109",
+  "country_name": "TONGA"
+}, {
+  "country_id": "08150",
+  "country_name": "TRINIDAD E TOBAGO"
+}, {
+  "country_id": "08206",
+  "country_name": "TUNISIA"
+}, {
+  "country_id": "08230",
+  "country_name": "TURCAS E CAICOS,ILHAS"
+}, {
+  "country_id": "08249",
+  "country_name": "TURCOMENISTAO, REPUBLICA DO"
+}, {
+  "country_id": "08273",
+  "country_name": "TURQUIA"
+}, {
+  "country_id": "08281",
+  "country_name": "TUVALU"
+}, {
+  "country_id": "08311",
+  "country_name": "UCRANIA"
+}, {
+  "country_id": "08338",
+  "country_name": "UGANDA"
+}, {
+  "country_id": "08451",
+  "country_name": "URUGUAI"
+}, {
+  "country_id": "08478",
+  "country_name": "UZBEQUISTAO, REPUBLICA DO"
+}, {
+  "country_id": "08486",
+  "country_name": "VATICANO, EST.DA CIDADE DO"
+}, {
+  "country_id": "08508",
+  "country_name": "VENEZUELA"
+}, {
+  "country_id": "08583",
+  "country_name": "VIETNA"
+}, {
+  "country_id": "08630",
+  "country_name": "VIRGENS,ILHAS (BRITANICAS)"
+}, {
+  "country_id": "08664",
+  "country_name": "VIRGENS,ILHAS (E.U.A.)"
+}, {
+  "country_id": "08702",
+  "country_name": "FIJI"
+}, {
+  "country_id": "08737",
+  "country_name": "WAKE, ILHA"
+}, {
+  "country_id": "08885",
+  "country_name": "CONGO, REPUBLICA DEMOCRATICA DO"
+}, {
+  "country_id": "08907",
+  "country_name": "ZAMBIA"
+}]

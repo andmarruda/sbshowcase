@@ -1,0 +1,164 @@
+[
+    {
+      "state_id": "11",
+      "country_id": "01058",
+      "state_name": "Rondônia",
+      "state_initials": "RO"
+    },
+    {
+      "state_id": "12",
+      "country_id": "01058",
+      "state_name": "Acre",
+      "state_initials": "AC"
+    },
+    {
+      "state_id": "27",
+      "country_id": "01058",
+      "state_name": "Alagoas",
+      "state_initials": "AL"
+    },
+    {
+      "state_id": "16",
+      "country_id": "01058",
+      "state_name": "Amapá",
+      "state_initials": "AP"
+    },
+    {
+      "state_id": "13",
+      "country_id": "01058",
+      "state_name": "Amazonas",
+      "state_initials": "AM"
+    },
+    {
+      "state_id": "29",
+      "country_id": "01058",
+      "state_name": "Bahia",
+      "state_initials": "BA"
+    },
+    {
+      "state_id": "23",
+      "country_id": "01058",
+      "state_name": "Ceará",
+      "state_initials": "CE"
+    },
+    {
+      "state_id": "53",
+      "country_id": "01058",
+      "state_name": "Distrito Federal",
+      "state_initials": "DF"
+    },
+    {
+      "state_id": "32",
+      "country_id": "01058",
+      "state_name": "Espírito Santo",
+      "state_initials": "ES"
+    },
+    {
+      "state_id": "52",
+      "country_id": "01058",
+      "state_name": "Goiás",
+      "state_initials": "GO"
+    },
+    {
+      "state_id": "21",
+      "country_id": "01058",
+      "state_name": "Maranhão",
+      "state_initials": "MA"
+    },
+    {
+      "state_id": "51",
+      "country_id": "01058",
+      "state_name": "Mato Grosso",
+      "state_initials": "MT"
+    },
+    {
+      "state_id": "50",
+      "country_id": "01058",
+      "state_name": "Mato Grosso do Sul",
+      "state_initials": "MS"
+    },
+    {
+      "state_id": "31",
+      "country_id": "01058",
+      "state_name": "Minas Gerais",
+      "state_initials": "MG"
+    },
+    {
+      "state_id": "15",
+      "country_id": "01058",
+      "state_name": "Pará",
+      "state_initials": "PA"
+    },
+    {
+      "state_id": "25",
+      "country_id": "01058",
+      "state_name": "Paraíba",
+      "state_initials": "PB"
+    },
+    {
+      "state_id": "41",
+      "country_id": "01058",
+      "state_name": "Paraná",
+      "state_initials": "PR"
+    },
+    {
+      "state_id": "22",
+      "country_id": "01058",
+      "state_name": "Piauí",
+      "state_initials": "PI"
+    },
+    {
+      "state_id": "33",
+      "country_id": "01058",
+      "state_name": "Rio de Janeiro",
+      "state_initials": "RJ"
+    },
+    {
+      "state_id": "24",
+      "country_id": "01058",
+      "state_name": "Rio Grande do Norte",
+      "state_initials": "RN"
+    },
+    {
+      "state_id": "43",
+      "country_id": "01058",
+      "state_name": "Rio Grande do Sul",
+      "state_initials": "RS"
+    },
+    {
+      "state_id": "14",
+      "country_id": "01058",
+      "state_name": "Roraima",
+      "state_initials": "RR"
+    },
+    {
+      "state_id": "42",
+      "country_id": "01058",
+      "state_name": "Santa Catarina",
+      "state_initials": "SC"
+    },
+    {
+      "state_id": "35",
+      "country_id": "01058",
+      "state_name": "São Paulo",
+      "state_initials": "SP"
+    },
+    {
+      "state_id": "28",
+      "country_id": "01058",
+      "state_name": "Sergipe",
+      "state_initials": "SE"
+    },
+    {
+      "state_id": "17",
+      "country_id": "01058",
+      "state_name": "Tocantins",
+      "state_initials": "TO"
+    },
+    {
+      "state_id": "26",
+      "country_id": "01058",
+      "state_name": "Pernambuco",
+      "state_initials": "PE"
+    }
+  ]
