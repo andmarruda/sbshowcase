@@ -44,7 +44,7 @@
                                         <li><a class="dropdown-item" href="{{route('general')}}">Geral</a></li>
                                         <li><a class="dropdown-item" href="{{route('social-media')}}">Redes Sociais</a></li>
                                         <li><a class="dropdown-item" href="{{route('general')}}">Formas de pagamento</a></li>
-                                        <li><a class="dropdown-item" href="{{route('general')}}">Entrega</a></li>
+                                        <li><a class="dropdown-item" href="{{route('delivery')}}">Entrega</a></li>
                                     </ul>
                                 </li>
 

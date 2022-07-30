@@ -37,7 +37,7 @@ class GeneralController extends Controller
     ];
 
     /**
-     * Returns the view of template form inside the admin
+     * Returns the view of general form inside the admin
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
      * @param           
@@ -62,7 +62,7 @@ class GeneralController extends Controller
     }
 
     /**
-     * Saves the change into template
+     * Saves the change into general
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
      * @param           Request $r

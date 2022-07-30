@@ -11,6 +11,7 @@ use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\ShowcaseController;
 use App\Http\Controllers\SocialMediaController;
+use App\Http\Controllers\DeliveryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,4 +86,8 @@ Route::prefix('/admin')->group(function(){
     //social-media
     Route::get('/social-media', [SocialMediaController::class, 'adminView'])->name('social-media');
     Route::post('/social-media/save', [SocialMediaController::class, 'saveSocialMedia'])->name('social-media.save');
+
+    //delivery settings
+    Route::get('/delivery', [DeliveryController::class, 'adminView'])->name('delivery');
+    Route::post('/delivery/save', [DeliveryController::class, 'saveDelivery'])->name('delivery.save');
 });
