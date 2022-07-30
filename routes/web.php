@@ -10,6 +10,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\ShowcaseController;
+use App\Http\Controllers\SocialMediaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,4 +81,8 @@ Route::prefix('/admin')->group(function(){
     //general
     Route::get('/general', [GeneralController::class, 'adminView'])->name('general');
     Route::post('/general/save', [GeneralController::class, 'saveGeneral'])->name('general.save');
+
+    //social-media
+    Route::get('/social-media', [SocialMediaController::class, 'adminView'])->name('social-media');
+    Route::get('/social-media/save', [SocialMediaController::class, 'saveSocialMedia'])->name('social-media.save');
 });
