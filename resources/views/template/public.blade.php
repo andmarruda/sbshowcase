@@ -43,18 +43,7 @@
 
         <div class="container-md" style="margin-top: 2rem;">
             @include('template.includes.middle-top', [
-                'highlight1' => [
-                    'title' => 'Entregamos antes da hora de dormir!',
-                    'img' => 'images/icon-entrega.png',
-                    'alt' => 'Icone de Entrega'
-                ],
-
-                'highlight2' => [
-                    'title' => 'Atendimento de qualidade!',
-                    'img' => 'images/icon-suporte.png',
-                    'alt' => 'Icone de atendimento'
-                ],
-
+                'general' => $template['general'],
                 'template'   => $template['templates']
             ])
         </div>
