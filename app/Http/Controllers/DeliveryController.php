@@ -40,7 +40,7 @@ class DeliveryController extends Controller
             $allCity = $allCity->allCity($selected_state_id);
         }
 
-        return view('admin.delivery', ['Delivery' => null, 'States' => $allState, 'selected_state_id' => $selected_state_id, 'Cities' => $allCity ?? NULL]);
+        return view('admin.delivery', ['Delivery' => DeliverySettings::all(), 'States' => $allState, 'selected_state_id' => $selected_state_id, 'Cities' => $allCity ?? NULL]);
     }
 
     /**
