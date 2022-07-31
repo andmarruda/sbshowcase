@@ -29,7 +29,7 @@
             <select class="form-control" id="city_id" name="city_id" required>
                 <option value="">Selecione...</option>
                 @if(!is_null($Cities))
-                    @foreach($cities as $city)
+                    @foreach($Cities as $city)
                         <option value="{{$city->city_id}}">{{$city->city_name}}</option>
                     @endforeach
                 @endif

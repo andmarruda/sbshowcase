@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\DeliverySettings;
 
 class DeliveryController extends Controller
 {
@@ -11,6 +12,17 @@ class DeliveryController extends Controller
      * @var int
      */
     private int $defaultCountryId = 1058;
+
+    /**
+     * Require validate's messages
+     * @var array
+     */
+    private array $requestMessages = [
+        'state_id.required' => 'O campo UF é obrigatório',
+        'city_id.required' => 'O campo cidade é obrigatório',
+        'price.required' => 'O campo preço é obrigatório',
+        'price.min' => 'O campo preço deve conter no mínimo 4 dígitos, por exemplo: 0.00'
+     ];
 
     /**
      * Returns the view of template form inside the admin
@@ -24,9 +36,36 @@ class DeliveryController extends Controller
         $allState = new StateController();
         $allState = $allState->allState($this->defaultCountryId);
         if(!is_null($selected_state_id)){
-
+            $allCity = new CityController();
+            $allCity = $allCity->allCity($selected_state_id);
         }
 
-        return view('admin.delivery', ['Delivery' => null, 'States' => $allState, 'selected_state_id' => $selected_state_id, 'Cities' => NULL]);
+        return view('admin.delivery', ['Delivery' => null, 'States' => $allState, 'selected_state_id' => $selected_state_id, 'Cities' => $allCity ?? NULL]);
+    }
+
+    /**
+     * Save delivery settings
+     * @version        1.0.0
+     * @author         Anderson Arruda < andmarruda@gmail.com >
+     * @param          Request $r
+     * @return         \Illuminate\Http\RedirectResponse
+     */
+    public function saveDelivery(Request $r) : \Illuminate\Http\RedirectResponse
+    {
+        $r->validate([
+            'state_id' => 'required',
+            'city_id'  => 'required',
+            'price'    => 'required|min:4'
+        ], $this->requestMessages);
+
+        $devSearch = DeliverySettings::where('city_id', '=', $r->input('city_id'));
+        $dev = $devSearch->count() > 0 ? $devSearch->first() : new DeliverySettings();
+        $dev->fill([
+            'city_id' => $r->input('city_id'),
+            'price'   => $r->input('price')
+        ]);
+        $saved = $dev->save();
+        
+        return redirect()->route('delivery')->with('saved', $saved);
     }
 }
