@@ -81,7 +81,7 @@
                             <td>{{$dev->city()->first()->city_name}}</td>
                             <td>R${{number_format($dev->price, 2, ',', '.')}}</td>
                             <td>
-                                <a href="" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                <a href="javascript: void(0);" onclick="javascript: confirmEnableDisable('{{route('delivery.delete')}}', {{$dev->id}}, '{{csrf_token()}}');" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
