@@ -31,8 +31,7 @@
 
             @include('template.includes.header-middle', [
                 'template'   => $template['templates'],
-                'brandImage' => 'images/logo.png',
-                'brandAlt'   => 'Biosono'
+                'general' => $template['general']
             ])
 
             @include('template.includes.header-bottom', [
