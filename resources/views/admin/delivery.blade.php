@@ -69,7 +69,23 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                    @if(!is_null($Delivery))
+                        @foreach($Delivery as $dev)
+                        <tr>
+                            <td>{{$dev->id}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>R${{number_format($dev->price, 2, ',', '.')}}</td>
+                            <td>
+                                <a href="" class="btn btn-primary"><i class="fa-regular fa-edit"></i></a>
+                                <a href="" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
+                </tbody>
             </table>
         </div>
     </div>
