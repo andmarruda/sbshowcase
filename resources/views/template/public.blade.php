@@ -28,9 +28,8 @@
 
         <footer class="container-lg">
             @include('template.includes.footer-infos', [
-                'imgPagamento' => 'images/meio-pagamento.png',
-                'cnpj' => $template['general']->company_doc,
-                'razaoSocial' => $template['general']->company_name
+                'PaymentMethod' => $template['PaymentMethod'],
+                'general' => $template['general']
             ])
 
             @include('template.includes.footer-poweredby', ['blog' => $template['general']->blog_url, 'sitemap' => null])
