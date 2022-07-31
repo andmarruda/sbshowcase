@@ -12,6 +12,7 @@ use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\ShowcaseController;
 use App\Http\Controllers\SocialMediaController;
 use App\Http\Controllers\DeliveryController;
+use App\Http\Controllers\PaymentMethodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,4 +92,8 @@ Route::prefix('/admin')->group(function(){
     Route::get('/delivery/{selected_state_id?}', [DeliveryController::class, 'adminView'])->name('delivery')->where('selected_state_id', '[0-9]+');
     Route::post('/delivery/save', [DeliveryController::class, 'saveDelivery'])->name('delivery.save');
     Route::post('/delivery/delete', [DeliveryController::class, 'deleteDelivery'])->name('delivery.delete');
+
+    //payment methods
+    Route::get('/payment-methods', [PaymentMethodController::class, 'adminView'])->name('payment-methods');
+    Route::post('/payment-methods/save', [PaymentMethodController::class, 'savePaymentMethods'])->name('payment-methods.save');
 });
