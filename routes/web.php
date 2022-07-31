@@ -88,6 +88,6 @@ Route::prefix('/admin')->group(function(){
     Route::post('/social-media/save', [SocialMediaController::class, 'saveSocialMedia'])->name('social-media.save');
 
     //delivery settings
-    Route::get('/delivery', [DeliveryController::class, 'adminView'])->name('delivery');
+    Route::get('/delivery/{selected_state_id?}', [DeliveryController::class, 'adminView'])->name('delivery')->where('selected_state_id', '[0-9]+');
     Route::post('/delivery/save', [DeliveryController::class, 'saveDelivery'])->name('delivery.save');
 });
