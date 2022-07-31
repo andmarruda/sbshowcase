@@ -13,6 +13,7 @@ use App\Http\Controllers\ShowcaseController;
 use App\Http\Controllers\SocialMediaController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,7 @@ Route::prefix('/admin')->group(function(){
     Route::post('/type/search', [TypeController::class, 'searchType'])->name('type.search');
 
     //products
+    Route::get('/product/{id?}', [ProductController::class, 'adminView'])->name('product')->where('id', '[0-9]+');
 
     //stores
     Route::get('/store/{id?}', [StoreController::class, 'adminView'])->name('store')->where('id', '[0-9]+');

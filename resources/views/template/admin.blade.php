@@ -30,7 +30,7 @@
                                         <li><a class="dropdown-item" href="{{route('color')}}">Cores</a></li>
                                         <li><a class="dropdown-item" href="{{route('brand')}}">Marcas</a></li>
                                         <li><a class="dropdown-item" href="{{route('type')}}">Tipos</a></li>
-                                        <li><a class="dropdown-item" href="{{route('color')}}">Produtos</a></li>
+                                        <li><a class="dropdown-item" href="{{route('product')}}">Produtos</a></li>
                                     </ul>
                                 </li>
 

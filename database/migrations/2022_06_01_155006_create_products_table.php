@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->timestampsTz();
             $table->string('name', 150);
-            $table->string('description', 500);
+            $table->text('description', 500);
             $table->string('image', 50);
             $table->float('price');
             $table->float('old_price');
+            $table->float('percentage_discount');
+            $table->integer('installments_limit');
             $table->integer('quantity');
             $table->softDeletes();
             $table->boolean('promotion_flag');
