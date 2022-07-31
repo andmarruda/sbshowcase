@@ -76,7 +76,7 @@
                             <td>{{$dev->id}}</td>
                             <td></td>
                             <td></td>
-                            <td></td>
+                            <td>@dd($dev->city)</td>
                             <td>R${{number_format($dev->price, 2, ',', '.')}}</td>
                             <td>
                                 <a href="" class="btn btn-primary"><i class="fa-regular fa-edit"></i></a>
