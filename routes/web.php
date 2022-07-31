@@ -90,4 +90,5 @@ Route::prefix('/admin')->group(function(){
     //delivery settings
     Route::get('/delivery/{selected_state_id?}', [DeliveryController::class, 'adminView'])->name('delivery')->where('selected_state_id', '[0-9]+');
     Route::post('/delivery/save', [DeliveryController::class, 'saveDelivery'])->name('delivery.save');
+    Route::post('/delivery/delete', [DeliveryController::class, 'deleteDelivery'])->name('delivery.delete');
 });

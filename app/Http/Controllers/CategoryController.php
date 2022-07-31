@@ -38,9 +38,9 @@ class CategoryController extends Controller
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
      * @param           Request $r
-     * @return          \Illuminate\Http\Response
+     * @return          \Illuminate\Http\JsonResponse
      */
-    public function deleteCategory(Request $r)
+    public function deleteCategory(Request $r) : \Illuminate\Http\JsonResponse
     {
         $category = Category::withTrashed()->find($r->input('id'));
         if(!is_null($category->deleted_at))

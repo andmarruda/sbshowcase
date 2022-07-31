@@ -58,6 +58,8 @@
 
     <div class="row" style="margin-top:1.5rem;">
         <div class="col">
+            <div class="alert alert-info">Para editar basta selecionar o mesmo estado, cidade e alterar o preço.</div>
+
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -79,7 +81,6 @@
                             <td>{{$dev->city()->first()->city_name}}</td>
                             <td>R${{number_format($dev->price, 2, ',', '.')}}</td>
                             <td>
-                                <a href="" class="btn btn-primary"><i class="fa-regular fa-edit"></i></a>
                                 <a href="" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>

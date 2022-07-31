@@ -44,6 +44,22 @@ class DeliveryController extends Controller
     }
 
     /**
+     * Delete some existing delivery settings
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $r
+     * @return          \Illuminate\Http\JsonResponse
+     */
+    public function deleteDelivery(Request $r) : \Illuminate\Http\JsonResponse
+    {
+        $delivery = DeliverySettings::find($r->input('id'));
+        if(!is_null($delivery))
+            $delivery->delete();
+
+        return response()->json(['success' => true]);
+    }
+
+    /**
      * Save delivery settings
      * @version        1.0.0
      * @author         Anderson Arruda < andmarruda@gmail.com >
