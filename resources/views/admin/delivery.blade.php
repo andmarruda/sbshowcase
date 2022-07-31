@@ -74,9 +74,9 @@
                         @foreach($Delivery as $dev)
                         <tr>
                             <td>{{$dev->id}}</td>
-                            <td></td>
-                            <td></td>
-                            <td>@dd($dev->city)</td>
+                            <td>{{$dev->city()->first()->state()->first()->country()->first()->country_name}}</td>
+                            <td>{{$dev->city()->first()->state()->first()->state_initials}}</td>
+                            <td>{{$dev->city()->first()->city_name}}</td>
                             <td>R${{number_format($dev->price, 2, ',', '.')}}</td>
                             <td>
                                 <a href="" class="btn btn-primary"><i class="fa-regular fa-edit"></i></a>
