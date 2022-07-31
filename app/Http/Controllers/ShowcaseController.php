@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Template;
 use App\Models\General;
+use App\Models\SocialMediaUrl;
 
 class ShowcaseController extends Controller
 {
@@ -21,7 +22,8 @@ class ShowcaseController extends Controller
         return [
             'categories'    => Category::orderBy('id')->get(),
             'templates'     => Template::find(1),
-            'general'       => General::find(1)
+            'general'       => General::find(1),
+            'SocialMedia'   => SocialMediaUrl::all(),
         ];
     }
 
