@@ -23,11 +23,11 @@ class ProductController extends Controller
     public function productFormInfo() : array
     {
         return [
-            'categories' => CategoryController::allEnabled(),
-            'measures' => MeasureController::allEnabled(),
-            'colors' => ColorController::allEnabled(),
-            'brands' => BrandController::allEnabled(),
-            'types' => TypeController::allEnabled()
+            'Categories' => CategoryController::allEnabled(),
+            'Measures' => MeasuresController::allEnabled(),
+            'Colors' => ColorController::allEnabled(),
+            'Brands' => BrandController::allEnabled(),
+            'Types' => TypeController::allEnabled()
         ];
     }
 

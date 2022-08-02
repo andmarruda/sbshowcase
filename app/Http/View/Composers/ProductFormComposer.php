@@ -9,6 +9,6 @@ class ProductFormComposer{
     public function compose(View $view)
     {
         $pc = new ProductController();
-        $view->with('template', $pc->productFormInfo());
+        $view->with('infos', $pc->productFormInfo());
     }
 }

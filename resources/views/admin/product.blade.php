@@ -36,6 +36,11 @@
             <label for="category_id" class="form-label">Categoria</label>
             <select class="form-control" id="category_id" name="category_id" required>
                 <option value="">Selecione uma categoria</option>
+                @isset($infos['Categories'])
+                    @foreach($infos['Categories'] as $Category)
+                    <option value="{{$Category->id}}"{{!is_null($Product) && $Product->category_id == $Category->id ? ' selected' : ''}}>{{$Category->name}}</option>
+                    @endforeach
+                @endisset
             </select>
         </div>
     </div>
@@ -45,6 +50,8 @@
             <label for="promotion_flag" class="form-label">Mostrar produto em promoção?</label>
             <select class="form-control" id="promotion_flag" name="promotion_flag" required>
                 <option value="">Selecione...</option>
+                <option value="1">Sim</option>
+                <option value="0">Não</option>
             </select>
         </div>
 
@@ -52,6 +59,11 @@
             <label for="measure_id" class="form-label">Medidas</label>
             <select class="form-control" id="measure_id" name="measure_id" required>
                 <option value="">Selecione...</option>
+                @isset($infos['Measures'])
+                    @foreach($infos['Measures'] as $Measure)
+                    <option value="{{$Measure->id}}"{{!is_null($Product) && $Product->measure_id == $Measure->id ? ' selected' : ''}}>{{$Measure->length.'x'.$Measure->width. 'x'. $Measure->height}}</option>
+                    @endforeach
+                @endisset
             </select>
         </div>
 
@@ -59,6 +71,11 @@
             <label for="color_id" class="form-label">Cor</label>
             <select class="form-control" id="color_id" name="color_id" required>
                 <option value="">Selecione...</option>
+                @isset($infos['Colors'])
+                    @foreach($infos['Colors'] as $Color)
+                    <option value="{{$Color->id}}"{{!is_null($Product) && $Product->color_id == $Color->id ? ' selected' : ''}}>{{$Color->name}}</option>
+                    @endforeach
+                @endisset
             </select>
         </div>
     </div>
@@ -68,6 +85,11 @@
             <label for="brand_id" class="form-label">Marca</label>
             <select class="form-control" id="brand_id" name="brand_id" required>
                 <option value="">Selecione...</option>
+                @isset($infos['Brands'])
+                    @foreach($infos['Brands'] as $Brand)
+                    <option value="{{$Brand->id}}"{{!is_null($Product) && $Product->brand_id == $Brand->id ? ' selected' : ''}}>{{$Brand->name}}</option>
+                    @endforeach
+                @endisset
             </select>
         </div>
 
@@ -75,6 +97,11 @@
             <label for="type_id" class="form-label">Tipo de produto</label>
             <select class="form-control" id="type_id" name="type_id" required>
                 <option value="">Selecione...</option>
+                @isset($infos['Types'])
+                    @foreach($infos['Types'] as $Type)
+                    <option value="{{$Type->id}}"{{!is_null($Product) && $Product->type_id == $Type->id ? ' selected' : ''}}>{{$Type->name}}</option>
+                    @endforeach
+                @endisset
             </select>
         </div>
     </div>

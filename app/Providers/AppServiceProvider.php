@@ -28,6 +28,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //Public template informations
         View::composer('template.public', PublicTemplateComposer::class);
-        View::composer('product', ProductFormComposer::class);
+        View::composer('admin.product', ProductFormComposer::class);
     }
 }
