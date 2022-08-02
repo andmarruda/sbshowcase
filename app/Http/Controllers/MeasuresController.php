@@ -23,7 +23,7 @@ class MeasuresController extends Controller
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
      * @param
-     * @return
+     * @return          \Illuminate\Database\Eloquent\Collection
      */
     public static function allEnabled() : \Illuminate\Database\Eloquent\Collection
     {

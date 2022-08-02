@@ -25,6 +25,9 @@ class ProductController extends Controller
         return [
             'categories' => CategoryController::allEnabled(),
             'measures' => MeasureController::allEnabled(),
+            'colors' => ColorController::allEnabled(),
+            'brands' => BrandController::allEnabled(),
+            'types' => TypeController::allEnabled()
         ];
     }
 

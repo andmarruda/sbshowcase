@@ -18,6 +18,18 @@ class TypeController extends Controller
     ];
 
     /**
+     * Return all types not disabled
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return          \Illuminate\Database\Eloquent\Collection
+     */
+    public static function allEnabled() : \Illuminate\Database\Eloquent\Collection
+    {
+        return Type::all();
+    }
+
+    /**
      * Returns the view of type form inside the admin
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >

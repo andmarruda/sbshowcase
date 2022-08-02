@@ -18,6 +18,18 @@ class BrandController extends Controller
     ];
 
     /**
+     * Return all color not disabled
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return          \Illuminate\Database\Eloquent\Collection
+     */
+    public static function allEnabled() : \Illuminate\Database\Eloquent\Collection
+    {
+        return Brand::all();
+    }
+
+    /**
      * Returns the view of brand form inside the admin
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >

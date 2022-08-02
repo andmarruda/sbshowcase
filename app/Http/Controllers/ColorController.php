@@ -21,6 +21,18 @@ class ColorController extends Controller
     ];
 
     /**
+     * Return all color not disabled
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return          \Illuminate\Database\Eloquent\Collection
+     */
+    public static function allEnabled() : \Illuminate\Database\Eloquent\Collection
+    {
+        return Color::all();
+    }
+
+    /**
      * Returns the view of color form inside the admin
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
