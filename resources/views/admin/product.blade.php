@@ -108,18 +108,18 @@
 
     <div class="row">
         <div class="col">
+            <label for="old_price" class="form-label">Preço antigo</label>
+            <input type="number" step="0.01" min="0" max="9999999" class="form-control" id="old_price" name="old_price" placeholder="Preço antigo" onblur="javascript: calculatesPercentage();" required value="{{$Product->old_price ?? ''}}">
+        </div>
+
+        <div class="col">
+            <label for="percentage_discount" class="form-label">Percentual de desconto</label>
+            <input type="number" step="0.01" min="0" max="9999999" class="form-control" id="percentage_discount" name="percentage_discount" placeholder="Percentual de desconto" onblur="javascript: calculatesPrice();" required value="{{$Product->percentage_discount ?? ''}}">
+        </div>
+
+        <div class="col">
             <label for="price" class="form-label">Preço</label>
             <input type="number" step="0.01" min="0" max="9999999" class="form-control" id="price" name="price" placeholder="Preço" required value="{{$Product->price ?? ''}}">
-        </div>
-
-        <div class="col">
-            <label for="old_price" class="form-label">Preço antigo</label>
-            <input type="number" step="0.01" min="0" max="9999999" class="form-control" id="old_price" name="old_price" placeholder="Preço antigo" required value="{{$Product->old_price ?? ''}}">
-        </div>
-
-        <div class="col">
-            <label for="percentage_discount" class="form-label">Percentual</label>
-            <input type="number" step="0.01" min="0" max="9999999" class="form-control" id="percentage_discount" name="percentage_discount" placeholder="Percentual" required value="{{$Product->percentage_discount ?? ''}}">
         </div>
     </div>
 
@@ -176,5 +176,31 @@
             theme: 'snow'
         });
     });
+
+    const calculatesPercentage = () => {
+        let price = document.getElementById('price').value,
+            old_price = document.getElementById('old_price').value,
+            percentage = document.getElementById('percentage_discount');
+
+        if(price=='' || old_price==''){
+            percentage.value = '';
+            return;
+        }
+
+        percentage.value = (Number(price) / Number(old_price) * 100).toFixed(2);
+    };
+
+    const calculatesPrice = () => {
+        let price = document.getElementById('price'),
+            old_price = document.getElementById('old_price').value,
+            percentage = document.getElementById('percentage_discount').value;
+
+        if(percentage=='' || old_price==''){
+            price.value = '';
+            return;
+        }
+
+        price.value = Number(old_price) - (Number(old_price) * Number(percentage) / 100).toFixed(2);
+    };
 </script>
 @endsection

@@ -80,8 +80,8 @@
         <script src="{{asset('js/fontawesome/all.min.js')}}"></script>
         <script src="{{asset('js/sbadmin.js')}}"></script>
         @if(\Request::route()->getName()=='product')
-        <script src="{{asset('js/quill.min.js')}}"></script>
         <script src="{{asset('js/highlight.min.js')}}"></script>
+        <script src="{{asset('js/quill.min.js')}}"></script>
         @endif
     </body>
 </html>
