@@ -23,122 +23,19 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4 mt-4">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Produto</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Vendas: 10</li>
-                    <li class="list-group-item">Categoria: Cama</li>
-                    <li class="list-group-item">Marca: Ortobom</li>
-                    <li class="list-group-item">Medidas: 138x190x30</li>
-                    <li class="list-group-item">Tipo: Espuma D33</li>
-                    <li class="list-group-item">Cor: Bege</li>
-                </ul>
-                <div class="card-body">
-                    <a href="#" role="button" class="btn btn-outline-primary"><i class="fa-solid fa-file-pen"></i> Editar</a>
-                    <a href="#" role="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Desativar</a>
-                </div>
-            </div>
+        @forelse($Products as $product)
+            @include('admin.product-card', ['Product' => $product])
+        @empty
+        <div class="col-md-12">
+            <div class="alert alert-warning">Nenhum produto encontrado!</div>
         </div>
-
-        <div class="col-md-4 mt-4">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Produto</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                </ul>
-                <div class="card-body">
-                    <a href="#" role="button" class="btn btn-outline-primary"><i class="fa-solid fa-file-pen"></i> Editar</a>
-                    <a href="#" role="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Desativar</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-4">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Produto</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                </ul>
-                <div class="card-body">
-                    <a href="#" role="button" class="btn btn-outline-primary"><i class="fa-solid fa-file-pen"></i> Editar</a>
-                    <a href="#" role="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Desativar</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-4">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Produto</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                </ul>
-                <div class="card-body">
-                    <a href="#" role="button" class="btn btn-outline-primary"><i class="fa-solid fa-file-pen"></i> Editar</a>
-                    <a href="#" role="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Desativar</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-4">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Produto</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                </ul>
-                <div class="card-body">
-                    <a href="#" role="button" class="btn btn-outline-primary"><i class="fa-solid fa-file-pen"></i> Editar</a>
-                    <a href="#" role="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Desativar</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-4">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Produto</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                </ul>
-                <div class="card-body">
-                    <a href="#" role="button" class="btn btn-outline-primary"><i class="fa-solid fa-file-pen"></i> Editar</a>
-                    <a href="#" role="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Desativar</a>
-                </div>
-            </div>
-        </div>
+        @endforelse
     </div>
 </form>
+
+<script type="text/javascript">
+    const disableProduct = (id, route, token) => {
+
+    };
+</script>
 @endsection

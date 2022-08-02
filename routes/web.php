@@ -70,7 +70,7 @@ Route::prefix('/admin')->group(function(){
     Route::post('/type/search', [TypeController::class, 'searchType'])->name('type.search');
 
     //products
-    Route::get('/product/{id?}', [ProductController::class, 'adminView'])->name('product')->where('id', '[0-9]+');
+    Route::get('/product/{id?}/{copy?}', [ProductController::class, 'adminView'])->name('product')->where('id', '[0-9]+')->where('copy', '[0-1]');
     Route::get('/product-list/{search?}', [ProductController::class, 'searchProduct'])->name('product.search');
     Route::post('/product/save', [ProductController::class, 'saveProduct'])->name('product.save');
 

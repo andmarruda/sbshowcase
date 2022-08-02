@@ -13,7 +13,7 @@ class ProductController extends Controller
      * Number of products per page
      * @var integer
      */
-    private int $productsPerPage = 12;
+    private int $productsPerPage = 21;
 
     /**
      * Error's messages
@@ -143,12 +143,7 @@ class ProductController extends Controller
      */
     public function searchProduct(?string $search=NULL) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        /**$products = Product::withTrashed()->orderBy('id', 'desc');
-        if(!is_null($search)){
-            $products = $products->where('name', 'ilike', '%'.$search.'%');
-        }
-        $products = $products->paginate($this->productsPerPage);
-        return view('admin.product-list', ['Products' => $products, 'Search' => $search]);**/
-        return view('admin.product-list', ['search' => $search]);
+        $products = is_null($search) ? Product::withTrashed()->orderBy('id', 'desc') : Product::withTrashed()->where('name', 'ilike', '%'.$search.'%');
+        return view('admin.product-list', ['Products' => $products->paginate($this->productsPerPage), 'search' => $search]);
     }
 }
