@@ -1,8 +1,10 @@
 @extends('template.admin')
 
 @section('page')
-<form method="post" action="{{route('category.save')}}" autocomplete="off">
+<form method="post" id="productForm" action="{{route('product.save')}}" autocomplete="off" enctype="multipart/form-data">
     <input type="hidden" name="id" id="id" value="{{$Product->id ?? ''}}">
+    <input type="hidden" id="descriptionText" name="descriptionText" value="{{$Product->description ?? ''}}">
+    <input type="hidden" name="image_old" id="image_old" value="{{$Product->image ?? ''}}">
     @csrf
 
     <nav aria-label="breadcrumb">
@@ -175,6 +177,8 @@
             },
             theme: 'snow'
         });
+
+        textToArticle();
     });
 
     const calculatesPercentage = () => {
@@ -202,5 +206,21 @@
 
         price.value = Number(old_price) - (Number(old_price) * Number(percentage) / 100).toFixed(2);
     };
+
+    const textToArticle = () => {
+        let at = document.getElementById('descriptionText');
+        if(at.value.length > 0){
+            let d = quillArticle.clipboard.convert(at.value);
+            quillArticle.setContents(d, 'silent');
+        }
+    };
+
+    const descriptionToText = () => {
+        document.getElementById('descriptionText').value = quillArticle.root.innerHTML;
+    };
+
+    document.getElementById('productForm').addEventListener('submit', (event) => {
+        descriptionToText();
+    });
 </script>
 @endsection

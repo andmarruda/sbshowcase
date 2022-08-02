@@ -72,6 +72,7 @@ Route::prefix('/admin')->group(function(){
     //products
     Route::get('/product/{id?}', [ProductController::class, 'adminView'])->name('product')->where('id', '[0-9]+');
     Route::get('/product-list/{search?}', [ProductController::class, 'searchProduct'])->name('product.search');
+    Route::post('/product/save', [ProductController::class, 'saveProduct'])->name('product.save');
 
     //stores
     Route::get('/store/{id?}', [StoreController::class, 'adminView'])->name('store')->where('id', '[0-9]+');
