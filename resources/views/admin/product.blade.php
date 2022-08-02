@@ -124,11 +124,7 @@
         <button type="submit" class="btn btn-primary"><i class="fa-regular fa-floppy-disk"></i> Salvar</button>
         @endif
 
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#searchModal">Pesquisar</button>
-
-        @if(!is_null($Product))
-        @include('template.includes.disable-enable', ['enabled' => is_null($Product->deleted_at), 'route' => route('category.delete'), 'id' => $Product->id, 'token' => csrf_token()])
-        @endif
+        <a href="{{route('product.search')}}" role="button" class="btn btn-outline-primary"><i class="fa-solid fa-magnifying-glass"></i> Pesquisar</a>
     </div>
 </form>
 
