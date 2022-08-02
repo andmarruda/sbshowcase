@@ -17,13 +17,13 @@ class CategoryController extends Controller
         'category.max'      => 'O campo categoria deve ter no máximo 100 caracteres'
      ];
 
-     /**
-      * Return all category not disabled
-      * @version         1.0.0
-      * @author          Anderson Arruda < andmarruda@gmail.com >
-      * @param
-      * @return
-      */
+    /**
+     * Return all category not disabled
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return
+     */
     public static function allEnabled() : \Illuminate\Database\Eloquent\Collection
     {
         return Category::all();

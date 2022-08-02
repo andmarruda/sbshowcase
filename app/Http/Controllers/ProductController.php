@@ -23,7 +23,8 @@ class ProductController extends Controller
     public function productFormInfo() : array
     {
         return [
-            'categories' => CategoryController::allEnabled()
+            'categories' => CategoryController::allEnabled(),
+            'measures' => MeasureController::allEnabled(),
         ];
     }
 

@@ -19,6 +19,18 @@ class MeasuresController extends Controller
     ];
 
     /**
+     * Return all measures not disabled
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return
+     */
+    public static function allEnabled() : \Illuminate\Database\Eloquent\Collection
+    {
+        return Measure::all();
+    }
+
+    /**
      * Returns the view of category form inside the admin
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
