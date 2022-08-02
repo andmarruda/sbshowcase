@@ -14,6 +14,20 @@ class ProductController extends Controller
     private int $productsPerPage = 12;
 
     /**
+     * Admin form's informations
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           
+     * @return          array
+     */
+    public function productFormInfo() : array
+    {
+        return [
+            'categories' => CategoryController::allEnabled()
+        ];
+    }
+
+    /**
      * Returns the view of product form inside the admin
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
