@@ -31,9 +31,12 @@
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">Vendas: 10</li>
+                    <li class="list-group-item">Categoria: Cama</li>
+                    <li class="list-group-item">Marca: Ortobom</li>
+                    <li class="list-group-item">Medidas: 138x190x30</li>
+                    <li class="list-group-item">Tipo: Espuma D33</li>
+                    <li class="list-group-item">Cor: Bege</li>
                 </ul>
                 <div class="card-body">
                     <a href="#" role="button" class="btn btn-outline-primary"><i class="fa-solid fa-file-pen"></i> Editar</a>
