@@ -2,7 +2,7 @@
 
 @section('page')
 <form method="post" id="productForm" action="{{route('product.save')}}" autocomplete="off" enctype="multipart/form-data">
-    <input type="hidden" name="id" id="id" value="{{$Product->id ?? ''}}">
+    <input type="hidden" name="id" id="id" value="{{(!is_null($Product) && (is_null($Copy) || $Copy != 1)) ? $Product->id : ''}}">
     <input type="hidden" id="descriptionText" name="descriptionText" value="{{$Product->description ?? ''}}">
     <input type="hidden" name="image_old" id="image_old" value="{{$Product->image ?? ''}}">
     @csrf
@@ -18,7 +18,7 @@
         <div class="col">
             <h6>Imagem atual</h6><hr>
             @if(!is_null($Product))
-            <img src="{{asset($Product->image)}}" class="img-thumbnail" alt="Imagem do produto">
+            <img src="{{asset('storage/'.$Product->image)}}" class="img-thumbnail" alt="Imagem do produto">
             @endif
         </div>
 
@@ -52,8 +52,9 @@
             <label for="promotion_flag" class="form-label">Mostrar produto em promoção?</label>
             <select class="form-control" id="promotion_flag" name="promotion_flag" required>
                 <option value="">Selecione...</option>
-                <option value="1">Sim</option>
-                <option value="0">Não</option>
+                @foreach($promoFlag as $val => $label)
+                <option value="{{$val}}"{{!is_null($Product) && $Product->promotion_flag==$val ? ' selected="selected"' : ''}}>{{$label}}</option>
+                @endforeach
             </select>
         </div>
 
@@ -63,7 +64,7 @@
                 <option value="">Selecione...</option>
                 @isset($infos['Measures'])
                     @foreach($infos['Measures'] as $Measure)
-                    <option value="{{$Measure->id}}"{{!is_null($Product) && $Product->measure_id == $Measure->id ? ' selected' : ''}}>{{$Measure->length.'x'.$Measure->width. 'x'. $Measure->height}}</option>
+                    <option value="{{$Measure->id}}"{{!is_null($Product) && $Product->measure_id == $Measure->id ? ' selected' : ''}}>{{$Measure->width.'x'.$Measure->length. 'x'. $Measure->height}}</option>
                     @endforeach
                 @endisset
             </select>

@@ -68,12 +68,13 @@ class ProductController extends Controller
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
      * @param           ?int $id
+     * @param           ?int $copy
      * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function adminView(?int $id=NULL) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function adminView(?int $id=NULL, ?int $copy=NULL) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         $prod = is_null($id) ? NULL : Product::withTrashed()->find($id);
-        return view('admin.product', ['Product' => $prod]);
+        return view('admin.product', ['Product' => $prod, 'promoFlag' => [1 => 'Sim', 0 => 'Não'], 'Copy' => $copy]);
     }
 
     /**
