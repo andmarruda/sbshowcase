@@ -100,7 +100,7 @@ Route::prefix('/admin')->group(function(){
     Route::post('/payment-methods/save', [PaymentMethodController::class, 'savePaymentMethods'])->name('payment-methods.save');
 
     //users
-    Route::get('/users', [UserController::class, 'adminView'])->name('users');
+    Route::get('/users/{id?}', [UserController::class, 'adminView'])->name('users')->where('id', '[0-9]+');
     Route::post('/users/save', [UserController::class, 'save'])->name('users.save');
     Route::post('/users/delete', [UserController::class, 'delete'])->name('users.delete');
     Route::post('/users/search', [UserController::class, 'search'])->name('users.search');
