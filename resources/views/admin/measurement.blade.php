@@ -38,7 +38,7 @@
         <button type="submit" class="btn btn-primary"><i class="fa-regular fa-floppy-disk"></i> Salvar</button>
         @endif
 
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#searchModal">Pesquisar</button>
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa-solid fa-magnifying-glass"></i> Pesquisar</button>
 
         @if(!is_null($Measurement))
         @include('template.includes.disable-enable', ['enabled' => is_null($Measurement->deleted_at), 'route' => route('measurement.delete'), 'id' => $Measurement->id, 'token' => csrf_token()])
