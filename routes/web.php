@@ -14,6 +14,7 @@ use App\Http\Controllers\SocialMediaController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +30,7 @@ use App\Http\Controllers\ProductController;
 Route::get('/', [ShowcaseController::class, 'main'])->name('main');
 Route::get('/menu/{id}/{name?}', [ShowcaseController::class, 'category'])->name('menu');
 Route::get('/our-stores', [ShowcaseController::class, 'stores'])->name('our-stores');
-
-Route::get('/admin', function(){
-    return 'em construção';
-})->name('admin');
+Route::get('/admin', [UserController::class, 'loginView'])->name('admin');
 
 Route::prefix('/admin')->group(function(){
     Route::get('/dashboard', function(){
@@ -100,4 +98,10 @@ Route::prefix('/admin')->group(function(){
     //payment methods
     Route::get('/payment-methods', [PaymentMethodController::class, 'adminView'])->name('payment-methods');
     Route::post('/payment-methods/save', [PaymentMethodController::class, 'savePaymentMethods'])->name('payment-methods.save');
+
+    //users
+    Route::get('/users', [UserController::class, 'adminView'])->name('users');
+    Route::post('/users/save', [UserController::class, 'save'])->name('users.save');
+    Route::post('/users/delete', [UserController::class, 'delete'])->name('users.delete');
+    Route::post('/users/search', [UserController::class, 'search'])->name('users.search');
 });
