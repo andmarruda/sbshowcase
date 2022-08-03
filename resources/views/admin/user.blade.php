@@ -46,7 +46,7 @@
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa-solid fa-magnifying-glass"></i> Pesquisar</button>
 
         @if(!is_null($User))
-        @include('template.includes.disable-enable', ['enabled' => is_null($Category->deleted_at), 'route' => route('users.delete'), 'id' => $User->id, 'token' => csrf_token()])
+        @include('template.includes.disable-enable', ['enabled' => is_null($User->deleted_at), 'route' => route('users.delete'), 'id' => $User->id, 'token' => csrf_token()])
         @endif
     </div>
 </form>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -87,6 +88,24 @@ class UserController extends Controller
     }
 
     /**
+     * Disable category or enable category depending on his actual status
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $r
+     * @return          \Illuminate\Http\JsonResponse
+     */
+    public function delete(Request $r) : \Illuminate\Http\JsonResponse
+    {
+        $user = User::withTrashed()->find($r->input('id'));
+        if(!is_null($user->deleted_at))
+            $user->restore();
+        else
+            $user->delete();
+
+        return response()->json(['success' => true]);
+    }
+
+    /**
      * Creates or edit user
      * @version     1.0.0
      * @author      Anderson Arruda < andmarruda@gmail.com >
@@ -95,13 +114,13 @@ class UserController extends Controller
      */
     public function save(Request $request) : \Illuminate\Http\RedirectResponse
     {
+        $user = is_null($request->input('id')) ? new User() : User::withTrashed()->find($request->input('id'));
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignoreModel($user)],
             'password' => 'required|string|regex:/(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)/|min:8|confirmed'
         ], $this->requestMessages);
 
-        $user = new User();
         $user->fill([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
