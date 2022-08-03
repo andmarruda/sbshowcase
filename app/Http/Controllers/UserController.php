@@ -106,6 +106,21 @@ class UserController extends Controller
     }
 
     /**
+     * Logout of the system
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           
+     * @return          \Illuminate\Http\RedirectResponse
+     */
+    public function logout() : \Illuminate\Http\RedirectResponse
+    {
+        if(session_status() == PHP_SESSION_ACTIVE && (!isset($_SESSION['sbshowcase']) || !isset($_SESSION['sbshowcase']['email'])))
+            session_destroy();
+
+        return redirect()->route('admin');
+    }
+
+    /**
      * Creates or edit user
      * @version     1.0.0
      * @author      Anderson Arruda < andmarruda@gmail.com >

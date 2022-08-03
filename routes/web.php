@@ -101,6 +101,7 @@ Route::prefix('/admin')->group(function(){
 
     //users
     Route::get('/users/{id?}', [UserController::class, 'adminView'])->name('users')->where('id', '[0-9]+');
+    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
     Route::post('/users/save', [UserController::class, 'save'])->name('users.save');
     Route::post('/users/delete', [UserController::class, 'delete'])->name('users.delete');
     Route::post('/users/search', [UserController::class, 'search'])->name('users.search');

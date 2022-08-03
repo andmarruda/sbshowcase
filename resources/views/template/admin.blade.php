@@ -13,7 +13,7 @@
                         <div class="collapse navbar-collapse" id="admin-navbar">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                                    <a class="nav-link active" aria-current="page" href="{{route('dashboard')}}">Dashboard</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -50,7 +50,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Sair</a>
+                                    <a class="nav-link" href="javascript: void(0);" data-bs-toggle="modal" data-bs-target="#logoutModal">Sair</a>
                                 </li>
                             </ul>
                         </div>
@@ -76,6 +76,25 @@
                 </div>
             </footer>
         </div>
+
+        <div class="modal fade" id="logoutModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sair do sistema</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Deseja prosseguir e sair do sistema?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-angle-left"></i> Permanecer</button>
+                        <a href="{{route('logout')}}" role="button" class="btn btn-primary"><i class="fa-solid fa-power-off"></i> Sair</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{asset('js/fontawesome/all.min.js')}}"></script>
