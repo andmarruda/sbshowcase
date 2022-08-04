@@ -143,10 +143,8 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|regex:/(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)/|min:8'
         ], $this->requestMessages);
-        $user = User::where('email', '=', $r->input('email'))
-                    ->where('password', '=', bcrypt($r->input('password')))
-                    ->whereNull('deleted_at');
-        if($user->count() > 0){
+        $user = User::where('email', '=', $r->input('email'));
+        if($user->count() > 0 && password_verify($r->input('password'), $user->first()->password)){
             $user = $user->first();
             session(['sbshowcase' => [
                 'id' => $user->id,
