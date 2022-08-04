@@ -78,6 +78,24 @@ class ProductController extends Controller
     }
 
     /**
+     * Disable a product
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           int $id
+     * @return          \Illuminate\Http\RedirectResponse
+     */
+    public function deleteProduct(Request $request) : \Illuminate\Http\JsonResponse
+    {
+        $product = Product::withTrashed()->find($request->input('id'));
+        if(!is_null($product->deleted_at))
+            $product->restore();
+        else
+            $product->delete();
+
+        return response()->json(['success' => true]);
+    }
+
+    /**
      * Save product
      * @version        1.0.0
      * @author         Anderson Arruda < andmarruda@gmail.com >

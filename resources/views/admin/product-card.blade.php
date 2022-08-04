@@ -24,7 +24,7 @@
         <div class="card-body">
             <a href="{{route('product', ['id' => $Product->id])}}" role="button" class="btn btn-primary"><i class="fa-solid fa-file-pen"></i> Editar</a>
             <a href="{{route('product', ['id' => $Product->id, 'copy' => 1])}}" role="button" class="btn btn-outline-primary"><i class="fa-solid fa-copy"></i> Copiar</a>
-            <a href="javascript: void(0);" onclick="javascript: disableProduct({{$Product->id}}, '', '{{csrf_token()}}')" role="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Desativar</a>
+            <a href="javascript: void(0);" onclick="javascript: confirmEnableDisable('{{route('product.delete')}}', {{$Product->id}}, '{{csrf_token()}}')" role="button" class="{{is_null($Product->deleted_at) ? 'btn btn-outline-danger' : 'btn btn-outline-primary'}}"><i class="fa-solid {{is_null($Product->deleted_at) ? 'fa-trash' : 'fa-trash-arrow-up'}}"></i> {{is_null($Product->deleted_at) ? 'Desativar' : 'Ativar'}}</a>
         </div>
     </div>
 </div>

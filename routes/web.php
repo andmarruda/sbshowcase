@@ -74,6 +74,7 @@ Route::prefix('/admin')->group(function(){
     Route::get('/product/{id?}/{copy?}', [ProductController::class, 'adminView'])->name('product')->where('id', '[0-9]+')->where('copy', '[0-1]');
     Route::get('/product-list/{search?}', [ProductController::class, 'searchProduct'])->name('product.search');
     Route::post('/product/save', [ProductController::class, 'saveProduct'])->name('product.save');
+    Route::post('/product/delete', [ProductController::class, 'deleteProduct'])->name('product.delete');
 
     //stores
     Route::get('/store/{id?}', [StoreController::class, 'adminView'])->name('store')->where('id', '[0-9]+');

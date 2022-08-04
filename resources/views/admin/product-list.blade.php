@@ -32,10 +32,4 @@
         @endforelse
     </div>
 </form>
-
-<script type="text/javascript">
-    const disableProduct = (id, route, token) => {
-
-    };
-</script>
 @endsection
