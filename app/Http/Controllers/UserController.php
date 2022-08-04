@@ -73,13 +73,14 @@ class UserController extends Controller
      * @param       string $password
      * @return      bool
      */
-    protected function createUser(string $name, string $email, string $password) : bool
+    public function createUser(string $name, string $email, string $password) : bool
     {
-        return User::create([
+        $created = User::create([
             'name' => $name,
             'email' => $email,
             'password' => bcrypt($password)
         ]);
+        return $created instanceof User;
     }
 
     /**
