@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{config('app.name')}} - Painel administrativo</title>
-        <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-    </head>
+    @include('template.includes.head', ['title' => config('app.name').' - Admin'])
     <body>
         <div class="container">
             <div class="row justify-content-md-center">
@@ -23,13 +18,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="pass">Senha</label>
-                                    <input type="password" class="form-control" name="pass" id="pass" value="" placeholder="Senha">
+                                    <input type="password" class="form-control" name="password" id="password" value="" placeholder="Senha">
                                 </div>
-                                @if(!is_null(session('message')))
-                                <div class="mb-3">
-                                    @include('utils.alertDanger', ['message' => session('message')])
-                                </div>
-                                @endif
+                                
+                                @include('template.includes.alert-error')
+
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-arrow-right-to-bracket"></i> Entrar</button>
                             </form>
                         </div>

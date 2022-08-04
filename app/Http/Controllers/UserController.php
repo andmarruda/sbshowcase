@@ -144,8 +144,8 @@ class UserController extends Controller
             'password' => 'required|string|regex:/(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)/|min:8'
         ], $this->requestMessages);
         $user = User::where('email', '=', $r->input('email'))
-                    ::andWhere('password', '=', bcrypt($r->input('password')))
-                    ::andWhereIsNull('deleted_at');
+                    ->where('password', '=', bcrypt($r->input('password')))
+                    ->whereNull('deleted_at');
         if($user->count() > 0){
             $user = $user->first();
             session(['sbshowcase' => [
@@ -156,7 +156,7 @@ class UserController extends Controller
             return redirect()->route('dashboard');
         }
 
-        return redirect()->route('login')->withErrors(['email' => 'Usuário ou senha inválidos']);
+        return redirect()->route('admin')->withErrors(['email' => 'Usuário ou senha inválidos']);
     }
 
     /**
