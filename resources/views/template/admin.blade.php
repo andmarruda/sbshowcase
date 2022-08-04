@@ -46,6 +46,7 @@
                                         <li><a class="dropdown-item" href="{{route('payment-methods')}}">Formas de pagamento</a></li>
                                         <li><a class="dropdown-item" href="{{route('delivery')}}">Entrega</a></li>
                                         <li><a class="dropdown-item" href="{{route('users')}}">Usuários</a></li>
+                                        <li><a class="dropdown-item" href="{{route('change-password')}}">Alterar senha</a></li>
                                     </ul>
                                 </li>
 

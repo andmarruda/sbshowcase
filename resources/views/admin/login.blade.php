@@ -15,7 +15,7 @@
                             Painel administrativo
                         </div>
                         <div class="card-body">
-                            <form method="post" action="" autocomplete="off">
+                            <form method="post" action="{{route('admin.login')}}" autocomplete="off">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="email">Email</label>

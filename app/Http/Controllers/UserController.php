@@ -41,6 +41,30 @@ class UserController extends Controller
     }
 
     /**
+     * Verify if user are logged in
+     * @version     1.0.0
+     * @author      Anderson Arruda < andmarruda@gmail.com >
+     * @param       
+     * @return      bool
+     */
+    public function isLogged() : bool
+    {
+        return session_status() == PHP_SESSION_ACTIVE && (!isset($_SESSION['sbshowcase']) || !isset($_SESSION['sbshowcase']['email']));
+    }
+
+    /**
+     * Verify if is the configuration user
+     * @version     1.0.0
+     * @author      Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return      bool
+     */
+    public function isConfig() : bool
+    {
+        return $_SESSION['sbshowcase']['id']==1;
+    }
+
+    /**
      * Creates a new user
      * @version     1.0.0
      * @author      Anderson Arruda < andmarruda@gmail.com >
@@ -106,6 +130,35 @@ class UserController extends Controller
     }
 
     /**
+     * Login into the system
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $r
+     * @return          \Illuminate\Http\RedirectResponse
+     */
+    public function login(Request $r) : \Illuminate\Http\RedirectResponse
+    {
+        $r->validate([
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|regex:/(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)/|min:8'
+        ], $this->requestMessages);
+        $user = User::where('email', '=', $r->input('email'))
+                    ::andWhere('password', '=', bcrypt($r->input('password')))
+                    ::andWhereIsNull('deleted_at');
+        if($user->count() > 0){
+            $user = $user->first();
+            session(['sbshowcase' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email
+            ]]);
+            return redirect()->route('dashboard');
+        }
+
+        return redirect()->route('login')->withErrors(['email' => 'Usuário ou senha inválidos']);
+    }
+
+    /**
      * Logout of the system
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
@@ -114,7 +167,7 @@ class UserController extends Controller
      */
     public function logout() : \Illuminate\Http\RedirectResponse
     {
-        if(session_status() == PHP_SESSION_ACTIVE && (!isset($_SESSION['sbshowcase']) || !isset($_SESSION['sbshowcase']['email'])))
+        if($this->isLogged())
             session_destroy();
 
         return redirect()->route('admin');
