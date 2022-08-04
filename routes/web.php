@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MeasuresController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\GeneralController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +35,10 @@ Route::get('/our-stores', [ShowcaseController::class, 'stores'])->name('our-stor
 Route::get('/admin', [UserController::class, 'loginView'])->name('admin');
 
 Route::prefix('/admin')->group(function(){
-    Route::get('/dashboard', function(){
-        return 'em construção';
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'adminView'])->name('dashboard');
+
+    //Order routes
+    Route::get('/order', [OrderController::class, 'adminView'])->name('order');
 
     //category routes
     Route::get('/category/{id?}', [CategoryController::class, 'adminView'])->name('category')->where('id', '[0-9]+');

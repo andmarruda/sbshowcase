@@ -17,7 +17,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Pedidos</a>
+                                    <a class="nav-link" href="{{route('order')}}">Pedidos</a>
                                 </li>
 
                                 <li class="nav-item dropdown">
