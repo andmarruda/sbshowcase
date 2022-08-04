@@ -6,6 +6,9 @@ use Closure;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
 
+if(session_status() != PHP_SESSION_ACTIVE)
+    session_start();
+
 class SBAuth
 {
     /**

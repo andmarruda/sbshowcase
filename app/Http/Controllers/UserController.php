@@ -6,6 +6,9 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+if(session_status() != PHP_SESSION_ACTIVE)
+    session_start();
+
 class UserController extends Controller
 {
     /**
@@ -49,7 +52,7 @@ class UserController extends Controller
      */
     public function isLogged() : bool
     {
-        return session_status() == PHP_SESSION_ACTIVE && (!isset($_SESSION['sbshowcase']) || !isset($_SESSION['sbshowcase']['email']));
+        return session_status() == PHP_SESSION_ACTIVE && (isset($_SESSION['sbshowcase']) && isset($_SESSION['sbshowcase']['email']));
     }
 
     /**
@@ -146,11 +149,11 @@ class UserController extends Controller
         $user = User::where('email', '=', $r->input('email'));
         if($user->count() > 0 && password_verify($r->input('password'), $user->first()->password)){
             $user = $user->first();
-            session(['sbshowcase' => [
+            $_SESSION['sbshowcase'] = [
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email
-            ]]);
+            ];
             return redirect()->route('dashboard');
         }
 
