@@ -114,6 +114,6 @@ Route::prefix('/admin')->middleware('SBAuth')->group(function(){
     Route::post('/users/save', [UserController::class, 'save'])->name('users.save');
     Route::post('/users/delete', [UserController::class, 'delete'])->name('users.delete');
     Route::post('/users/search', [UserController::class, 'search'])->name('users.search');
-    Route::get('/users/change-password', [UserController::class, 'changePasswordView'])->name('users.change-password');
+    Route::get('/users/change-password', [UserController::class, 'changePasswordView'])->name('change-password');
     Route::post('/users/change-password', [UserController::class, 'changePassword'])->name('users.change-password');
 });

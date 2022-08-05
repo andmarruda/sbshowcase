@@ -28,7 +28,17 @@ class UserController extends Controller
         'password.string' => 'O campo senha deve ser uma string',
         'password.regex' => 'O campo senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número',
         'password.min' => 'O campo senha deve ter no mínimo: 8 caracteres',
-        'password.confirmed' => 'O campo senha deve ser igual ao campo confirmação de senha'
+        'password.confirmed' => 'O campo senha deve ser igual ao campo confirmação de senha',
+        'oldPassword.required' => 'O campo senha é obrigatório',
+        'oldPassword.string' => 'O campo senha deve ser uma string',
+        'oldPassword.regex' => 'O campo senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número',
+        'oldPassword.min' => 'O campo senha deve ter no mínimo: 8 caracteres',
+        'oldPassword.confirmed' => 'O campo senha deve ser igual ao campo confirmação de senha',
+        'newPassword.required' => 'O campo senha é obrigatório',
+        'newPassword.string' => 'O campo senha deve ser uma string',
+        'newPassword.regex' => 'O campo senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número',
+        'newPassword.min' => 'O campo senha deve ter no mínimo: 8 caracteres',
+        'newPassword.confirmed' => 'O campo senha deve ser igual ao campo confirmação de senha',
     ];
 
     /**
@@ -131,6 +141,43 @@ class UserController extends Controller
             $user->delete();
 
         return response()->json(['success' => true]);
+    }
+
+    /**
+     * Returns the view of change password
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           
+     * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function changePasswordView() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    {
+        return view('admin.change-password');
+    }
+
+    /**
+     * Execute the user's password change
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $r
+     * @return          \Illuminate\Http\RedirectResponse
+     */
+    public function changePassword(Request $r) : \Illuminate\Http\RedirectResponse
+    {
+        $r->validate([
+            'oldPassword' => 'required|string|regex:/(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)/|min:8',
+            'newPassword' => 'required|string|regex:/(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)/|min:8|confirmed'
+        ]);
+
+        $user = User::find($_SESSION['sbshowcase']['id']);
+        if(password_verify($r->input('oldPassword'), $user->password))
+        {
+            $user->password = bcrypt($r->input('newPassword'));
+            $saved = $user->save();
+            return redirect()->route('change-password')->with('saved', $saved);
+        }
+        
+        return redirect()->route('change-password')->withErrors('oldPassword', 'Senha atual incorreta!');
     }
 
     /**
