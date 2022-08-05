@@ -13,7 +13,7 @@ class BrandController extends Controller
      */
     private array $error = [
         'name.required' => 'O campo nome é obrigatório',
-        'name.min'  => 'O campo nome deve ter no mínimo 3 caracteres',
+        'name.min'  => 'O campo nome deve ter no mínimo 2 caracteres',
         'name.max'  => 'O campo nome deve ter no máximo 50 caracteres'
     ];
 
@@ -52,7 +52,7 @@ class BrandController extends Controller
     public function saveBrand(Request $request) : \Illuminate\Http\RedirectResponse
     {
         $request->validate([
-            'name' => 'required|min:3|max:50'
+            'name' => 'required|min:2|max:50'
         ], $this->error);
 
         $brand = is_null($request->input('id')) ? new Brand() : Brand::withTrashed()->find($request->input('id'));

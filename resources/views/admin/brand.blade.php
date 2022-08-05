@@ -14,7 +14,7 @@
 
     <div class="mb-3">
         <label for="name" class="form-label">Nome da marca</label>
-        <input type="text" minlength="3" maxlength="50" class="form-control" id="name" name="name" placeholder="Nome da marca" required value="{{$Brand->name ?? ''}}">
+        <input type="text" minlength="2" maxlength="50" class="form-control" id="name" name="name" placeholder="Nome da marca" required value="{{$Brand->name ?? ''}}">
     </div>
 
     @include('template.includes.alert-error')
