@@ -12,7 +12,7 @@
         </ol>
     </nav>
 
-    @if($_SESSION['sbshowcase']['isConfig'])
+    @if(($_SESSION['sbshowcase']['isConfig'] ?? false))
     <div class="alert alert-info">
         <h3 class="alert-heading">MUITO BEM!</h3>
         <p>Bem vindo ao SBShowcase! Esperamos que goste de nosso projeto opensource!</p>
