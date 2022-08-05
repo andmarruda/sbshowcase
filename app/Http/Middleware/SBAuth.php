@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 if(session_status() != PHP_SESSION_ACTIVE)
     session_start();
@@ -24,8 +25,10 @@ class SBAuth
         if(!$uc->isLogged())
             return redirect()->route('admin');
 
-        if(!$uc->isConfig())
+        if($uc->isConfig() && !in_array(Route::currentRouteName(), ['users', 'logout', 'users.save'])){
+            $_SESSION['sbshowcase']['isConfig'] = true;
             return redirect()->route('users');
+        }
 
         return $next($request);
     }

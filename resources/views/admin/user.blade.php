@@ -12,6 +12,15 @@
         </ol>
     </nav>
 
+    @if($_SESSION['sbshowcase']['isConfig'])
+    <div class="alert alert-info">
+        <h3 class="alert-heading">MUITO BEM!</h3>
+        <p>Bem vindo ao SBShowcase! Esperamos que goste de nosso projeto opensource!</p>
+        <hr>
+        <p class="mb-0">Como esse é um login somente para configuração, crie um novo usuário, isso aumentará a segurança de seus dados.</p>
+    </div>
+    @endif
+
     <div class="mb-3">
         <label for="name" class="form-label">Nome do usuário</label>
         <input type="text" minlength="3" maxlength="255" class="form-control" id="name" name="name" placeholder="Nome do usuário" required value="{{$User->name ?? ''}}">
@@ -43,7 +52,9 @@
         <button type="submit" class="btn btn-primary"><i class="fa-regular fa-floppy-disk"></i> Salvar</button>
         @endif
 
+        @if(!isset($_SESSION['sbshowcase']['isConfig']) || !$_SESSION['sbshowcase']['isConfig'])
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa-solid fa-magnifying-glass"></i> Pesquisar</button>
+        @endif
 
         @if(!is_null($User))
         @include('template.includes.disable-enable', ['enabled' => is_null($User->deleted_at), 'route' => route('users.delete'), 'id' => $User->id, 'token' => csrf_token()])

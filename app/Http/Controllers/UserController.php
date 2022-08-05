@@ -244,6 +244,13 @@ class UserController extends Controller
             'password' => bcrypt($request->input('password'))
         ]);
         $saved = $user->save();
+
+        if($this->isConfig() && $saved){
+            $configUser = User::withTrashed()->find(1);
+            $configUser->delete();
+            return $this->logout();
+        }
+
         return redirect()->route('users')->with('saved', $saved);
     }
 }
