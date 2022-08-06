@@ -17,9 +17,7 @@
     <div class="row">
         <div class="col">
             <h6>Imagem atual</h6><hr>
-            @if(!is_null($Product))
-            <img src="{{asset('storage/'.$Product->image)}}" class="img-thumbnail" alt="Imagem do produto">
-            @endif
+            <img src="{{!is_null($Product) ? asset('storage/'.$Product->image) : ''}}" id="img-preview" class="img-thumbnail" alt="Imagem do produto">
         </div>
 
         <div class="col">
@@ -180,6 +178,10 @@
         });
 
         textToArticle();
+
+        document.getElementById('image').addEventListener('change', ({target}) => {
+            document.getElementById('img-preview').src = URL.createObjectURL(target.files[0]);
+        });
     });
 
     const calculatesPercentage = () => {
