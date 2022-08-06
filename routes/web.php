@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BannerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MeasuresController;
@@ -90,6 +91,9 @@ Route::prefix('/admin')->middleware('SBAuth')->group(function(){
     //template
     Route::get('/template', [TemplateController::class, 'adminView'])->name('template');
     Route::post('/template/save', [TemplateController::class, 'saveTemplate'])->name('template.save');
+
+    //banners
+    Route::get('/banner', [BannerController::class, 'adminView'])->name('banner');
 
     //general
     Route::get('/general', [GeneralController::class, 'adminView'])->name('general');
