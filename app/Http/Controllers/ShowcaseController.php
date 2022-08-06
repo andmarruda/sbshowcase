@@ -8,6 +8,7 @@ use App\Models\Template;
 use App\Models\General;
 use App\Models\SocialMediaUrl;
 use App\Models\PaymentMethod;
+use App\Models\Store;
 
 class ShowcaseController extends Controller
 {
@@ -50,6 +51,6 @@ class ShowcaseController extends Controller
      */
     public function stores() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('our-stores');
+        return view('our-stores', ['Stores' => Store::all()]);
     } 
 }
