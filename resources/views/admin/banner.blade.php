@@ -1,7 +1,7 @@
 @extends('template.admin')
 
 @section('page')
-<form method="post" id="BannerForm" action="{{route('category.save')}}" autocomplete="off" enctype="multipart/form-data">
+<form method="post" id="BannerForm" action="{{route('banner.save')}}" autocomplete="off" enctype="multipart/form-data">
     <input type="hidden" name="id" id="id" value="{{$Banner->id ?? ''}}">
     @csrf
 
@@ -59,12 +59,12 @@
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa-solid fa-magnifying-glass"></i> Pesquisar</button>
 
         @if(!is_null($Banner))
-        @include('template.includes.disable-enable', ['enabled' => is_null($Banner->deleted_at), 'route' => route('category.delete'), 'id' => $Banner->id, 'token' => csrf_token()])
+        @include('template.includes.disable-enable', ['enabled' => is_null($Banner->deleted_at), 'route' => route('banner.delete'), 'id' => $Banner->id, 'token' => csrf_token()])
         @endif
     </div>
 </form>
 
-@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar banner', 'placeholder' => 'Banner', 'route' => route('category.search'), 'loadRoute' => route('banner'), 'ths' => ['#', 'Banner', 'Ativa?']])
+@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar banner', 'placeholder' => 'Banner', 'route' => route('banner.search'), 'loadRoute' => route('banner'), 'ths' => ['#', 'Banner', 'Ativa?']])
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
