@@ -93,7 +93,7 @@ Route::prefix('/admin')->middleware('SBAuth')->group(function(){
     Route::post('/template/save', [TemplateController::class, 'saveTemplate'])->name('template.save');
 
     //banners
-    Route::get('/banner', [BannerController::class, 'adminView'])->name('banner');
+    Route::get('/banner/{id?}', [BannerController::class, 'adminView'])->name('banner')->where('id', '[0-9]+');
     Route::post('/banner/save', [BannerController::class, 'save'])->name('banner.save');
     Route::post('/banner/delete', [BannerController::class, 'delete'])->name('banner.delete');
     Route::post('/banner/search', [BannerController::class, 'search'])->name('banner.search');
