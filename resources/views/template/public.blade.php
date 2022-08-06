@@ -26,6 +26,10 @@
             ])
         </div>
 
+        <main class="container-lg" style="margin-top: 2rem;">
+            @yield('page')
+        </main>
+
         <footer class="container-lg">
             @include('template.includes.footer-infos', [
                 'PaymentMethod' => $template['PaymentMethod'],

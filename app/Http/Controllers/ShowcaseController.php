@@ -38,6 +38,18 @@ class ShowcaseController extends Controller
      */
     public function main() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('template.public')->with('template', $this->templateInfo());
+        return view('template.public');
     }
+
+    /**
+     * Show our stores pages
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function stores() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    {
+        return view('our-stores');
+    } 
 }
