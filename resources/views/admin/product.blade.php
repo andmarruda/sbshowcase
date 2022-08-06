@@ -179,8 +179,8 @@
 
         textToArticle();
 
-        document.getElementById('image').addEventListener('change', ({target}) => {
-            document.getElementById('img-preview').src = URL.createObjectURL(target.files[0]);
+        document.getElementById('image').addEventListener('change', (event) => {
+            previewImage(event, 'img-preview');
         });
     });
 
