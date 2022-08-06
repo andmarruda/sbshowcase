@@ -12,6 +12,18 @@ class Product extends Model
     protected $fillable = ['name', 'description', 'image', 'price', 'old_price', 'percentage_discount', 'installments_limit', 'quantity', 'promotion_flag', 'category_id', 'measure_id', 'color_id', 'brand_id', 'type_id'];
 
     /**
+     * Get the product's image
+     * @version     1.0.0
+     * @author      Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return string
+     */
+    public function getImage() : string
+    {
+        return strpos($this->image, '/') > -1 ? $this->image : 'storage/' . $this->image;
+    }
+
+    /**
      * Get category information that belongs to
      * @version     1.0.0
      * @author      Anderson Arruda < andmarruda@gmail.com >

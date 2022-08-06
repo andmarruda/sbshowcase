@@ -125,13 +125,14 @@ class ProductController extends Controller
             'image' => 'nullable|mimes:'. $filetypes. '|max:'. ImageController::ALLOWED_SIZE,
         ], $this->errors);
 
-        $image = $request->input('image_old');
+        $prod = is_null($request->input('id')) ? new Product() : Product::withTrashed()->find($request->input('id'));
+        $image = $prod->image ?? '';
+
         if($request->hasFile('image')){
             $gc = new GeneralController();
-            $image = $gc->convertToWebp($request->file('image'));
+            $image = $gc->convertToWebp($request->file('image'), public_path($prod->getImage()));
         }
 
-        $prod = is_null($request->input('id')) ? new Product() : Product::withTrashed()->find($request->input('id'));
         $prod->fill([
             'name' => $request->input('name'),
             'description' => $request->input('descriptionText'),

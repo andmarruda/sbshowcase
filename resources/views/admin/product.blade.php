@@ -4,7 +4,6 @@
 <form method="post" id="productForm" action="{{route('product.save')}}" autocomplete="off" enctype="multipart/form-data">
     <input type="hidden" name="id" id="id" value="{{(!is_null($Product) && (is_null($Copy) || $Copy != 1)) ? $Product->id : ''}}">
     <input type="hidden" id="descriptionText" name="descriptionText" value="{{$Product->description ?? ''}}">
-    <input type="hidden" name="image_old" id="image_old" value="{{$Product->image ?? ''}}">
     @csrf
 
     <nav aria-label="breadcrumb">
@@ -62,7 +61,7 @@
                 <option value="">Selecione...</option>
                 @isset($infos['Measures'])
                     @foreach($infos['Measures'] as $Measure)
-                    <option value="{{$Measure->id}}"{{!is_null($Product) && $Product->measure_id == $Measure->id ? ' selected' : ''}}>{{$Measure->width.'x'.$Measure->length. 'x'. $Measure->height}}</option>
+                    <option value="{{$Measure->id}}"{{!is_null($Product) && $Product->measure_id == $Measure->id ? ' selected' : ''}}>{{$Measure->getLabel()}}</option>
                     @endforeach
                 @endisset
             </select>
