@@ -15,7 +15,7 @@
     <div class="row" style="margin-bottom:1.5rem;">
         <div class="col">
             <label for="name" class="form-label">Nome do banner</label>
-            <input type="text" minlength="6" maxlength="150" class="form-control" id="name" name="name" placeholder="Nome do banner" required value="{{$Banner->name ?? ''}}">
+            <input type="text" minlength="3" maxlength="50" class="form-control" id="name" name="name" placeholder="Nome do banner" required value="{{$Banner->name ?? ''}}">
         </div>
 
         <div class="col">
@@ -42,7 +42,7 @@
 
         <div class="col">
             <label for="alt" class="form-label">Descrição do banner</label>
-            <input type="text" minlength="6" maxlength="150" class="form-control" id="alt" name="alt" placeholder="Descrição do banner" required value="{{$Banner->alt ?? ''}}">
+            <input type="text" minlength="3" maxlength="150" class="form-control" id="alt" name="alt" placeholder="Descrição do banner" required value="{{$Banner->alt ?? ''}}">
         </div>
     </div>
 
