@@ -117,13 +117,10 @@ class ImageController extends Controller
      */
     public function deleteOldFile() : void
     {
-        if(is_file(public_path().'/storage/'.$this->oldFile)){
-            unlink(public_path().'/storage/'.$this->oldFile);
+        if(file_exists($this->oldFile)){
+            unlink($this->oldFile);
             return;
         }
-
-        if(is_file(public_path(). '/'. $this->oldFile))
-            unlink(public_path(). '/'. $this->oldFile);
     }
 
     /**

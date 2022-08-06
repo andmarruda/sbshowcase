@@ -53,11 +53,15 @@ class GeneralController extends Controller
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
      * @param           \Illuminate\Http\UploadedFile $file
+     * @param           ?string $oldImage=NULL
      * @return          string
      */
-    public function convertToWebp(\Illuminate\Http\UploadedFile $file) : string
+    public function convertToWebp(\Illuminate\Http\UploadedFile $file, ?string $oldImage=NULL) : string
     {
-        $ic = new ImageController($file);
+        $ic = new ImageController($file, $oldImage);
+        if(!is_null($oldImage))
+            $ic->deleteOldFile();
+
         return $ic->name;
     }
 
@@ -89,20 +93,20 @@ class GeneralController extends Controller
             'highlight_img_2'   => 'nullable|mimes:'. $filetypes. '|max:'. ImageController::ALLOWED_SIZE
         ], $this->requestMessages);
 
-        $brand_filepath = $r->input('brand_image_old');
-        $high1_filepath = $r->input('highlight_img_1_old');
-        $high2_filepath = $r->input('highlight_img_2_old');
+        $general = General::find(1);
+        $brand_filepath = $general->brand_image;
+        $high1_filepath = $general->highlight_img_1;
+        $high2_filepath = $general->highlight_img_2;
 
         if($r->hasFile('brand_image') && $r->file('brand_image')->isValid())
-            $brand_filepath = $this->convertToWebp($r->file('brand_image'));
+            $brand_filepath = $this->convertToWebp($r->file('brand_image'), public_path($general->getBrandImage()));
 
         if($r->hasFile('highlight_img_1') && $r->file('highlight_img_1')->isValid())
-            $high1_filepath = $this->convertToWebp($r->file('highlight_img_1'));
+            $high1_filepath = $this->convertToWebp($r->file('highlight_img_1'), public_path($general->getHighlightImage1()));
 
         if($r->hasFile('highlight_img_2') && $r->file('highlight_img_2')->isValid())
-            $high2_filepath = $this->convertToWebp($r->file('highlight_img_2'));
+            $high2_filepath = $this->convertToWebp($r->file('highlight_img_2'), public_path($general->getHighlightImage2()));
 
-        $general = General::find(1);
         $general->fill([
             'brand'                     => $r->input('brand'),
             'brand_image'               => $brand_filepath, 

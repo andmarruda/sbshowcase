@@ -3,9 +3,6 @@
 @section('page')
 <form method="post" action="{{route('general.save')}}" autocomplete="off" enctype="multipart/form-data">
     <input type="hidden" name="id" id="id" value="{{$General->id}}">
-    <input type="hidden" name="brand_image_old" id="brand_image_old" value="{{$General->brand_image}}">
-    <input type="hidden" name="highlight_img_1_old" id="highlight_img_1_old" value="{{$General->highlight_img_1}}">
-    <input type="hidden" name="highlight_img_2_old" id="highlight_img_2_old" value="{{$General->highlight_img_2}}">
     @csrf
 
     <nav aria-label="breadcrumb">
