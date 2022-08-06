@@ -23,7 +23,7 @@ class ImageController extends Controller
      * Functions of GDLibrary of every extension
      * @var             array
      */
-    private array $gdLibrary = [
+    protected array $gdLibrary = [
         'jpg'  => 'imagecreatefromjpeg',
         'jpeg' => 'imagecreatefromjpeg',
         'bmp'  => 'imagecreatefromwbmp',
@@ -36,11 +36,12 @@ class ImageController extends Controller
      * Class's variables
      * @var             []
      */
-    private array $vars = [
+    protected array $vars = [
         'error' => NULL,
         'store' => 'public',
         'name'  => NULL,
-        'file'  => NULL
+        'file'  => NULL,
+        'uploaded' => NULL
     ];
 
     /**
@@ -48,17 +49,21 @@ class ImageController extends Controller
      * @version     1.0.0
      * @author      Anderson Arruda < andmarruda@gmail.com >
      * @param       private ?\Illuminate\Http\UploadedFile $file
+     * @param       ?string $oldFile=NULL
+     * @param       ?bool $autoConvert=true
      * @return      void
      */
-    public function __construct(private ?UploadedFile $file, private ?string $oldFile=NULL)
+    public function __construct(protected ?UploadedFile $file, protected ?string $oldFile=NULL, ?bool $autoConvert=true)
     {
         if(is_null($file))
             return;
 
         $this->vars['file'] = $file;
-        $uploaded = $file->store($this->store);
-        $this->vars['name'] = basename($uploaded);
-        $this->convertWebp($uploaded);
+        $this->vars['uploaded'] = $file->store($this->store);
+        $this->vars['name'] = basename($this->uploaded);
+
+        if($autoConvert)
+            $this->convertWebp($this->uploaded);
     }
 
     /**
@@ -66,9 +71,10 @@ class ImageController extends Controller
      * @version     1.0.0
      * @author      Anderson Arruda < andmarruda@gmail.com >
      * @param       string $file
+     * @param       int $quality=100
      * @return      void
      */
-    public function convertWebp(string $file) : void
+    public function convertWebp(string $file, int $quality=100) : void
     {
         $ext=$this->getExtension($file);
         $func = $this->gdLibrary[$ext];
@@ -76,7 +82,7 @@ class ImageController extends Controller
             $image = $func(Storage::path($file));
             $dir = dirname(Storage::path($file));
             $name = str_replace($ext, 'webp', basename($file));
-            imagewebp($image, $dir.'/'.$name);
+            imagewebp($image, $dir.'/'.$name, $quality);
             imagedestroy($image);
             Storage::delete($file);
             $this->vars['name'] = $name;
