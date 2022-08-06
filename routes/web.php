@@ -94,6 +94,9 @@ Route::prefix('/admin')->middleware('SBAuth')->group(function(){
 
     //banners
     Route::get('/banner', [BannerController::class, 'adminView'])->name('banner');
+    Route::post('/banner/save', [BannerController::class, 'save'])->name('banner.save');
+    Route::post('/banner/delete', [BannerController::class, 'delete'])->name('banner.delete');
+    Route::post('/banner/search', [BannerController::class, 'search'])->name('banner.search');
 
     //general
     Route::get('/general', [GeneralController::class, 'adminView'])->name('general');

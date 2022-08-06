@@ -2,7 +2,7 @@
 
 @section('page')
 <form method="post" id="BannerForm" action="{{route('category.save')}}" autocomplete="off" enctype="multipart/form-data">
-    <input type="hidden" name="id" id="id" value="{{(!is_null($Banner) && (is_null($Copy) || $Copy != 1)) ? $Banner->id : ''}}">
+    <input type="hidden" name="id" id="id" value="{{$Banner->id ?? ''}}">
     @csrf
 
     <nav aria-label="breadcrumb">
@@ -12,36 +12,36 @@
         </ol>
     </nav>
 
-    <div class="row">
+    <div class="row" style="margin-bottom:1.5rem;">
+        <div class="col">
+            <label for="name" class="form-label">Nome do banner</label>
+            <input type="text" minlength="6" maxlength="150" class="form-control" id="name" name="name" placeholder="Nome do banner" required value="{{$Banner->name ?? ''}}">
+        </div>
+
+        <div class="col">
+            <label for="link_id" class="form-label">Link do produto</label>
+            <select class="form-control" id="link_id" name="link_id" required>
+                <option value="">Selecione...</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom:1.5rem;">
         <div class="col">
             <h6>Imagem atual</h6><hr>
             <img src="{{!is_null($Banner) ? asset('storage/'.$Banner->image) : ''}}" id="img-preview" class="img-thumbnail" alt="Imagem do produto">
         </div>
+    </div>
 
+    <div class="row" style="margin-bottom:1.5rem;">
         <div class="col">
             <label for="image" class="form-label">Imagem do produto</label>
             <input type="file" class="form-control" id="image" name="image" placeholder="Imagem do produto">
         </div>
-    </div>
 
-    <div class="row">
         <div class="col">
-            <label for="name" class="form-label">Nome do produto</label>
-            <input type="text" minlength="6" maxlength="150" class="form-control" id="name" name="name" placeholder="Nome do produto" required value="{{$Banner->name ?? ''}}">
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <label for="color_id" class="form-label">Cor</label>
-            <select class="form-control" id="color_id" name="color_id" required>
-                <option value="">Selecione...</option>
-                @isset($infos['Colors'])
-                    @foreach($infos['Colors'] as $Color)
-                    <option value="{{$Color->id}}"{{!is_null($Banner) && $Banner->color_id == $Color->id ? ' selected' : ''}}>{{$Color->name}}</option>
-                    @endforeach
-                @endisset
-            </select>
+            <label for="alt" class="form-label">Descrição do banner</label>
+            <input type="text" minlength="6" maxlength="150" class="form-control" id="alt" name="alt" placeholder="Descrição do banner" required value="{{$Banner->alt ?? ''}}">
         </div>
     </div>
 
@@ -64,7 +64,7 @@
     </div>
 </form>
 
-@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar categoria', 'placeholder' => 'Categoria', 'route' => route('category.search'), 'loadRoute' => route('category'), 'ths' => ['#', 'Categoria', 'Ativa?']])
+@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar banner', 'placeholder' => 'Banner', 'route' => route('category.search'), 'loadRoute' => route('banner'), 'ths' => ['#', 'Banner', 'Ativa?']])
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
