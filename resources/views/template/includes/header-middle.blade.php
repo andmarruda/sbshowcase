@@ -3,7 +3,7 @@
         <div class="d-flex justify-content-between">
             <div class="logo">
                 <a href="javascript: void(0);" title="{{$general->brand}}">
-                    <img src="{{asset((strpos($general->brand_image, '/') > -1 ? $general->brand_image : 'storage/'.$general->brand_image))}}" alt="{{$general->brand}}">
+                    <img src="{{asset($general->getBrandImage())}}" alt="{{$general->brand}}">
                 </a>
             </div>
 

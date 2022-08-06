@@ -22,7 +22,7 @@
 
     <div class="mb-3">
         <h6>Logo atual</h6><hr>
-        <img src="{{asset($General->brand_image)}}" class="img-thumbnail" id="img-brand-preview" alt="Logomarca atual">
+        <img src="{{asset($General->getBrandImage())}}" class="img-thumbnail" id="img-brand-preview" alt="Logomarca atual">
     </div>
 
     <div class="mb-3">
@@ -52,7 +52,7 @@
 
     <div class="mb-3">
         <h6>Icone de destaque 1 atual</h6><hr>
-        <img src="{{asset($General->highlight_img_1)}}" class="img-thumbnail" id="img-preview-highlight1" alt="Logomarca atual">
+        <img src="{{asset($General->getHighlightImage1())}}" class="img-thumbnail" id="img-preview-highlight1" alt="Logomarca atual">
     </div>
 
     <div class="mb-3">
@@ -67,7 +67,7 @@
 
     <div class="mb-3">
         <h6>Icone de destaque 2 atual</h6><hr>
-        <img src="{{asset($General->highlight_img_2)}}" class="img-thumbnail" id="img-preview-highlight2" alt="Logomarca atual">
+        <img src="{{asset($General->getHighlightImage2())}}" class="img-thumbnail" id="img-preview-highlight2" alt="Logomarca atual">
     </div>
 
     <div class="mb-3">
