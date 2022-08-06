@@ -108,6 +108,6 @@ class BannerController extends Controller
             'alt' => $r->input('alt')
         ]);
         $saved = $banner->save();
-        return redirect()->route('banner', ['saved' => $saved]);
+        return redirect()->route('banner')->with('saved', $saved);
     }
 }
