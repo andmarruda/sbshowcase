@@ -10,18 +10,6 @@ use SplFileInfo;
 class ImagesSizeController extends ImageController
 {
     /**
-     * Image original width
-     * @var             int
-     */
-    protected int $width;
-
-    /**
-     * Image original height
-     * @var             int
-     */
-    protected int $height;
-
-    /**
      * Set uploaded file and check if it's valid after this converts to webp format and all availables size
      * @version     1.0.0
      * @author      Anderson Arruda < andmarruda@gmail.com >
@@ -31,11 +19,7 @@ class ImagesSizeController extends ImageController
      */
     public function __construct(UploadedFile $file, ?string $oldFile=NULL)
     {
-        parent::__construct($file, $oldFile);
-        $this->convertWebp($this->uploaded, 60);
-        $sizes = getimagesize(public_path($this->uploaded));
-        $this->width = $sizes[0];
-        $this->height = $sizes[1];
+        parent::__construct($file, $oldFile, false);
     }
 
     /**
@@ -59,7 +43,7 @@ class ImagesSizeController extends ImageController
      */
     public function deleteCascade() : void
     {
-        $this->delete();
+        $this->deleteOldFile();
         $sizes = $this->getSizes();
         foreach($sizes as $size)
         {
@@ -105,5 +89,6 @@ class ImagesSizeController extends ImageController
         {
             $this->resizeImage($size);
         }
+        $this->convertWebp($this->uploaded, 60);
     }
 }

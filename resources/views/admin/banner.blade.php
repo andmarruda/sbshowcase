@@ -20,8 +20,9 @@
 
         <div class="col">
             <label for="link_id" class="form-label">Link do produto</label>
-            <select class="form-control" id="link_id" name="link_id" required>
+            <select class="form-control" id="link" name="link" required>
                 <option value="">Selecione...</option>
+                <option value="teste">Teste</option>
             </select>
         </div>
     </div>

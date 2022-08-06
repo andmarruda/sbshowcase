@@ -94,8 +94,9 @@ class BannerController extends Controller
         $image = $banner->image ?? '';
         if($r->hasFile('image') && $r->file('image')->isValid()){
             $i = new ImagesSizeController($r->file('image'), $image);
+            $i->resize();
             $image = $i->name;
-            if(!is_null($image)){
+            if($image != ''){
                 $i->deleteCascade();
             }
         }
@@ -107,6 +108,6 @@ class BannerController extends Controller
             'alt' => $r->input('alt')
         ]);
         $saved = $banner->save();
-        return redirect()->route('admin.banner', ['id' => $banner->id]);
+        return redirect()->route('banner', ['saved' => $saved]);
     }
 }
