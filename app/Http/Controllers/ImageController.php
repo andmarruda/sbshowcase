@@ -50,7 +50,7 @@ class ImageController extends Controller
      * @param       private ?\Illuminate\Http\UploadedFile $file
      * @return      void
      */
-    public function __construct(private ?UploadedFile $file)
+    public function __construct(private ?UploadedFile $file, private ?string $oldFile=NULL)
     {
         if(is_null($file))
             return;
@@ -106,6 +106,24 @@ class ImageController extends Controller
     public static function byteToMb() : float
     {
         return self::ALLOWED_SIZE * 0.000001;
+    }
+
+    /**
+     * Delete old file when has a file that updated it
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return          void
+     */
+    public function deleteOldFile() : void
+    {
+        if(is_file(public_path().'/storage/'.$this->oldFile)){
+            unlink(public_path().'/storage/'.$this->oldFile);
+            return;
+        }
+
+        if(is_file(public_path(). '/'. $this->oldFile))
+            unlink(public_path(). '/'. $this->oldFile);
     }
 
     /**
