@@ -91,4 +91,22 @@ class ImagesSizeController extends ImageController
         }
         $this->convertWebp($this->uploaded, 60);
     }
+
+    /**
+     * Get all image as html5 img srcset
+     * @version     1.0.0
+     * @author      Anderson Arruda < andmarruda@gmail.com >
+     * @param       string $file
+     * @return      string
+     */
+    public static function getImgSrcSet(string $file) : string
+    {
+        $sizes = ImagesSize::all();
+        $srcset = '';
+        foreach($sizes as $size)
+        {
+            $srcset .= asset('storage/'. $size->id. '_'. $file). ' '. $size->max_width. 'w, ';
+        }
+        return $srcset;
+    }
 }
