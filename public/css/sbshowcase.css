@@ -95,6 +95,16 @@ footer{
     #banner-promotion{
         display: none !important;
     }
+
+    #store-phone-number{
+        display: none !important;
+    }
+}
+
+@media screen and (max-width:800px){
+    .quick-menu{
+        margin-bottom: 2rem;
+    }
 }
 
 .cart-info{

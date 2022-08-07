@@ -7,7 +7,7 @@
                 @endforeach
                 @if(!is_null($general->whatsapp_number))
                 <li class="list-inline-item"><a href="tel:{{$general->whatsapp_number}}" title="Whatsapp"><img src="{{asset('images/icon-zap.png')}}" alt="Whatsapp" width="20px" height="20px"></a></li>
-                <li class="list-inline-item">{{$general->whatsapp_number}}</li>
+                <li class="list-inline-item" id="store-phone-number">{{$general->whatsapp_number}}</li>
                 @endif
             </ul>
 
