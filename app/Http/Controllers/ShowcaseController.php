@@ -9,6 +9,7 @@ use App\Models\General;
 use App\Models\SocialMediaUrl;
 use App\Models\PaymentMethod;
 use App\Models\Store;
+use App\Models\Banner;
 
 class ShowcaseController extends Controller
 {
@@ -52,5 +53,18 @@ class ShowcaseController extends Controller
     public function stores() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         return view('our-stores', ['Stores' => Store::all()]);
-    } 
+    }
+
+    /**
+     * Show homepage
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function home() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    {
+        $banners = Banner::all();
+        return view('homepage', ['Banner' => $banners]);
+    }
 }

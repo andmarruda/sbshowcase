@@ -31,7 +31,7 @@ use App\Http\Controllers\OrderController;
 */
 
 //public
-Route::get('/', [ShowcaseController::class, 'main'])->name('main');
+Route::get('/', [ShowcaseController::class, 'home'])->name('main');
 Route::get('/menu/{id}/{name?}', [ShowcaseController::class, 'category'])->name('menu');
 Route::get('/our-stores', [ShowcaseController::class, 'stores'])->name('our-stores');
 

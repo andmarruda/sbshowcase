@@ -38,5 +38,7 @@
 
             @include('template.includes.footer-poweredby', ['blog' => $template['general']->blog_url, 'sitemap' => null])
         </footer>
+
+        <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     </body>
 </html>
