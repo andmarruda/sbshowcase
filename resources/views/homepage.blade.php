@@ -1,7 +1,7 @@
 @extends('template.public')
 
 @section('page')
-<div class="row">
+<div class="row" style="margin-bottom:2rem;">
     <div class="col-md-12">
         <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -37,8 +37,12 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-11 product-list" style="background:#{{$template->secondarycolor}};">
+<div class="col-md-12" style="margin-bottom:2rem;">
+    <h1>Promoções</h1>
+</div>
+
+<div class="row" style="margin-bottom:2rem;">
+    <div class="col-md-12 product-list" style="background:#{{$template['templates']->secondarybg}};">
         <div class="row">
             @include('template.includes.product', [
                 'image' => asset('img/colchao-ortobom-queen.jpg'),
@@ -46,7 +50,8 @@
                 'description' => 'Colchão Ortobom Queen',
                 'old_price' => 1979,
                 'price' => 1000,
-                'installments_limit' => 10
+                'installments_limit' => 10,
+                'srcset' => ''
             ])
 
             @include('template.includes.product', [
@@ -55,7 +60,8 @@
                 'description' => 'Colchão Ortobom Queen',
                 'old_price' => 1979,
                 'price' => 1000,
-                'installments_limit' => 10
+                'installments_limit' => 10,
+                'srcset' => ''
             ])
 
             @include('template.includes.product', [
@@ -64,7 +70,50 @@
                 'description' => 'Colchão Ortobom Queen',
                 'old_price' => 1979,
                 'price' => 1000,
-                'installments_limit' => 10
+                'installments_limit' => 10,
+                'srcset' => '',
+                'promotion_flag' => true
+            ])
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12" style="margin-bottom:2rem;">
+    <h1>Novidades</h1>
+</div>
+
+<div class="row" style="margin-bottom:2rem;">
+    <div class="col-md-12 product-list">
+        <div class="row">
+            @include('template.includes.product', [
+                'image' => asset('img/colchao-ortobom-queen.jpg'),
+                'name' => 'Colchão Ortobom Queen',
+                'description' => 'Colchão Ortobom Queen',
+                'old_price' => 1979,
+                'price' => 1000,
+                'installments_limit' => 10,
+                'srcset' => ''
+            ])
+
+            @include('template.includes.product', [
+                'image' => asset('img/colchao-ortobom-queen.jpg'),
+                'name' => 'Colchão Ortobom Queen',
+                'description' => 'Colchão Ortobom Queen',
+                'old_price' => 1979,
+                'price' => 1000,
+                'installments_limit' => 10,
+                'srcset' => '',
+                'promotion_flag' => true
+            ])
+
+            @include('template.includes.product', [
+                'image' => asset('img/colchao-ortobom-queen.jpg'),
+                'name' => 'Colchão Ortobom Queen',
+                'description' => 'Colchão Ortobom Queen',
+                'old_price' => 1979,
+                'price' => 1000,
+                'installments_limit' => 10,
+                'srcset' => ''
             ])
         </div>
     </div>

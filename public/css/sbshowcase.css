@@ -73,6 +73,10 @@ footer{
     margin-bottom: 2rem;
 }
 
+.product-list .row .col-md-4{
+    padding-top:5rem;
+}
+
 .free-shipping{
     position: absolute;
     top: 0;
@@ -84,6 +88,12 @@ footer{
 @media screen and (min-width:992px){
     #aside-menu{
         display: block !important;
+    }
+}
+
+@media screen and (max-width:991px){
+    #banner-promotion{
+        display: none !important;
     }
 }
 

@@ -14,4 +14,10 @@
         <a href="#" role="button" class="btn btn-light">Saiba mais</a>
         <a href="#" role="button" class="btn" style="background-color: #665132; color:#fff;">+ Carrinho</a>
     </div>
+
+    @if(($promotion_flag ?? false))
+    <div class="free-shipping position-absolute top-0 rounded-pill w-75" role="alert" style="background: #3D8DCB; color:#fff;">
+        Frete grátis Rib. Preto
+    </div>
+    @endif
 </section>
