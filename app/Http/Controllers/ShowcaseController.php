@@ -10,7 +10,11 @@ use App\Models\SocialMediaUrl;
 use App\Models\PaymentMethod;
 use App\Models\Store;
 use App\Models\Banner;
+use App\Models\Measure;
 use App\Models\Product;
+use App\Models\Brand;
+use App\Models\Color;
+use App\Models\Type;
 
 class ShowcaseController extends Controller
 {
@@ -93,6 +97,10 @@ class ShowcaseController extends Controller
     public function productList(int $id, string $name) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         $category = Category::find($id);
-        return view('product-list', ['Category' => $category]);
+        $measures = Measure::all();
+        $brand = Brand::all();
+        $color = Color::all();
+        $type = Type::all();
+        return view('product-list', ['Category' => $category, 'Measures' => $measures, 'Brands' => $brand, 'Colors' => $color, 'Types' => $type]);
     }
 }

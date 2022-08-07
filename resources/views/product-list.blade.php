@@ -23,29 +23,57 @@
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Largura x Comprimento x Altura</a>
             </li>
 
+            @forelse($Measures as $measure)
             <li class="nav-item">
-                <a class="nav-link" href="#">Active</a>
+                <a class="nav-link" href="#">{{$measure->getLabel()}}</a>
             </li>
+            @empty
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Nenhuma medida encontrada</a>
             </li>
+            @endforelse
+
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Marca</a>
             </li>
+
+            @forelse($Brands as $brand)
+            <li class="nav-item">
+                <a class="nav-link" href="#">{{$brand->name}}</a>
+            </li>
+            @empty
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Nenhuma marca encontrada</a>
+            </li>
+            @endforelse
 
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Cor</a>
             </li>
 
+            @forelse($Colors as $color)
             <li class="nav-item">
-                <a class="nav-link" href="#">Active</a>
+                <a class="nav-link" href="#"><span class="badge" style="background:#{{$color->hex_code}};">&nbsp;</span> {{$color->name}}</a>
             </li>
+            @empty
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Nenhuma cor encontrada</a>
             </li>
+            @endforelse
+
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Tipo</a>
             </li>
+
+            @forelse($Types as $type)
+            <li class="nav-item">
+                <a class="nav-link" href="#">{{$type->name}}</a>
+            </li>
+            @empty
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Nenhum tipo encontrado</a>
+            </li>
+            @endforelse
         </ul>
     </div>
 
