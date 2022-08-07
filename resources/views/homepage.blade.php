@@ -51,17 +51,11 @@
                 'old_price' => 1979,
                 'price' => 1000,
                 'installments_limit' => 10,
-                'srcset' => ''
-            ])
-
-            @include('template.includes.product', [
-                'image' => asset('img/colchao-ortobom-queen.jpg'),
-                'name' => 'Colchão Ortobom Queen',
-                'description' => 'Colchão Ortobom Queen',
-                'old_price' => 1979,
-                'price' => 1000,
-                'installments_limit' => 10,
-                'srcset' => ''
+                'srcset' => '',
+                'highlightbg' => $template['templates']->highlightbg,
+                'highlightcolor' => $template['templates']->highlightcolor,
+                'primarybg' => $template['templates']->primarybg,
+                'primarycolor' => $template['templates']->primarycolor,
             ])
 
             @include('template.includes.product', [
@@ -72,7 +66,25 @@
                 'price' => 1000,
                 'installments_limit' => 10,
                 'srcset' => '',
-                'promotion_flag' => true
+                'highlightbg' => $template['templates']->highlightbg,
+                'highlightcolor' => $template['templates']->highlightcolor,
+                'primarybg' => $template['templates']->primarybg,
+                'primarycolor' => $template['templates']->primarycolor,
+            ])
+
+            @include('template.includes.product', [
+                'image' => asset('img/colchao-ortobom-queen.jpg'),
+                'name' => 'Colchão Ortobom Queen',
+                'description' => 'Colchão Ortobom Queen',
+                'old_price' => 1979,
+                'price' => 1000,
+                'installments_limit' => 10,
+                'srcset' => '',
+                'promotion_flag' => true,
+                'highlightbg' => $template['templates']->highlightbg,
+                'highlightcolor' => $template['templates']->highlightcolor,
+                'primarybg' => $template['templates']->primarybg,
+                'primarycolor' => $template['templates']->primarycolor,
             ])
         </div>
     </div>
@@ -92,7 +104,11 @@
                 'old_price' => 1979,
                 'price' => 1000,
                 'installments_limit' => 10,
-                'srcset' => ''
+                'srcset' => '',
+                'highlightbg' => $template['templates']->highlightbg,
+                'highlightcolor' => $template['templates']->highlightcolor,
+                'primarybg' => $template['templates']->primarybg,
+                'primarycolor' => $template['templates']->primarycolor,
             ])
 
             @include('template.includes.product', [
@@ -103,7 +119,11 @@
                 'price' => 1000,
                 'installments_limit' => 10,
                 'srcset' => '',
-                'promotion_flag' => true
+                'promotion_flag' => true,
+                'highlightbg' => $template['templates']->highlightbg,
+                'highlightcolor' => $template['templates']->highlightcolor,
+                'primarybg' => $template['templates']->primarybg,
+                'primarycolor' => $template['templates']->primarycolor,
             ])
 
             @include('template.includes.product', [
@@ -113,7 +133,11 @@
                 'old_price' => 1979,
                 'price' => 1000,
                 'installments_limit' => 10,
-                'srcset' => ''
+                'srcset' => '',
+                'highlightbg' => $template['templates']->highlightbg,
+                'highlightcolor' => $template['templates']->highlightcolor,
+                'primarybg' => $template['templates']->primarybg,
+                'primarycolor' => $template['templates']->primarycolor,
             ])
         </div>
     </div>

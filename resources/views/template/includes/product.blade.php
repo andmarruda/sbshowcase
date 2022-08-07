@@ -12,11 +12,11 @@
 
     <div class="action">
         <a href="#" role="button" class="btn btn-light">Saiba mais</a>
-        <a href="#" role="button" class="btn" style="background-color: #665132; color:#fff;">+ Carrinho</a>
+        <a href="#" role="button" class="btn" style="background-color: #{{$highlightbg}}; color: #{{$highlightcolor}}">+ Carrinho</a>
     </div>
 
     @if(($promotion_flag ?? false))
-    <div class="free-shipping position-absolute top-0 rounded-pill w-75" role="alert" style="background: #3D8DCB; color:#fff;">
+    <div class="free-shipping position-absolute top-0 rounded-pill w-75" role="alert" style="background-color: #{{$primarybg}}; color: #{{$primarycolor}};">
         Frete grátis Rib. Preto
     </div>
     @endif
