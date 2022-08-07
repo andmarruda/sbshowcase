@@ -45,6 +45,7 @@
     <div class="col-md-12 product-list" style="background:#{{$template['templates']->secondarybg}};">
         <div class="row">
             @include('template.includes.product', [
+                'id' => 1,
                 'image' => asset('img/colchao-ortobom-queen.jpg'),
                 'name' => 'Colchão Ortobom Queen',
                 'description' => 'Colchão Ortobom Queen',
@@ -59,6 +60,7 @@
             ])
 
             @include('template.includes.product', [
+                'id' => 1,
                 'image' => asset('img/colchao-ortobom-queen.jpg'),
                 'name' => 'Colchão Ortobom Queen',
                 'description' => 'Colchão Ortobom Queen',
@@ -73,6 +75,7 @@
             ])
 
             @include('template.includes.product', [
+                'id' => 1,
                 'image' => asset('img/colchao-ortobom-queen.jpg'),
                 'name' => 'Colchão Ortobom Queen',
                 'description' => 'Colchão Ortobom Queen',
@@ -98,6 +101,7 @@
     <div class="col-md-12 product-list">
         <div class="row">
             @include('template.includes.product', [
+                'id' => 1,
                 'image' => asset('img/colchao-ortobom-queen.jpg'),
                 'name' => 'Colchão Ortobom Queen',
                 'description' => 'Colchão Ortobom Queen',
@@ -112,6 +116,7 @@
             ])
 
             @include('template.includes.product', [
+                'id' => 1,
                 'image' => asset('img/colchao-ortobom-queen.jpg'),
                 'name' => 'Colchão Ortobom Queen',
                 'description' => 'Colchão Ortobom Queen',
@@ -127,6 +132,7 @@
             ])
 
             @include('template.includes.product', [
+                'id' => 1,
                 'image' => asset('img/colchao-ortobom-queen.jpg'),
                 'name' => 'Colchão Ortobom Queen',
                 'description' => 'Colchão Ortobom Queen',

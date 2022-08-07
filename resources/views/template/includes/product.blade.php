@@ -11,7 +11,7 @@
     </div>
 
     <div class="action">
-        <a href="#" role="button" class="btn btn-light">Saiba mais</a>
+        <a href="{{route('product-detail', ['id' => $id, 'name' => str_replace(' ', '-', $name)])}}" role="button" class="btn btn-light">Saiba mais</a>
         <a href="#" role="button" class="btn" style="background-color: #{{$highlightbg}}; color: #{{$highlightcolor}}">+ Carrinho</a>
     </div>
 

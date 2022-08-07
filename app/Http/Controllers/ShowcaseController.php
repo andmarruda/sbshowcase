@@ -10,6 +10,7 @@ use App\Models\SocialMediaUrl;
 use App\Models\PaymentMethod;
 use App\Models\Store;
 use App\Models\Banner;
+use App\Models\Product;
 
 class ShowcaseController extends Controller
 {
@@ -66,5 +67,18 @@ class ShowcaseController extends Controller
     {
         $banners = Banner::all();
         return view('homepage', ['Banner' => $banners]);
+    }
+
+    /**
+     * Show product details
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function productDetail(?int $id=NULL, ?string $name=NULL) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    {
+        $prod = Product::find($id);
+        return view('product-detail', ['Product' => $prod]);
     }
 }

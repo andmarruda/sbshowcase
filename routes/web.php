@@ -32,7 +32,8 @@ use App\Http\Controllers\OrderController;
 
 //public
 Route::get('/', [ShowcaseController::class, 'home'])->name('main');
-Route::get('/menu/{id}/{name?}', [ShowcaseController::class, 'category'])->name('menu');
+Route::get('/product/{id}/{name?}', [ShowcaseController::class, 'productDetail'])->name('product-detail')->where('id', '[0-9]+');
+Route::get('/menu/{id}/{name?}', [ShowcaseController::class, 'category'])->name('menu')->where('id', '[0-9]+');;
 Route::get('/our-stores', [ShowcaseController::class, 'stores'])->name('our-stores');
 
 //customer area
