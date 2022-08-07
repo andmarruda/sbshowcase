@@ -10,7 +10,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         @foreach($menu as $item)
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{route('menu', ['id' => $item->id, 'name' => $item->name])}}" title="{{$item->name}}">{{$item->name}}</a>
+                                <a class="nav-link active" href="{{route('product-list', ['id' => $item->id, 'name' => str_replace(' ', '-', $item->name)])}}" title="{{$item->name}}">{{$item->name}}</a>
                             </li>
                         @endforeach
                     </ul>

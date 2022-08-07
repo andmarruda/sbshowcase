@@ -33,8 +33,8 @@ use App\Http\Controllers\CustomerAreaController;
 
 //public
 Route::get('/', [ShowcaseController::class, 'home'])->name('main');
+Route::get('/product-list/{id}/{name?}', [ShowcaseController::class, 'productList'])->name('product-list')->where('id', '[0-9]+');
 Route::get('/product/{id}/{name?}', [ShowcaseController::class, 'productDetail'])->name('product-detail')->where('id', '[0-9]+');
-Route::get('/menu/{id}/{name?}', [ShowcaseController::class, 'category'])->name('menu')->where('id', '[0-9]+');;
 Route::get('/our-stores', [ShowcaseController::class, 'stores'])->name('our-stores');
 
 //customer area

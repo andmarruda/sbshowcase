@@ -81,4 +81,18 @@ class ShowcaseController extends Controller
         $prod = Product::find($id);
         return view('product-detail', ['Product' => $prod]);
     }
+
+    /**
+     * Show products by category product list
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           int $id
+     * @param           string $name
+     * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function productList(int $id, string $name) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    {
+        $category = Category::find($id);
+        return view('product-list', ['Category' => $category]);
+    }
 }
