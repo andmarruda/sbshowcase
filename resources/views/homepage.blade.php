@@ -36,4 +36,37 @@
         </div> 
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-11 product-list" style="background:#{{$template->secondarycolor}};">
+        <div class="row">
+            @include('template.includes.product', [
+                'image' => asset('img/colchao-ortobom-queen.jpg'),
+                'name' => 'Colchão Ortobom Queen',
+                'description' => 'Colchão Ortobom Queen',
+                'old_price' => 1979,
+                'price' => 1000,
+                'installments_limit' => 10
+            ])
+
+            @include('template.includes.product', [
+                'image' => asset('img/colchao-ortobom-queen.jpg'),
+                'name' => 'Colchão Ortobom Queen',
+                'description' => 'Colchão Ortobom Queen',
+                'old_price' => 1979,
+                'price' => 1000,
+                'installments_limit' => 10
+            ])
+
+            @include('template.includes.product', [
+                'image' => asset('img/colchao-ortobom-queen.jpg'),
+                'name' => 'Colchão Ortobom Queen',
+                'description' => 'Colchão Ortobom Queen',
+                'old_price' => 1979,
+                'price' => 1000,
+                'installments_limit' => 10
+            ])
+        </div>
+    </div>
+</div>
 @endsection
