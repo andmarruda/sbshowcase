@@ -9,7 +9,7 @@
 
             <ul class="list-inline align-self-center" style="margin-right:2%;">
                 <li class="list-inline-item">
-                    <a href="void(0);" title="Área do cliente">
+                    <a href="{{route('customer-area')}}" title="Área do cliente">
                         <img src="images/icon-user.png" alt="Usuário">
                         Área do cliente
                     </a>

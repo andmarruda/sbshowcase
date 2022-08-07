@@ -18,6 +18,7 @@ use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CustomerAreaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,11 @@ Route::get('/menu/{id}/{name?}', [ShowcaseController::class, 'category'])->name(
 Route::get('/our-stores', [ShowcaseController::class, 'stores'])->name('our-stores');
 
 //customer area
+Route::get('/customer-login', [CustomerAreaController::class, 'customerLogin'])->name('customer-login');
+Route::get('/customer-register', [CustomerAreaController::class, 'customerRegister'])->name('customer-register');
+Route::prefix('/customer-area')->group(function() {
+    Route::get('/', [CustomerAreaController::class, 'customerArea'])->name('customer-area');
+});
 
 //admin backend
 Route::get('/admin', [UserController::class, 'loginView'])->name('admin');
