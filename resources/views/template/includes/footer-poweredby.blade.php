@@ -14,7 +14,7 @@
                 @endif
             </ul>
 
-            <a href="https://sysborg.com.br" target="_blank"><img src="images/poweredby.png" alt="Powered by Sysborg"></a>
+            <a href="https://sysborg.com.br" target="_blank"><img src="{{asset('images/poweredby.png')}}" alt="Powered by Sysborg"></a>
         </div>
     </div>
 </div>
