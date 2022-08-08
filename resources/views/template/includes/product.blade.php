@@ -1,5 +1,5 @@
 <section class="col-md-4">
-    <img src="{{$image}}" alt="{{$name}}" srcset="{{$srcset}}">
+    <img src="{{$image}}" alt="{{$name}}" srcset="{{$srcset}}" style="max-width:230px; margin-bottom:1rem;">
     <div class="infos">
         <h2>{{$name}}</h2>
         <p>{{$description}}</p>
