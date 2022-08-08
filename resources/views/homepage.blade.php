@@ -109,7 +109,7 @@
                 'old_price' => $prd->old_price,
                 'price' => $prd->price,
                 'installments_limit' => $prd->installments_limit,
-                'srcset' => '',
+                'srcset' => $prd->getImgSrcSet(),
                 'highlightbg' => $template['templates']->highlightbg,
                 'highlightcolor' => $template['templates']->highlightcolor,
                 'primarybg' => $template['templates']->primarybg,

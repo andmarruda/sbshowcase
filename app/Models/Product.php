@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Controllers\ImagesSizeController;
 
 class Product extends Model
 {
@@ -81,5 +82,16 @@ class Product extends Model
     public function type() : \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Type::class);
+    }
+
+    /**
+     * Returns html 5 img srcset for the loaded model
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @return          string
+     */
+    public function getImgSrcSet() : string
+    {
+        return ImagesSizeController::getImgSrcSet($this->image);
     }
 }
