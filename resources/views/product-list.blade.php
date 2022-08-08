@@ -53,7 +53,7 @@
 
             @forelse($Colors as $color)
             <li class="nav-item">
-                <a class="nav-link" href="#"><span class="badge" style="background:#{{$color->hex_code}};">&nbsp;</span> {{$color->name}}</a>
+                <a class="nav-link" href="#"><span class="badge" style="background:{{$color->hex_code}}; border:1px solid #000;">&nbsp;</span> {{$color->name}}</a>
             </li>
             @empty
             <li class="nav-item">

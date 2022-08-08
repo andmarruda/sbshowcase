@@ -6,7 +6,7 @@
                 <li class="list-inline-item"><a href="{{route('our-stores')}}" title="{{__('sbshowcase.our.stores')}}">{{__('sbshowcase.our.stores')}}</a></li>
                 @if(!is_null($blog))
                 <li class="list-inline-item">|</li>
-                <li class="list-inline-item"><a href="{{$blog}}" title="Blog">Blog</a></li>
+                <li class="list-inline-item"><a href="{{$blog}}" title="Blog" target="_blank">Blog</a></li>
                 @endif
                 @if(!is_null($sitemap))
                 <li class="list-inline-item">|</li>
