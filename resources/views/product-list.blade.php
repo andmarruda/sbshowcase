@@ -25,7 +25,7 @@
 
             @forelse($Measures as $measure)
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$measure->getLabel()}}</a>
+                <a class="nav-link" href="{{route('product-list', ['id' => $Category->id, 'name' => str_replace(' ', '-', $Category->name), 'filter' => 'measure', 'filter_id' => $measure->id])}}">{{$measure->getLabel()}}</a>
             </li>
             @empty
             <li class="nav-item">
@@ -39,7 +39,7 @@
 
             @forelse($Brands as $brand)
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$brand->name}}</a>
+                <a class="nav-link" href="{{route('product-list', ['id' => $Category->id, 'name' => str_replace(' ', '-', $Category->name), 'filter' => 'brand', 'filter_id' => $brand->id])}}">{{$brand->name}}</a>
             </li>
             @empty
             <li class="nav-item">
@@ -53,7 +53,7 @@
 
             @forelse($Colors as $color)
             <li class="nav-item">
-                <a class="nav-link" href="#"><span class="badge" style="background:{{$color->hex_code}}; border:1px solid #000;">&nbsp;</span> {{$color->name}}</a>
+                <a class="nav-link" href="{{route('product-list', ['id' => $Category->id, 'name' => str_replace(' ', '-', $Category->name), 'filter' => 'color', 'filter_id' => $color->id])}}"><span class="badge" style="background:{{$color->hex_code}}; border:1px solid #000;">&nbsp;</span> {{$color->name}}</a>
             </li>
             @empty
             <li class="nav-item">
@@ -67,7 +67,7 @@
 
             @forelse($Types as $type)
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$type->name}}</a>
+                <a class="nav-link" href="{{route('product-list', ['id' => $Category->id, 'name' => str_replace(' ', '-', $Category->name), 'filter' => 'type', 'filter_id' => $type->id])}}">{{$type->name}}</a>
             </li>
             @empty
             <li class="nav-item">
@@ -79,165 +79,26 @@
 
     <div class="col-md-9 product-list">
         <div class="row">
-            <section class="col-md-4">
-                <img src="images/example.png" alt="Produto tal">
-                <div class="infos">
-                    <h2>CONJ. Box Queen Sealy Charleston Resort</h2>
-                    <p>Colchão Sealy Charleston, sua estrutura de suporte central é formada por um dos sistemas de molas, mais eficiente do planeta...</p>
-                    <p class="old-price">De: R$2.700,00</p>
-                    <p class="price">Por: R$1.990,00</p>
-                    <small>Em até 12xR$164.90 sem juros no cartão de crédito</small>
+            @forelse($Products as $prd)
+                @include('template.includes.product', [
+                    'id' => $prd->id,
+                    'image' => asset($prd->getImage()),
+                    'name' => $prd->name,
+                    'description' => $prd->name,
+                    'old_price' => $prd->old_price,
+                    'price' => $prd->price,
+                    'installments_limit' => $prd->installments_limit,
+                    'srcset' => $prd->getImgSrcSet(),
+                    'highlightbg' => $template['templates']->highlightbg,
+                    'highlightcolor' => $template['templates']->highlightcolor,
+                    'primarybg' => $template['templates']->primarybg,
+                    'primarycolor' => $template['templates']->primarycolor,
+                ])
+            @empty
+                <div class="col-md-12">
+                    <p>Nenhum produto encontrado</p>
                 </div>
-
-                <div class="action">
-                    <a href="#" role="button" class="btn btn-light">Saiba mais</a>
-                    <a href="#" role="button" class="btn" style="background-color: #665132; color:#fff;">+ Carrinho</a>
-                </div>
-            </section>
-
-            <section class="col-md-4">
-                <img src="images/example.png" alt="Produto tal">
-                <div class="infos">
-                    <h2>CONJ. Box Queen Sealy Charleston Resort</h2>
-                    <p>Colchão Sealy Charleston, sua estrutura de suporte central é formada por um dos sistemas de molas, mais eficiente do planeta...</p>
-                    <p class="old-price">De: R$2.700,00</p>
-                    <p class="price">Por: R$1.990,00</p>
-                    <small>Em até 12xR$164.90 sem juros no cartão de crédito</small>
-                </div>
-
-                <div class="action">
-                    <a href="#" role="button" class="btn btn-light">Saiba mais</a>
-                    <a href="#" role="button" class="btn" style="background-color: #665132; color:#fff;">+ Carrinho</a>
-                </div>
-            </section>
-
-            <section class="col-md-4">
-                <img src="images/example.png" alt="Produto tal">
-                <div class="infos">
-                    <h2>CONJ. Box Queen Sealy Charleston Resort</h2>
-                    <p>Colchão Sealy Charleston, sua estrutura de suporte central é formada por um dos sistemas de molas, mais eficiente do planeta...</p>
-                    <p class="old-price">De: R$2.700,00</p>
-                    <p class="price">Por: R$1.990,00</p>
-                    <small>Em até 12xR$164.90 sem juros no cartão de crédito</small>
-                </div>
-
-                <div class="action">
-                    <a href="#" role="button" class="btn btn-light">Saiba mais</a>
-                    <a href="#" role="button" class="btn" style="background-color: #665132; color:#fff;">+ Carrinho</a>
-                </div>
-
-                <div class="free-shipping position-absolute top-0 rounded-pill w-75" role="alert" style="background: #3D8DCB; color:#fff;">
-                    Frete grátis Rib. Preto - SP
-                </div>
-            </section>
-        </div>
-
-        <div class="row">
-            <section class="col-md-4">
-                <img src="images/example.png" alt="Produto tal">
-                <div class="infos">
-                    <h2>CONJ. Box Queen Sealy Charleston Resort</h2>
-                    <p>Colchão Sealy Charleston, sua estrutura de suporte central é formada por um dos sistemas de molas, mais eficiente do planeta...</p>
-                    <p class="old-price">De: R$2.700,00</p>
-                    <p class="price">Por: R$1.990,00</p>
-                    <small>Em até 12xR$164.90 sem juros no cartão de crédito</small>
-                </div>
-
-                <div class="action">
-                    <a href="#" role="button" class="btn btn-light">Saiba mais</a>
-                    <a href="#" role="button" class="btn" style="background-color: #665132; color:#fff;">+ Carrinho</a>
-                </div>
-            </section>
-
-            <section class="col-md-4">
-                <img src="images/example.png" alt="Produto tal">
-                <div class="infos">
-                    <h2>CONJ. Box Queen Sealy Charleston Resort</h2>
-                    <p>Colchão Sealy Charleston, sua estrutura de suporte central é formada por um dos sistemas de molas, mais eficiente do planeta...</p>
-                    <p class="old-price">De: R$2.700,00</p>
-                    <p class="price">Por: R$1.990,00</p>
-                    <small>Em até 12xR$164.90 sem juros no cartão de crédito</small>
-                </div>
-
-                <div class="action">
-                    <a href="#" role="button" class="btn btn-light">Saiba mais</a>
-                    <a href="#" role="button" class="btn" style="background-color: #665132; color:#fff;">+ Carrinho</a>
-                </div>
-            </section>
-
-            <section class="col-md-4">
-                <img src="images/example.png" alt="Produto tal">
-                <div class="infos">
-                    <h2>CONJ. Box Queen Sealy Charleston Resort</h2>
-                    <p>Colchão Sealy Charleston, sua estrutura de suporte central é formada por um dos sistemas de molas, mais eficiente do planeta...</p>
-                    <p class="old-price">De: R$2.700,00</p>
-                    <p class="price">Por: R$1.990,00</p>
-                    <small>Em até 12xR$164.90 sem juros no cartão de crédito</small>
-                </div>
-
-                <div class="action">
-                    <a href="#" role="button" class="btn btn-light">Saiba mais</a>
-                    <a href="#" role="button" class="btn" style="background-color: #665132; color:#fff;">+ Carrinho</a>
-                </div>
-
-                <div class="free-shipping position-absolute top-0 rounded-pill w-75" role="alert" style="background: #3D8DCB; color:#fff;">
-                    Frete grátis Rib. Preto - SP
-                </div>
-            </section>
-        </div>
-
-        <div class="row">
-            <section class="col-md-4">
-                <img src="images/example.png" alt="Produto tal">
-                <div class="infos">
-                    <h2>CONJ. Box Queen Sealy Charleston Resort</h2>
-                    <p>Colchão Sealy Charleston, sua estrutura de suporte central é formada por um dos sistemas de molas, mais eficiente do planeta...</p>
-                    <p class="old-price">De: R$2.700,00</p>
-                    <p class="price">Por: R$1.990,00</p>
-                    <small>Em até 12xR$164.90 sem juros no cartão de crédito</small>
-                </div>
-
-                <div class="action">
-                    <a href="#" role="button" class="btn btn-light">Saiba mais</a>
-                    <a href="#" role="button" class="btn" style="background-color: #665132; color:#fff;">+ Carrinho</a>
-                </div>
-            </section>
-
-            <section class="col-md-4">
-                <img src="images/example.png" alt="Produto tal">
-                <div class="infos">
-                    <h2>CONJ. Box Queen Sealy Charleston Resort</h2>
-                    <p>Colchão Sealy Charleston, sua estrutura de suporte central é formada por um dos sistemas de molas, mais eficiente do planeta...</p>
-                    <p class="old-price">De: R$2.700,00</p>
-                    <p class="price">Por: R$1.990,00</p>
-                    <small>Em até 12xR$164.90 sem juros no cartão de crédito</small>
-                </div>
-
-                <div class="action">
-                    <a href="#" role="button" class="btn btn-light">Saiba mais</a>
-                    <a href="#" role="button" class="btn" style="background-color: #665132; color:#fff;">+ Carrinho</a>
-                </div>
-            </section>
-
-            <section class="col-md-4">
-                <img src="images/example.png" alt="Produto tal">
-                <div class="infos">
-                    <h2>CONJ. Box Queen Sealy Charleston Resort</h2>
-                    <p>Colchão Sealy Charleston, sua estrutura de suporte central é formada por um dos sistemas de molas, mais eficiente do planeta...</p>
-                    <p class="old-price">De: R$2.700,00</p>
-                    <p class="price">Por: R$1.990,00</p>
-                    <small>Em até 12xR$164.90 sem juros no cartão de crédito</small>
-                </div>
-
-                <div class="action">
-                    <a href="#" role="button" class="btn btn-light">Saiba mais</a>
-                    <a href="#" role="button" class="btn" style="background-color: #665132; color:#fff;">+ Carrinho</a>
-                </div>
-
-                <div class="free-shipping position-absolute top-0 rounded-pill w-75" role="alert" style="background: #3D8DCB; color:#fff;">
-                    Frete grátis Rib. Preto - SP
-                </div>
-            </section>
+            @endforelse
         </div>
     </div>
 </div>

@@ -93,15 +93,41 @@ class ShowcaseController extends Controller
      * @author          Anderson Arruda < andmarruda@gmail.com >
      * @param           int $id
      * @param           string $name
+     * @param           ?string $filter
+     * @param           ?int $filter_id
      * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function productList(int $id, string $name) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function productList(int $id, string $name, ?string $filter=NULL, ?int $filter_id=NULL) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         $category = Category::find($id);
         $measures = Measure::all();
         $brand = Brand::all();
         $color = Color::all();
         $type = Type::all();
-        return view('product-list', ['Category' => $category, 'Measures' => $measures, 'Brands' => $brand, 'Colors' => $color, 'Types' => $type]);
+        $product = Product::where('category_id', $id);
+
+        if(!is_null($filter)){
+            switch(strtolower($filter))
+            {
+                case 'measure':
+                    $product = $product->where('measure_id', $filter_id);
+                break;
+
+                case 'color':
+                    $product = $product->where('color_id', $filter_id);
+                break;
+
+                case 'brand':
+                    $product = $product->where('brand_id', $filter_id);
+                break;
+
+                case 'type':
+                    $product = $product->where('type_id', $filter_id);
+                break;
+            }
+        }
+
+        $product = $product->get();
+        return view('product-list', ['Category' => $category, 'Measures' => $measures, 'Brands' => $brand, 'Colors' => $color, 'Types' => $type, 'Products' => $product]);
     }
 }
