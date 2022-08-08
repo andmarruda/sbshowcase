@@ -95,10 +95,10 @@ class BannerController extends Controller
         if($r->hasFile('image') && $r->file('image')->isValid()){
             $i = new ImagesSizeController($r->file('image'), $image);
             $i->resize();
-            $image = $i->name;
             if($image != ''){
                 $i->deleteCascade();
             }
+            $image = $i->name;
         }
 
         $banner->fill([

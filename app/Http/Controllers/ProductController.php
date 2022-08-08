@@ -129,8 +129,12 @@ class ProductController extends Controller
         $image = $prod->image ?? '';
 
         if($request->hasFile('image')){
-            $gc = new GeneralController();
-            $image = $gc->convertToWebp($request->file('image'), public_path($prod->getImage()));
+            $i = new ImagesSizeController($request->file('image'), public_path($prod->getImage()));
+            $i->resize();
+            if($image != ''){
+                $i->deleteCascade();
+            }
+            $image = $i->name;
         }
 
         $prod->fill([
