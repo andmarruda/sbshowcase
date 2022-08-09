@@ -131,11 +131,14 @@ class ProductController extends Controller
         if($request->hasFile('image')){
             $i = new ImagesSizeController($request->file('image'), public_path($prod->getImage()));
             $i->resize();
-            if($image != ''){
+            if($image != '' && Product::where('image', '=', $image)->where('id', '!=', $prod->id)->count() == 0){
                 $i->deleteCascade();
             }
             $image = $i->name;
         }
+
+        if($request->input('copy')=='1' && $image=='')
+            $image = $request->input('copy_image');
 
         $prod->fill([
             'name' => $request->input('name'),

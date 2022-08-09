@@ -4,6 +4,8 @@
 <form method="post" id="productForm" action="{{route('product.save')}}" autocomplete="off" enctype="multipart/form-data">
     <input type="hidden" name="id" id="id" value="{{(!is_null($Product) && (is_null($Copy) || $Copy != 1)) ? $Product->id : ''}}">
     <input type="hidden" id="descriptionText" name="descriptionText" value="{{$Product->description ?? ''}}">
+    <input type="hidden" id="copy_image" name="copy_image" value="{{$Product->image ?? ''}}">
+    <input type="hidden" id="copy" name="copy" value="{{$Copy ?? 0}}">
     @csrf
 
     <nav aria-label="breadcrumb">
