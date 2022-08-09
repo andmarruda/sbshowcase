@@ -21,7 +21,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{route('dashboard')}}">Dados cadastrais</a>
+                                    <a class="nav-link active" aria-current="page" href="{{route('customer-registration-data')}}">Dados cadastrais</a>
                                 </li>
 
                                 <li class="nav-item">

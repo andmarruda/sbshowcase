@@ -57,6 +57,43 @@
                         <input type="password" class="form-control" id="password-confirm" name="password-confirm" required="" placeholder="Confirmação de senha">
                     </div>
 
+                    <hr>
+                    <h5>Endereço Completo</h5>
+                    <div class="mb-3">
+                        <label for="zip_code" class="form-label">CEP</label>
+                        <input type="text" class="form-control" id="zip_code" name="zip_code" required="" placeholder="CEP">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Endereço</label>
+                        <input type="text" class="form-control" id="address" name="address" required="" placeholder="Endereço">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="number" class="form-label">Número</label>
+                        <input type="text" class="form-control" id="number" name="number" required="" placeholder="Número">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="complement" class="form-label">Complemento</label>
+                        <input type="text" class="form-control" id="complement" name="complement" required="" placeholder="Complemento">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="neighborhood" class="form-label">Bairro</label>
+                        <input type="text" class="form-control" id="neighborhood" name="neighborhood" required="" placeholder="Bairro">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="city" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="city" name="city" required="" placeholder="Cidade">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="state" class="form-label">UF</label>
+                        <input type="text" class="form-control" id="state" name="state" required="" placeholder="UF">
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                     <div class="mb-3">
                         <a href="{{route('customer-login')}}">Já tem cadastro? Entrar</a>

@@ -55,6 +55,18 @@ class CustomerAreaController extends Controller
     }
 
     /**
+     * Returns blade of customer area "registration data"
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function registrationData() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    {
+        return view('customer-area.registration-data');
+    }
+
+    /**
      * Verify if customer are logged in
      * @version     1.0.0
      * @author      Anderson Arruda < andmarruda@gmail.com >
