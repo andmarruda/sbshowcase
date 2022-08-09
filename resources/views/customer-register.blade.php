@@ -85,13 +85,20 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="city" class="form-label">Cidade</label>
-                        <input type="text" class="form-control" id="city" name="city" required="" placeholder="Cidade">
+                        <label for="state" class="form-label">UF</label>
+                        <select class="form-control" id="state" name="state">
+                            <option value="">Selecione...</option>
+                            @forelse($State as $st)
+                            <option value="{{ $st->id }}">{{ $st->state_name }}</option>
+                            @empty
+                            <option value="">Nenhum estado cadastrado</option>
+                            @endforelse
+                        </select>
                     </div>
 
                     <div class="mb-3">
-                        <label for="state" class="form-label">UF</label>
-                        <input type="text" class="form-control" id="state" name="state" required="" placeholder="UF">
+                        <label for="city" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="city" name="city" required="" placeholder="Cidade">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Cadastrar</button>

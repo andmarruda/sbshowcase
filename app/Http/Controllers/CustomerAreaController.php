@@ -27,7 +27,8 @@ class CustomerAreaController extends Controller
      */
     public function customerRegister() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('customer-register');
+        $state = new StateController();
+        return view('customer-register', ['State' => $state->allAvailableStates()]);
     }
 
     /**

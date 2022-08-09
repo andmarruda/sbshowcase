@@ -29,11 +29,10 @@ class StateController extends Controller
     public function allAvailableStates() : \Illuminate\Support\Collection
     {
         return DB::table('delivery_settings', 'ds')
-                    ->join('cities as c', 'c.id', '=', 'ds.city_id')
-                    ->join('states as s', 's.id', '=', 'c.state_id')
+                    ->join('cities as c', 'c.city_id', '=', 'ds.city_id')
+                    ->join('states as s', 's.state_id', '=', 'c.state_id')
                     ->select('s.id', 's.state_name')
                     ->groupBy('s.id')
                     ->get();
-        ;
     }
 }
