@@ -134,3 +134,14 @@ footer{
 .alert ul{
     margin-bottom: 0 !important;
 }
+
+.img-container{
+    width:230px;
+    height:154px;
+    overflow:hidden;
+    margin-bottom: 1rem;
+}
+
+.img-container img{
+    max-width:230px;
+}
