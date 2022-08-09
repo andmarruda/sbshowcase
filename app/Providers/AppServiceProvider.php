@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //Public template informations
-        View::composer(['template.public', 'homepage', 'product-detail', 'product-list'], PublicTemplateComposer::class);
+        View::composer(['template.public', 'homepage', 'product-detail', 'product-list', 'template.customer'], PublicTemplateComposer::class);
         View::composer('admin.product', ProductFormComposer::class);
     }
 }

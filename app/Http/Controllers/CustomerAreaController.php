@@ -29,4 +29,43 @@ class CustomerAreaController extends Controller
     {
         return view('customer-register');
     }
+
+    /**
+     * Returns blade of customer area "customer dashboard"
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function customerArea() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    {
+        return view('template.customer');
+    }
+
+    /**
+     * Verify if customer are logged in
+     * @version     1.0.0
+     * @author      Anderson Arruda < andmarruda@gmail.com >
+     * @param       
+     * @return      bool
+     */
+    public function isLogged() : bool
+    {
+        return session_status() == PHP_SESSION_ACTIVE && (isset($_SESSION['sbcustomer-area']) && isset($_SESSION['sbcustomer-area']['email']));
+    }
+
+    /**
+     * Logout of the customer's area
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           
+     * @return          \Illuminate\Http\RedirectResponse
+     */
+    public function logout() : \Illuminate\Http\RedirectResponse
+    {
+        if($this->isLogged())
+            session_destroy();
+
+        return redirect()->route('main');
+    }
 }
