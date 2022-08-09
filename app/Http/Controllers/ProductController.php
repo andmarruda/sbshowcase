@@ -110,7 +110,7 @@ class ProductController extends Controller
 
         $request->validate([
             'name' => 'required|min:3|max:150',
-            'descriptionText' => 'required|min:30|max:500',
+            'descriptionText' => 'required|min:30',
             'old_price' => 'required|numeric',
             'percentage_discount' => 'required|numeric',
             'price' => 'required|numeric',
