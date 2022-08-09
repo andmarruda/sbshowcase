@@ -39,7 +39,19 @@ class CustomerAreaController extends Controller
      */
     public function customerArea() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('template.customer');
+        return view('customer-area.orders');
+    }
+
+    /**
+     * Returns blade of customer area "change password"
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function changePassword() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    {
+        return view('customer-area.change-password');
     }
 
     /**

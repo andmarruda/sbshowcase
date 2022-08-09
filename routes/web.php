@@ -43,6 +43,7 @@ Route::get('/customer-register', [CustomerAreaController::class, 'customerRegist
 Route::prefix('/customer-area')->group(function() {
     Route::get('/', [CustomerAreaController::class, 'customerArea'])->name('customer-area');
     Route::get('/logout', [CustomerAreaController::class, 'logout'])->name('customer-logout');
+    Route::get('/change-password', [CustomerAreaController::class, 'changePassword'])->name('customer-change-password');
 });
 
 //admin backend
