@@ -92,6 +92,11 @@ class MeasuresController extends Controller
             'length' => 'required'
         ], $this->errors);
 
+        $exists = Measure::where('width', '=', $request->input('width'))->where('height', '=', $request->input('height'))->where('length', '=', $request->input('length'));
+        if($exists->count() > 0){
+            return redirect()->back()->withErrors('A medida já existe no sistema. Largura: '. $request->input('width'). ' Altura: '. $request->input('height'). ' Comprimento: '. $request->input('length'));
+        }
+
         $measure = ($request->input('id')=='') ? new Measure() : Measure::find($request->input('id'));
         $measure->fill([
             'width' => $request->input('width'),
