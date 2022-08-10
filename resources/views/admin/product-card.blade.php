@@ -1,6 +1,9 @@
 <div class="col-md-4 mt-4">
     <div class="card">
-        <img src="{{asset('storage/'.$Product->image)}}" class="card-img-top" alt="{{$Product->name}}">
+        <div class="img-container">
+            <img src="{{asset('storage/'.$Product->image)}}" class="card-img-top" alt="{{$Product->name}}">
+        </div>
+        
         <div class="card-body">
             @if(!is_null($Product->deleted_at))
             <div class="alert alert-danger" style="padding:2px;">Produto inativo</div>

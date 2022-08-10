@@ -31,6 +31,7 @@
                                         <li><a class="dropdown-item" href="{{route('brand')}}">Marcas</a></li>
                                         <li><a class="dropdown-item" href="{{route('type')}}">Tipos</a></li>
                                         <li><a class="dropdown-item" href="{{route('product')}}">Produtos</a></li>
+                                        <li><a class="dropdown-item" href="{{route('product.search')}}">Listar produtos</a></li>
                                     </ul>
                                 </li>
 
