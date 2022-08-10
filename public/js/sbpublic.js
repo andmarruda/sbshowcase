@@ -101,8 +101,15 @@ const checkCNPJ = (cnpj) => {
     
     let init_dv1 = 5,
         init_dv2 = 6,
-        sum_dv1 = cnpj.substr(0,12).split('').reduce((prev, val) => Number(prev) + (Number(val) * init_dv1--), 0),
-        sum_dv2 = cnpj.substr(0,13).split('').reduce((prev, val) => Number(prev) + (Number(val) * init_dv2--), 0);
+        sum_dv1 = cnpj.substr(0,12).split('').reduce((prev, val) => {
+            init_dv1 = init_dv1 == 1 ? 9 : init_dv1;
+            return Number(prev) + (Number(val) * init_dv1--);
+        }, 0),
+
+        sum_dv2 = cnpj.substr(0,13).split('').reduce((prev, val) => {
+            init_dv2 = init_dv2 == 1 ? 9 : init_dv2;
+            return Number(prev) + (Number(val) * init_dv2--);
+        }, 0);
 
     return (sum_dv1 % 11 < 2 ? 0 : 11 - sum_dv1 % 11) == cnpj.substr(12,1) && (sum_dv2 % 11 < 2 ? 0 : 11 - sum_dv2 % 11) == cnpj.substr(13,1);
 };
