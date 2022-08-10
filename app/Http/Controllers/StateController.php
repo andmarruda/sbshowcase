@@ -31,8 +31,8 @@ class StateController extends Controller
         return DB::table('delivery_settings', 'ds')
                     ->join('cities as c', 'c.city_id', '=', 'ds.city_id')
                     ->join('states as s', 's.state_id', '=', 'c.state_id')
-                    ->select('s.id', 's.state_name')
-                    ->groupBy('s.id')
+                    ->select('s.state_id', 's.state_name')
+                    ->distinct()
                     ->get();
     }
 }

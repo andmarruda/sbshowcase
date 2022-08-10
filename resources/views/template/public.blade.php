@@ -40,5 +40,8 @@
         </footer>
 
         <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+        @if(\Request::route()->getName()=='customer-register')
+        <script src="{{asset('js/sbpublic.js')}}"></script>
+        @endif
     </body>
 </html>
