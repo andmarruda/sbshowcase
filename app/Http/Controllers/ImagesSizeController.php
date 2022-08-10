@@ -107,6 +107,6 @@ class ImagesSizeController extends ImageController
         {
             $srcset .= asset('storage/'. $size->id. '_'. $file). ' '. $size->max_width. 'w, ';
         }
-        return $srcset;
+        return rtrim($srcset, ', ');
     }
 }
