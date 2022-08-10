@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
     @include('template.includes.head', ['title' => 'Biosono Colchões'])
     <body>
         <header class="container-lg">

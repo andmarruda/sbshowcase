@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
     @include('template.includes.head', ['title' => $template['general']->brand.' - Área do cliente'])
     <body class="body-admin">
         <div class="container-lg">

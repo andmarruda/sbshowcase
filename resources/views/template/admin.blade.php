@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
     @include('template.includes.head', ['title' => config('app.name').' - Admin'])
     <body class="body-admin">
         <div class="container-lg">
