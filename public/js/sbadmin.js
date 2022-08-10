@@ -61,17 +61,3 @@ const confirmEnableDisable = async (route, id, token) => {
 const previewImage = ({target}, img_id) => {
     document.getElementById(img_id).src = URL.createObjectURL(target.files[0]);
 };
-
-const searchCep = async (cep, fields) => {
-    let url = 'https://viacep.com.br/ws/'+ cep +'/json/';
-    let f = await fetch(url);
-    let j = await f.json();
-    j['uf'] = j.ibge.substr(0, 2);
-
-    for(let field in fields){
-        if(!fields.hasOwnProperty(field))
-            continue;
-
-        document.getElementById(field).value = j[fields[field]];
-    }
-}

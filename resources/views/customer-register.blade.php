@@ -61,7 +61,11 @@
                     <h5>Endereço Completo</h5>
                     <div class="mb-3">
                         <label for="zip_code" class="form-label">* CEP</label>
-                        <input type="text" class="form-control" id="zip_code" name="zip_code" required="" placeholder="CEP">
+                        <input type="text" class="form-control" id="zip_code" name="zip_code" required="" placeholder="CEP" maxlength="9">
+                    </div>
+
+                    <div class="mb-3" id="cep-error" style="display:none;">
+                        <div class="alert alert-danger">Por favor preencha um CEP válido!</div>
                     </div>
                     
                     <div class="mb-3">
@@ -103,6 +107,10 @@
                         </select>
                     </div>
 
+                    <div class="mb-3" id="city-error" style="display:none;">
+                        <div class="alert alert-danger">Infelizmente não entregamos em sua cidade!</div>
+                    </div>
+
                     <div class="mb-3">
                         * Campos obrigatórios
                     </div>
@@ -120,7 +128,18 @@
     const cities = @json($City);
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('state').addEventListener('change', (event) => {
-            load_cities(event, 'city', cities);
+            load_cities(event.target, 'city', cities);
+        });
+
+        document.getElementById('zip_code').addEventListener('blur', (event) => {
+            cepEvent(event, 'cep-error', 'city-error', {
+                state: 'state',
+                city: 'city',
+                address: 'address',
+                neighborhood: 'neighborhood',
+                complement: 'complement',
+                number: 'number'
+            }, cities);
         });
     });
 </script>
