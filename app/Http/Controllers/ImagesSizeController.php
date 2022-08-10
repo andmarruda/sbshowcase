@@ -109,4 +109,22 @@ class ImagesSizeController extends ImageController
         }
         return rtrim($srcset, ', ');
     }
+
+    /**
+     * Get all image sizes set
+     * @version     1.0.0
+     * @author      Anderson Arruda < andmarruda@gmail.com >
+     * @param       
+     * @return      string
+     */
+    public static function getImgSizes() : string
+    {
+        $sizes = ImagesSize::all();
+        $sizesset = '';
+        foreach($sizes as $size){
+            $sizesset .= '(max-width: '. $size->max_width. 'px) '. $size->max_width. 'px, ';
+        }
+
+        return rtrim($sizesset, ', ');
+    }
 }

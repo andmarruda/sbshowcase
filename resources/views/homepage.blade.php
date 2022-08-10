@@ -20,7 +20,7 @@
                 @foreach($Banner as $b)
                 <div class="carousel-item{{($first++) == 0 ? ' active' : ''}}">
                     <a href="{{$b->link}}" title="{{$b->name}}">
-                        <img src="{{asset($b->getImage())}}" class="d-block w-100" alt="{{$b->name}}" srcset="{!! $b->getImgSrcSet() !!}">
+                        <img src="{{asset($b->getImage())}}" class="d-block w-100" alt="{{$b->name}}" srcset="{!! $b->getImgSrcSet() !!}" sizes="{!! $b->getImgSizeSet() !!}">
                     </a>
                 </div>
                 @endforeach
@@ -110,6 +110,7 @@
                 'price' => $prd->price,
                 'installments_limit' => $prd->installments_limit,
                 'srcset' => $prd->getImgSrcSet(),
+                'sizeset' => $prd->getImgSizeSet(),
                 'highlightbg' => $template['templates']->highlightbg,
                 'highlightcolor' => $template['templates']->highlightcolor,
                 'primarybg' => $template['templates']->primarybg,

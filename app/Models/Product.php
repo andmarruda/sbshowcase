@@ -94,4 +94,15 @@ class Product extends Model
     {
         return ImagesSizeController::getImgSrcSet($this->image);
     }
+
+    /**
+     * Returns html 5 img sizeset for the loaded model
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @return          string
+     */
+    public function getImgSizeSet() : string
+    {
+        return ImagesSizeController::getImgSizes();
+    }
 }

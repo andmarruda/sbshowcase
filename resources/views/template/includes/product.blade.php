@@ -1,6 +1,10 @@
 <section class="col-md-4">
     <div class="img-container">
-        <img src="{{$image}}" alt="{{$name}}" srcset="{{$srcset}}">
+        @if(strlen($srcset) > 0 && strlen($sizeset) > 0)
+        <img src="{{$image}}" alt="{{$name}}" srcset="{{$srcset}}" sizes="{{$sizeset}}">
+        @else
+        <img src="{{$image}}" alt="{{$name}}">
+        @endif
     </div>
     <div class="infos">
         <h2>{{$name}}</h2>
