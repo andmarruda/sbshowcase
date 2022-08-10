@@ -31,8 +31,12 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="cpf" class="form-label">* CPF / CNPJ</label>
-                        <input type="text" class="form-control" id="cpf_cnpj" name="cpf_cnpj" required="" placeholder="CPF / CNPJ">
+                        <label for="cpf" class="form-label">* CPF / CNPJ<br><small>Somente números</small></label>
+                        <input type="number" min="1" max="99999999999999" step="1" class="form-control" id="cpf_cnpj" name="cpf_cnpj" required="" placeholder="CPF / CNPJ">
+                    </div>
+
+                    <div class="mb-3" id="cpf-cnpj-error" style="display:none;">
+                        <div class="alert alert-danger">O CPF/CNPJ não é válido! Por favor preencha um CPF/CNPJ válido!</div>
                     </div>
 
                     <div class="mb-3">
