@@ -9,7 +9,7 @@
             <div class="alert alert-danger" style="padding:2px;">Produto inativo</div>
             @endif
             <h5 class="card-title">{{$Product->name}}</h5>
-            <p class="card-text">{!!substr($Product->description, 0, 200)!!}</p>
+            <p class="card-text">{!! strip_tags(substr($Product->description, 0, 200)) !!}</p>
         </div>
 
         @php

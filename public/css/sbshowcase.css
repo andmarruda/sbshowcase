@@ -140,8 +140,10 @@ footer{
     height:154px;
     overflow:hidden;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .img-container img{
     max-width:230px;
+    margin: 0 auto;
 }
