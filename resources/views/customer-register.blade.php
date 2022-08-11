@@ -27,11 +27,11 @@
 
                     <div class="mb-3">
                         <label for="nascimento" class="form-label">* Data nascimento<br><small>necessário pra identificar a maioridade, no formato DD/MM/AAAA</small></label>
-                        <input type="date" class="form-control" id="birthdate" name="birthdate" required="" placeholder="Data nascimento">
+                        <input type="date" class="form-control" id="birthdate" name="birthdate" required="" minlength="5" maxlength="100" placeholder="Data nascimento">
                     </div>
 
                     <div class="mb-3">
-                        <label for="cpf" class="form-label">* CPF / CNPJ<br><small>Somente números</small></label>
+                        <label for="cpf_cnpj" class="form-label">* CPF / CNPJ<br><small>Somente números</small></label>
                         <input type="number" min="1" max="99999999999999" step="1" class="form-control" id="cpf_cnpj" name="cpf_cnpj" required="" placeholder="CPF / CNPJ">
                     </div>
 
@@ -84,7 +84,7 @@
 
                     <div class="mb-3">
                         <label for="complement" class="form-label">Complemento</label>
-                        <input type="text" class="form-control" id="complement" name="complement" required="" placeholder="Complemento">
+                        <input type="text" class="form-control" id="complement" name="complement" placeholder="Complemento">
                     </div>
 
                     <div class="mb-3">
@@ -144,6 +144,10 @@
                 complement: 'complement',
                 number: 'number'
             }, cities);
+        });
+
+        document.getElementById('cpf_cnpj').addEventListener('blur', (event) => {
+            checkCpfCnpj(event.target, 'cpf-cnpj-error');
         });
     });
 </script>
