@@ -29,6 +29,14 @@ class CustomerAreaController extends Controller
         'password.min' => 'O campo senha deve ter no mínimo 8 caracteres',
         'password.confirmed' => 'As senhas informadas não conferem',
         'password.regex' => 'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número',
+        'oldPassword.required' => 'O campo senha é obrigatório',
+        'oldPassword.min' => 'O campo senha deve ter no mínimo 8 caracteres',
+        'oldPassword.confirmed' => 'As senhas informadas não conferem',
+        'oldPassword.regex' => 'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número',
+        'newPassword.required' => 'O campo senha é obrigatório',
+        'newPassword.min' => 'O campo senha deve ter no mínimo 8 caracteres',
+        'newPassword.confirmed' => 'As senhas informadas não conferem',
+        'newPassword.regex' => 'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número',
         'cep.required' => 'O campo CEP é obrigatório',
         'cep.min' => 'O CEP informado é inválido',
         'cep.max' => 'O CEP informado é inválido',
@@ -202,9 +210,33 @@ class CustomerAreaController extends Controller
             session_start();
             $_SESSION['sbcustomer-area']['email'] = $customer->email;
             $_SESSION['sbcustomer-area']['name'] = $customer->name;
+            $_SESSION['sbcustomer-area']['id'] = $customer->id;
             return redirect()->route('customer-area');
         } else {
-            return redirect()->route('customer-login')->with('error', 'E-mail ou senha incorretos');
+            return redirect()->route('customer-login')->withErrors('error', 'E-mail ou senha incorretos');
+        }
+    }
+
+    /**
+     * Update customer password
+     * @version     1.0.0
+     * @author      Anderson Arruda < andmarruda@gmail.com >
+     * @param       Request $r
+     * @return      \Illuminate\Http\RedirectResponse
+     */
+    public function updatePassword(Request $r) : \Illuminate\Http\RedirectResponse
+    {
+        $r->validate([
+            'oldPassword' => 'required|min:8|regex:/(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)/',
+            'newPassword' => 'required|min:8|regex:/(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)/|confirmed'
+        ], $this->requestMessages);
+        $ca = Customer::find($_SESSION['sbcustomer-area']['id']);
+        if(!is_null($ca) && $ca->count() > 0 && password_verify($r->input('oldPassword'), $ca->password)){
+            $ca->password = bcrypt($r->input('newPassword'));
+            $saved = $ca->save();
+            return redirect()->route('customer-change-password')->with('saved', $saved);
+        } else {
+            return redirect()->route('customer-change-password')->withErrors('error', 'Senha atual incorreta');
         }
     }
 

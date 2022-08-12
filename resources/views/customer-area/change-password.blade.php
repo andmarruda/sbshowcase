@@ -9,7 +9,7 @@
         </ol>
     </nav>
 
-    <form method="post" action="{{route('users.change-password')}}" autocomplete="off">
+    <form method="post" action="{{route('customer-update-password')}}" autocomplete="off">
         @csrf
 
         <div class="mb-3">
