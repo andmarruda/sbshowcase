@@ -26,5 +26,7 @@
         <small>Frete grátis Elegível<br>
         Veja cidades com frete grátis</small>
     </div>
+
+    @include('template.includes.eligible-delivery')
     @endif
 </section>
