@@ -9,6 +9,8 @@
         </ol>
     </nav>
 
+    <p>Bem vindo(a) {{$_SESSION['sbcustomer-area']['name']}}</p>
+
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
