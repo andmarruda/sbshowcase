@@ -40,6 +40,7 @@ Route::get('/our-stores', [ShowcaseController::class, 'stores'])->name('our-stor
 //customer area
 Route::get('/customer-login', [CustomerAreaController::class, 'customerLogin'])->name('customer-login');
 Route::get('/customer-register', [CustomerAreaController::class, 'customerRegister'])->name('customer-register');
+Route::get('/customer-registered', [CustomerAreaController::class, 'customerRegistered'])->name('customer-registered');
 Route::prefix('/customer-area')->group(function() {
     Route::get('/', [CustomerAreaController::class, 'customerArea'])->name('customer-area');
     Route::get('/logout', [CustomerAreaController::class, 'logout'])->name('customer-logout');

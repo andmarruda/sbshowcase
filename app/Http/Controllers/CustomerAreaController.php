@@ -3,10 +3,53 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Customer;
 use App\Rules\CnpjCpf;
 
 class CustomerAreaController extends Controller
 {
+    /**
+     * Messages for request validation
+     * @var array
+     */
+    private array $requestMessages = [
+        'name.required' => 'O campo nome é obrigatório',
+        'name.max' => 'O campo nome deve ter no máximo 100 caracteres',
+        'name.min' => 'O campo nome deve ter no mínimo 5 caracteres',
+        'gender.required' => 'O campo gênero é obrigatório',
+        'cpf_cnpj.required' => 'O campo CPF/CNPJ é obrigatório',
+        'cpf_cnpj.unique' => 'O CPF/CNPJ informado já está cadastrado',
+        'cpf_cnpj.cnpj_cpf' => 'O CPF/CNPJ informado é inválido',
+        'cpf_cnpj.min' => 'O CPF/CNPJ informado é inválido',
+        'cpf_cnpj.max' => 'O CPF/CNPJ informado é inválido',
+        'email.required' => 'O campo e-mail é obrigatório',
+        'email.email' => 'O e-mail informado é inválido',
+        'email.unique' => 'O e-mail informado já está cadastrado',
+        'password.required' => 'O campo senha é obrigatório',
+        'password.min' => 'O campo senha deve ter no mínimo 8 caracteres',
+        'password.confirmed' => 'As senhas informadas não conferem',
+        'password.regex' => 'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número',
+        'cep.required' => 'O campo CEP é obrigatório',
+        'cep.min' => 'O CEP informado é inválido',
+        'cep.max' => 'O CEP informado é inválido',
+        'address.required' => 'O campo endereço é obrigatório',
+        'address.max' => 'O campo endereço deve ter no máximo 150 caracteres',
+        'address.min' => 'O campo endereço deve ter no mínimo 5 caracteres',
+        'number.required' => 'O campo número é obrigatório',
+        'number.max' => 'O campo número deve ter no máximo 10 caracteres',
+        'number.min' => 'O campo número deve ter no mínimo 1 caracteres',
+        'state.required' => 'O campo estado é obrigatório',
+        'city.required' => 'O campo cidade é obrigatório',
+        'neighborhood.required' => 'O campo bairro é obrigatório',
+        'neighborhood.max' => 'O campo bairro deve ter no máximo 50 caracteres',
+        'neighborhood.min' => 'O campo bairro deve ter no mínimo 3 caracteres',
+        'phone.required' => 'O campo telefone é obrigatório',
+        'phone.min' => 'O telefone informado é inválido',
+        'phone.max' => 'O telefone informado é inválido',
+        'birthdate.required' => 'O campo data de nascimento é obrigatório',
+        'birthdate.date' => 'A data de nascimento informada é inválida',
+    ];
+
     /**
      * Show view of customer login
      * @version         1.0.0
@@ -34,6 +77,18 @@ class CustomerAreaController extends Controller
     }
 
     /**
+     * Show view of customer registered
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function customerRegistered() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    {
+        return view('customer-registered');
+    }
+
+    /**
      * Creates a new customer
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
@@ -52,13 +107,29 @@ class CustomerAreaController extends Controller
             'address'       => 'required|min:5|max:150',
             'number'        => 'required|min:1|max:10',
             'neighborhood'  => 'required|min:3|max:50',
-            'state'         => 'required',
-            'city'          => 'required',
+            'state_id'         => 'required',
+            'city_id'          => 'required',
             'phone'         => 'required|min:14|max:15',
             'birthdate'     => 'required|date'
         ], $this->requestMessages);
 
-        return redirect()->route('change-password')->withErrors('oldPassword', 'Senha atual incorreta!');
+        $saved = Customer::create([
+            'name' => $r->input('name'),
+            'gender' => $r->input('gender'),
+            'cpf_cnpj' => $r->input('cpf_cnpj'),
+            'email' => $r->input('email'),
+            'password' => bcrypt($r->input('password')),
+            'cep' => $r->input('cep'),
+            'address' => $r->input('address'),
+            'number' => $r->input('number'),
+            'neighborhood' => $r->input('neighborhood'),
+            'state_id' => $r->input('state_id'),
+            'city_id' => $r->input('city_id'),
+            'phone' => $r->input('phone'),
+            'birthdate' => $r->input('birthdate')
+        ]);
+
+        return redirect()->route('customer-registered')->with('saved', $saved->wasRecentlyCreated)->with('name', $r->input('name'));
     }
 
     /**
