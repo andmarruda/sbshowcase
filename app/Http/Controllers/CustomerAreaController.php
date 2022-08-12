@@ -49,6 +49,8 @@ class CustomerAreaController extends Controller
         'number.min' => 'O campo número deve ter no mínimo 1 caracteres',
         'state.required' => 'O campo estado é obrigatório',
         'city.required' => 'O campo cidade é obrigatório',
+        'state_id.required' => 'O campo estado é obrigatório',
+        'city_id.required' => 'O campo cidade é obrigatório',
         'neighborhood.required' => 'O campo bairro é obrigatório',
         'neighborhood.max' => 'O campo bairro deve ter no máximo 50 caracteres',
         'neighborhood.min' => 'O campo bairro deve ter no mínimo 3 caracteres',
@@ -57,6 +59,8 @@ class CustomerAreaController extends Controller
         'phone.max' => 'O telefone informado é inválido',
         'birthdate.required' => 'O campo data de nascimento é obrigatório',
         'birthdate.date' => 'A data de nascimento informada é inválida',
+        'birth_date.required' => 'O campo data de nascimento é obrigatório',
+        'birth_date.date' => 'A data de nascimento informada é inválida',
         'user.required' => 'O campo Email / CPF / CNPJ é obrigatório',
     ];
     

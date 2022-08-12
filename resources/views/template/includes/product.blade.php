@@ -22,8 +22,9 @@
     </div>
 
     @if(($promotion_flag ?? false))
-    <div class="free-shipping position-absolute top-0 rounded-pill w-75" role="alert" style="background-color: #{{$primarybg}}; color: #{{$primarycolor}};">
-        Frete grátis Rib. Preto
+    <div class="free-shipping position-absolute top-0 rounded-pill w-75" role="alert" style="cursor: pointer; background-color: #{{$primarybg}}; color: #{{$primarycolor}};" data-bs-toggle="modal" data-bs-target="#eligible_delivery">
+        <small>Frete grátis Elegível<br>
+        Veja cidades com frete grátis</small>
     </div>
     @endif
 </section>

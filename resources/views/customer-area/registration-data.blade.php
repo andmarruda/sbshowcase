@@ -36,7 +36,7 @@
 
         <div class="mb-3">
             <label for="nascimento" class="form-label">Data nascimento<br><small>necessário pra identificar a maioridade, no formato DD/MM/AAAA</small></label>
-            <input type="date" class="form-control" id="birthdate" name="birthdate" required="" placeholder="Data nascimento" value="{{$Customer->birth_date}}">
+            <input type="date" class="form-control" id="birth_date" name="birth_date" required="" placeholder="Data nascimento" value="{{$Customer->birth_date}}">
         </div>
 
         <div class="mb-3">
@@ -91,7 +91,7 @@
 
         <div class="mb-3">
             <label for="state" class="form-label">* UF</label>
-            <select class="form-control" id="state" name="state">
+            <select class="form-control" id="state_id" name="state_id">
                 <option value="">Selecione...</option>
                 @forelse($State as $st)
                 
@@ -109,7 +109,7 @@
 
         <div class="mb-3">
             <label for="city" class="form-label">* Cidade</label>
-            <select class="form-control" id="city" name="city" required="">
+            <select class="form-control" id="city_id" name="city_id" required="">
                 <option value="">Selecione...</option>
                 @forelse($StateCities as $stateCity)
                 
@@ -152,8 +152,8 @@
 
         document.getElementById('zip_code').addEventListener('blur', (event) => {
             cepEvent(event, 'cep-error', 'city-error', {
-                state: 'state',
-                city: 'city',
+                state: 'state_id',
+                city: 'city_id',
                 address: 'address',
                 neighborhood: 'neighborhood',
                 complement: 'complement',

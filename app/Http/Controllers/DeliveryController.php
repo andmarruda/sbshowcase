@@ -24,6 +24,18 @@ class DeliveryController extends Controller
         'price.min' => 'O campo preço deve conter no mínimo 4 dígitos, por exemplo: 0.00'
      ];
 
+     /**
+      * Search free delivery configurations
+      * @version        1.0.0
+      * @author         Anderson Arruda < andmarruda@gmail.com >
+      * @param          
+      * @return         object
+      */
+    public function searchFreeDelivery() : object
+    {
+        return DeliverySettings::where('price', '=', 0)->get();
+    }
+
     /**
      * Returns the view of template form inside the admin
      * @version         1.0.0
