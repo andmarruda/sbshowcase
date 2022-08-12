@@ -94,8 +94,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="phone" class="form-label">* Telefone / Celular</label>
-                        <input type="tel" pattern="" class="form-control" id="phone" name="phone" required="" placeholder="Telefone / Celular">
+                        <label for="phone" class="form-label">* Celular</label>
+                        <input type="text" class="form-control" id="phone" name="phone" required="" placeholder="Celular">
                     </div>
 
                     <div class="mb-3">
@@ -157,6 +157,9 @@
         document.getElementById('cpf_cnpj').addEventListener('blur', (event) => {
             checkCpfCnpj(event.target, 'cpf-cnpj-error');
         });
+
+        VMasker(document.getElementById('phone')).maskPattern("(99)99999-9999");
+        VMasker(document.getElementById('zip_code')).maskPattern("99999-999");
     });
 </script>
 @endsection

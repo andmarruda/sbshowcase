@@ -39,6 +39,7 @@ Route::get('/our-stores', [ShowcaseController::class, 'stores'])->name('our-stor
 
 //customer area
 Route::get('/customer-login', [CustomerAreaController::class, 'customerLogin'])->name('customer-login');
+Route::post('/customer-login', [CustomerAreaController::class, 'login'])->name('customer-logging-in');
 Route::get('/customer-register', [CustomerAreaController::class, 'customerRegister'])->name('customer-register');
 Route::get('/customer-registered', [CustomerAreaController::class, 'customerRegistered'])->name('customer-registered');
 Route::post('/customer-register', [CustomerAreaController::class, 'createCustomer'])->name('create-customer');

@@ -48,6 +48,7 @@ class CustomerAreaController extends Controller
         'phone.max' => 'O telefone informado é inválido',
         'birthdate.required' => 'O campo data de nascimento é obrigatório',
         'birthdate.date' => 'A data de nascimento informada é inválida',
+        'user.required' => 'O campo Email / CPF / CNPJ é obrigatório',
     ];
 
     /**
@@ -107,8 +108,8 @@ class CustomerAreaController extends Controller
             'address'       => 'required|min:5|max:150',
             'number'        => 'required|min:1|max:10',
             'neighborhood'  => 'required|min:3|max:50',
-            'state_id'      => 'required',
-            'city_id'       => 'required',
+            'state'         => 'required',
+            'city'          => 'required',
             'phone'         => 'required|min:14|max:15',
             'birthdate'     => 'required|date'
         ], $this->requestMessages);
@@ -119,14 +120,14 @@ class CustomerAreaController extends Controller
             'cpf_cnpj' => $r->input('cpf_cnpj'),
             'email' => $r->input('email'),
             'password' => bcrypt($r->input('password')),
-            'cep' => $r->input('cep'),
+            'zip_code' => $r->input('zip_code'),
             'address' => $r->input('address'),
             'number' => $r->input('number'),
             'neighborhood' => $r->input('neighborhood'),
-            'state_id' => $r->input('state_id'),
-            'city_id' => $r->input('city_id'),
+            'state_id' => $r->input('state'),
+            'city_id' => $r->input('city'),
             'phone' => $r->input('phone'),
-            'birthdate' => $r->input('birthdate'),
+            'birth_date' => $r->input('birthdate'),
             'complement' => $r->input('complement')
         ]);
 
@@ -179,6 +180,32 @@ class CustomerAreaController extends Controller
     public function isLogged() : bool
     {
         return session_status() == PHP_SESSION_ACTIVE && (isset($_SESSION['sbcustomer-area']) && isset($_SESSION['sbcustomer-area']['email']));
+    }
+
+    /**
+     * Makes login of customer
+     * @version     1.0.0
+     * @author      Anderson Arruda < andmarruda@gmail.com >
+     * @param       Request $r
+     * @return      \Illuminate\Http\RedirectResponse
+     */
+    public function login(Request $r) : \Illuminate\Http\RedirectResponse
+    {
+        $r->validate([
+            'user' => 'required',
+            'password' => 'required|min:8|regex:/(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)/'
+        ], $this->requestMessages);
+
+        $customer = Customer::where('email', '=', $r->input('user'))->orWhere('cpf_cnpj', '=', $r->input('user'))->first();
+
+        if(!is_null($customer) && $customer->count() > 0 && password_verify($r->input('password'), $customer->first()->password)){
+            session_start();
+            $_SESSION['sbcustomer-area']['email'] = $customer->email;
+            $_SESSION['sbcustomer-area']['name'] = $customer->name;
+            return redirect()->route('customer-area');
+        } else {
+            return redirect()->route('customer-login')->with('error', 'E-mail ou senha incorretos');
+        }
     }
 
     /**

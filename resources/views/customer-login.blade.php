@@ -9,15 +9,19 @@
             </div>
 
             <div class="card-body">
-                <form method="post" action="index.php">
+                <form method="post" action="{{route('customer-logging-in')}}" autocomplete="off">
+                    @csrf
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email / CPF / CNPJ</label>
+                        <label for="user" class="form-label">Email / CPF / CNPJ</label>
                         <input type="text" class="form-control" id="user" name="user" required="" placeholder="Email / CPF / CNPJ">
                     </div>
                     <div class="mb-3">
-                        <label for="pass" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="pass" name="pass" required="" placeholder="Senha">
+                        <label for="password" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="password" name="password" required="" placeholder="Senha">
                     </div>
+
+                    @include('template.includes.alert-error')
+
                     <button type="submit" class="btn btn-primary">Entrar</button>
                     <div class="mb-3">
                         <a href="{{route('customer-register')}}">Não tem cadastro? Cadastre-se</a>

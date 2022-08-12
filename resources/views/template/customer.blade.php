@@ -74,7 +74,7 @@
         <script src="{{asset('js/fontawesome/all.min.js')}}"></script>
         <script src="{{asset('js/sbadmin.js')}}"></script>
         @if(\Request::route()->getName()=='registration-data')
-        <script src="{{asset('js/sbpublic.js")}}"></script>
+        <script src="{{asset('js/sbpublic.js')}}"></script>
         @endif
     </body>
 </html>
