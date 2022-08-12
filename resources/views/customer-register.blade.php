@@ -20,9 +20,9 @@
                         <label for="gender" class="form-label">* Gênero</label>
                         <select class="form-control" id="gender" name="gender" required="">
                             <option value="">Selecione...</option>
-                            <option value="1">Feminino</option>
-                            <option value="2">Masculino</option>
-                            <option value="3">Não informar</option>
+                            @foreach($Genders as $k => $gender)
+                            <option value="{{$k}}">{{$gender}}</option>
+                            @endforeach
                         </select>
                     </div>
 

@@ -58,6 +58,12 @@ class CustomerAreaController extends Controller
         'birthdate.date' => 'A data de nascimento informada é inválida',
         'user.required' => 'O campo Email / CPF / CNPJ é obrigatório',
     ];
+    
+    /**
+     * Available gender for customer
+     * @var array
+     */
+    private array $genders = [1 => 'Feminino', 2 => 'Masculino', 3 => 'Não informar'];
 
     /**
      * Show view of customer login
@@ -82,7 +88,7 @@ class CustomerAreaController extends Controller
     {
         $state = new StateController();
         $city = new CityController();
-        return view('customer-register', ['State' => $state->allAvailableStates(), 'City' => $city->allAvailableCities()]);
+        return view('customer-register', ['State' => $state->allAvailableStates(), 'City' => $city->allAvailableCities(), 'Genders' => $this->genders]);
     }
 
     /**
@@ -175,7 +181,10 @@ class CustomerAreaController extends Controller
      */
     public function registrationData() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('customer-area.registration-data');
+        $ca = Customer::find($_SESSION['sbcustomer-area']['id']);
+        $state = new StateController();
+        $city = new CityController();
+        return view('customer-area.registration-data', ['Customer' => $ca, 'State' => $state->allAvailableStates(), 'City' => $city->allAvailableCities(), 'Genders' => $this->genders]);
     }
 
     /**
