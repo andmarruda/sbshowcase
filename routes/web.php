@@ -43,7 +43,7 @@ Route::post('/customer-login', [CustomerAreaController::class, 'login'])->name('
 Route::get('/customer-register', [CustomerAreaController::class, 'customerRegister'])->name('customer-register');
 Route::get('/customer-registered', [CustomerAreaController::class, 'customerRegistered'])->name('customer-registered');
 Route::post('/customer-register', [CustomerAreaController::class, 'createCustomer'])->name('create-customer');
-Route::prefix('/customer-area')->group(function() {
+Route::prefix('/customer-area')->middleware('SBCustomerAuth')->group(function() {
     Route::get('/', [CustomerAreaController::class, 'customerArea'])->name('customer-area');
     Route::get('/logout', [CustomerAreaController::class, 'logout'])->name('customer-logout');
     Route::get('/change-password', [CustomerAreaController::class, 'changePassword'])->name('customer-change-password');
