@@ -103,12 +103,12 @@ class CustomerAreaController extends Controller
             'cpf_cnpj'      => ['required', 'min:11', 'max:14', new CnpjCpf(), 'unique:customers'],
             'email'         => 'required|email|unique:customers',
             'password'      => 'required|min:8|regex:/(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)/|confirmed',
-            'cep'           => 'required|min:9|max:9',
+            'zip_code'      => 'required|min:9|max:9',
             'address'       => 'required|min:5|max:150',
             'number'        => 'required|min:1|max:10',
             'neighborhood'  => 'required|min:3|max:50',
-            'state_id'         => 'required',
-            'city_id'          => 'required',
+            'state_id'      => 'required',
+            'city_id'       => 'required',
             'phone'         => 'required|min:14|max:15',
             'birthdate'     => 'required|date'
         ], $this->requestMessages);
@@ -126,7 +126,8 @@ class CustomerAreaController extends Controller
             'state_id' => $r->input('state_id'),
             'city_id' => $r->input('city_id'),
             'phone' => $r->input('phone'),
-            'birthdate' => $r->input('birthdate')
+            'birthdate' => $r->input('birthdate'),
+            'complement' => $r->input('complement')
         ]);
 
         return redirect()->route('customer-registered')->with('saved', $saved->wasRecentlyCreated)->with('name', $r->input('name'));

@@ -9,7 +9,8 @@
             </div>
 
             <div class="card-body">
-                <form method="post" action="index.php" autocomplete="off">
+                <form method="post" action="{{route('create-customer')}}" autocomplete="off">
+                    @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">* Nome completo</label>
                         <input type="text" class="form-control" id="name" name="name" required="" placeholder="Nome completo">
@@ -58,7 +59,7 @@
 
                     <div class="mb-3">
                         <label for="email" class="form-label">* Confirmação de senha<br><small>precisa ter entre 6 e 20 caracteres</small></label>
-                        <input type="password" class="form-control" id="password-confirm" name="password-confirm" required="" placeholder="Confirmação de senha">
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required="" placeholder="Confirmação de senha">
                     </div>
 
                     <hr>
@@ -93,6 +94,11 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="phone" class="form-label">* Telefone / Celular</label>
+                        <input type="tel" pattern="" class="form-control" id="phone" name="phone" required="" placeholder="Telefone / Celular">
+                    </div>
+
+                    <div class="mb-3">
                         <label for="state" class="form-label">* UF</label>
                         <select class="form-control" id="state" name="state">
                             <option value="">Selecione...</option>
@@ -118,6 +124,8 @@
                     <div class="mb-3">
                         * Campos obrigatórios
                     </div>
+
+                    @include('template.includes.alert-error')
 
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                     <div class="mb-3">
