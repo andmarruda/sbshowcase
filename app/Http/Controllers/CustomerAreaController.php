@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\City;
 use App\Rules\CnpjCpf;
 
 class CustomerAreaController extends Controller
@@ -184,7 +185,8 @@ class CustomerAreaController extends Controller
         $ca = Customer::find($_SESSION['sbcustomer-area']['id']);
         $state = new StateController();
         $city = new CityController();
-        return view('customer-area.registration-data', ['Customer' => $ca, 'State' => $state->allAvailableStates(), 'City' => $city->allAvailableCities(), 'Genders' => $this->genders]);
+        $stateCities = City::where('state_id', '=', $ca->state_id)->orderBy('city_name', 'ASC')->get();
+        return view('customer-area.registration-data', ['Customer' => $ca, 'State' => $state->allAvailableStates(), 'City' => $city->allAvailableCities(), 'Genders' => $this->genders, 'StateCities' => $stateCities]);
     }
 
     /**

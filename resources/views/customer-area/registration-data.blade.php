@@ -111,6 +111,17 @@
             <label for="city" class="form-label">* Cidade</label>
             <select class="form-control" id="city" name="city" required="">
                 <option value="">Selecione...</option>
+                @forelse($StateCities as $stateCity)
+                
+                @if($stateCity->city_id==$Customer->city_id)
+                <option value="{{ $stateCity->city_id }}" selected="selected">{{ $stateCity->city_name }}</option>
+                @else
+                <option value="{{ $stateCity->city_id }}">{{ $stateCity->city_name }}</option>
+                @endif
+
+                @empty
+                <option value="">Nenhuma cidade cadastrada</option>
+                @endforelse
             </select>
         </div>
 
@@ -131,4 +142,27 @@
         </div>
     </form>
 </div>
+
+<script>
+    const cities = @json($City);
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('state').addEventListener('change', (event) => {
+            load_cities(event.target, 'city', cities);
+        });
+
+        document.getElementById('zip_code').addEventListener('blur', (event) => {
+            cepEvent(event, 'cep-error', 'city-error', {
+                state: 'state',
+                city: 'city',
+                address: 'address',
+                neighborhood: 'neighborhood',
+                complement: 'complement',
+                number: 'number'
+            }, cities);
+        });
+
+        VMasker(document.getElementById('phone')).maskPattern("(99)99999-9999");
+        VMasker(document.getElementById('zip_code')).maskPattern("99999-999");
+    });
+</script>
 @endsection
