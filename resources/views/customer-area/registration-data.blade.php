@@ -9,17 +9,16 @@
         </ol>
     </nav>
 
-    <form method="post" action="{{route('users.change-password')}}" autocomplete="off">
-        <input type="hidden" name="id" id="id" value="{{$Customer->id}}">
+    <form method="post" action="{{route('customer-update-registration-data')}}" autocomplete="off">
         @csrf
 
         <div class="mb-3">
-            <label for="name" class="form-label">Nome completo</label>
+            <label for="name" class="form-label">* Nome completo</label>
             <input type="text" class="form-control" id="name" name="name" required="" placeholder="Nome completo" value="{{$Customer->name}}">
         </div>
 
         <div class="mb-3">
-            <label for="gender" class="form-label">Gênero</label>
+            <label for="gender" class="form-label">* Gênero</label>
             <select class="form-control" id="gender" name="gender" required="">
                 <option value="">Selecione...</option>
                 @foreach($Genders as $k => $gender)
@@ -35,7 +34,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="nascimento" class="form-label">Data nascimento<br><small>necessário pra identificar a maioridade, no formato DD/MM/AAAA</small></label>
+            <label for="nascimento" class="form-label">* Data nascimento<br><small>necessário pra identificar a maioridade, no formato DD/MM/AAAA</small></label>
             <input type="date" class="form-control" id="birth_date" name="birth_date" required="" placeholder="Data nascimento" value="{{$Customer->birth_date}}">
         </div>
 
@@ -60,17 +59,17 @@
         <h5>Endereço Completo</h5>
 
         <div class="mb-3">
-            <label for="zip_code" class="form-label">CEP</label>
+            <label for="zip_code" class="form-label">* CEP</label>
             <input type="text" class="form-control" id="zip_code" name="zip_code" required="" placeholder="CEP" value="{{$Customer->zip_code}}">
         </div>
         
         <div class="mb-3">
-            <label for="address" class="form-label">Endereço</label>
+            <label for="address" class="form-label">* Endereço</label>
             <input type="text" class="form-control" id="address" name="address" required="" placeholder="Endereço" value="{{$Customer->address}}">
         </div>
 
         <div class="mb-3">
-            <label for="number" class="form-label">Número</label>
+            <label for="number" class="form-label">* Número</label>
             <input type="text" class="form-control" id="number" name="number" required="" placeholder="Número" value="{{$Customer->number}}">
         </div>
 
@@ -80,7 +79,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="neighborhood" class="form-label">Bairro</label>
+            <label for="neighborhood" class="form-label">* Bairro</label>
             <input type="text" class="form-control" id="neighborhood" name="neighborhood" required="" placeholder="Bairro" value="{{$Customer->neighborhood}}">
         </div>
 
@@ -134,7 +133,7 @@
         @include('template.includes.alert-error')
 
         @if(!is_null(session('saved')))
-            @include('template.includes.alert-saved', ['success' => 'Senha alterada com sucesso!', 'error' => 'Erro ao alterar a senha!', 'saved' => session('saved')])
+            @include('template.includes.alert-saved', ['success' => 'Dados cadastrados alterados com sucesso!', 'error' => 'Erro ao alterar dados cadastrados!', 'saved' => session('saved')])
         @endif
 
         <div class="mb-3">

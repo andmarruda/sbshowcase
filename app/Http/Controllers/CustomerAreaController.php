@@ -109,6 +109,44 @@ class CustomerAreaController extends Controller
     }
 
     /**
+     * Update customer data
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $request
+     * @return          \Illuminate\Http\RedirectResponse
+     */
+    public function updateCustomer(Request $r) : \Illuminate\Http\RedirectResponse
+    {
+        $r->validate([
+            'name'          => 'required|min:5|max:100',
+            'gender'        => 'required',
+            'zip_code'      => 'required|min:9|max:9',
+            'address'       => 'required|min:5|max:150',
+            'number'        => 'required|min:1|max:10',
+            'neighborhood'  => 'required|min:3|max:50',
+            'state_id'         => 'required',
+            'city_id'          => 'required',
+            'phone'         => 'required|min:14|max:15',
+            'birth_date'     => 'required|date'
+        ], $this->requestMessages);
+        $customer = Customer::find($_SESSION['sbcustomer-area']['id']);
+        $customer->name = $r->input('name');
+        $customer->gender = $r->input('gender');
+        $customer->zip_code = $r->input('zip_code');
+        $customer->address = $r->input('address');
+        $customer->number = $r->input('number');
+        $customer->neighborhood = $r->input('neighborhood');
+        $customer->state_id = $r->input('state_id');
+        $customer->city_id = $r->input('city_id');
+        $customer->phone = $r->input('phone');
+        $customer->birth_date = $r->input('birth_date');
+        $customer->complement = $r->input('complement');
+        $saved = $customer->save();
+
+        return redirect()->route('customer-registration-data')->with('saved', $saved);
+    }
+
+    /**
      * Creates a new customer
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >

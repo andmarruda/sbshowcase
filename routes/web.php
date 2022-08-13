@@ -49,6 +49,7 @@ Route::prefix('/customer-area')->middleware('SBCustomerAuth')->group(function() 
     Route::get('/change-password', [CustomerAreaController::class, 'changePassword'])->name('customer-change-password');
     Route::post('/change-password', [CustomerAreaController::class, 'updatePassword'])->name('customer-update-password');
     Route::get('/registration-data', [CustomerAreaController::class, 'registrationData'])->name('customer-registration-data');
+    Route::post('/registration-data/update', [CustomerAreaController::class, 'updateCustomer'])->name('customer-update-registration-data');
 });
 
 //admin backend
