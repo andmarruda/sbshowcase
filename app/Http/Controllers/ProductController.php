@@ -13,7 +13,7 @@ class ProductController extends Controller
      * Number of products per page
      * @var integer
      */
-    private int $productsPerPage = 21;
+    private int $productsPerPage = 45;
 
     /**
      * Error's messages
@@ -154,7 +154,8 @@ class ProductController extends Controller
             'installments_limit' => $request->input('installments_limit'),
             'quantity' => $request->input('quantity'),
             'promotion_flag' => $request->input('promotion_flag'),
-            'image' => $image
+            'image' => $image,
+            'additional_observations' => $request->input('additional_observations')
         ]);
 
         $saved = $prod->save();

@@ -137,6 +137,13 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col">
+            <label for="additional_observations" class="form-label">Observações adicionais</label>
+            <input type="text" class="form-control" id="additional_observations" name="additional_observations" placeholder="Observações adicionais" value="{{$Product->additional_observations ?? ''}}">
+        </div>
+    </div>
+
     <div class="mb-3">
         <label for="description" class="form-label">Descrição do produto</label>
         <div id="description" style="min-height:200px;"></div>
