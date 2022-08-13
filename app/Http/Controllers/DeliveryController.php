@@ -23,7 +23,7 @@ class DeliveryController extends Controller
         'price.required' => 'O campo preço é obrigatório',
         'price.min' => 'O campo preço deve conter no mínimo 4 dígitos, por exemplo: 0.00'
      ];
-
+    
      /**
       * Search free delivery configurations
       * @version        1.0.0
@@ -33,7 +33,7 @@ class DeliveryController extends Controller
       */
     public function searchFreeDelivery() : object
     {
-        return DeliverySettings::where('price', '=', 0)->get();
+        return DeliverySettings::with('city.state')->where('price', '=', 0)->get();
     }
 
     /**

@@ -39,6 +39,8 @@
             @include('template.includes.footer-poweredby', ['blog' => $template['general']->blog_url, 'sitemap' => null])
         </footer>
 
+        @include('template.includes.eligible-delivery')
+
         <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
         @if(\Request::route()->getName()=='customer-register')
         <script src="{{asset('js/sbpublic.js')}}"></script>
