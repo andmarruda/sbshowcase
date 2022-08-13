@@ -177,7 +177,7 @@ class UserController extends Controller
             return redirect()->route('change-password')->with('saved', $saved);
         }
         
-        return redirect()->route('change-password')->withErrors('oldPassword', 'Senha atual incorreta!');
+        return redirect()->route('change-password')->withErrors(['oldPassword' => 'Senha atual incorreta!']);
     }
 
     /**

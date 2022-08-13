@@ -20,6 +20,10 @@
                         <input type="password" class="form-control" id="password" name="password" required="" placeholder="Senha">
                     </div>
 
+                    @if($errors->any())
+                    errou
+                    @endif
+
                     @include('template.includes.alert-error')
 
                     <button type="submit" class="btn btn-primary">Entrar</button>

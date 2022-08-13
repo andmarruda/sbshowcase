@@ -266,7 +266,7 @@ class CustomerAreaController extends Controller
             $_SESSION['sbcustomer-area']['id'] = $customer->id;
             return redirect()->route('customer-area');
         } else {
-            return redirect()->route('customer-login')->withErrors('error', 'E-mail ou senha incorretos');
+            return redirect()->route('customer-login')->withErrors(['user' => 'E-mail ou senha incorretos']);
         }
     }
 
@@ -289,7 +289,7 @@ class CustomerAreaController extends Controller
             $saved = $ca->save();
             return redirect()->route('customer-change-password')->with('saved', $saved);
         } else {
-            return redirect()->route('customer-change-password')->withErrors('error', 'Senha atual incorreta');
+            return redirect()->route('customer-change-password')->withErrors(['oldPassword' => 'Senha atual incorreta']);
         }
     }
 
