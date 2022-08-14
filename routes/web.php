@@ -19,6 +19,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerAreaController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,8 @@ Route::post('/customer-login', [CustomerAreaController::class, 'login'])->name('
 Route::get('/customer-register', [CustomerAreaController::class, 'customerRegister'])->name('customer-register');
 Route::get('/customer-registered', [CustomerAreaController::class, 'customerRegistered'])->name('customer-registered');
 Route::post('/customer-register', [CustomerAreaController::class, 'createCustomer'])->name('create-customer');
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+
 Route::prefix('/customer-area')->middleware('SBCustomerAuth')->group(function() {
     Route::get('/', [CustomerAreaController::class, 'customerArea'])->name('customer-area');
     Route::get('/logout', [CustomerAreaController::class, 'logout'])->name('customer-logout');

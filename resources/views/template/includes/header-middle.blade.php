@@ -16,10 +16,10 @@
                 </li>
                 
                 <li class="list-inline-item">
-                    <a href="void(0);" title="Meu carrinho" class="position-relative">
+                    <a href="{{route('cart')}}" title="Meu carrinho" class="position-relative">
                         <img src="{{asset('images/icon-cart.png')}}" alt="Meu carrinho">
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background-color: #{{$template->secondarybg}}; color: #{{$template->secondarycolor}};">
-                            2
+                            0
                         </span>
                     </a>
                 </li>

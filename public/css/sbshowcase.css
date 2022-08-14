@@ -147,3 +147,14 @@ footer{
     max-width:230px;
     margin: 0 auto;
 }
+
+.textfield::-webkit-outer-spin-button,
+.textfield::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.textfield[type=number] {
+  -moz-appearance: textfield;
+}
