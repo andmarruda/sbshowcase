@@ -10,6 +10,7 @@
             @endif
             <h5 class="card-title">{{$Product->name}}</h5>
             <p class="card-text">{!! strip_tags(substr($Product->description, 0, 200)) !!}</p>
+            <p class="card-text">Observação: {{$Product->additional_observations}}</p>
         </div>
 
         @php

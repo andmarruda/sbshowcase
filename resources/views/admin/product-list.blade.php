@@ -31,5 +31,11 @@
         </div>
         @endforelse
     </div>
+
+    <div class="row" style="margin-top:2rem;">
+        <div class="col-md-12">
+            {{$Products->links()}}
+        </div>
+    </div>
 </form>
 @endsection
