@@ -1,5 +1,5 @@
-<div class="col-md-4 mt-4">
-    <div class="card">
+<div class="col-md-4 mt-4 d-flex align-items-stretch">
+    <div class="card h-100 w-100">
         <div class="img-container">
             <img src="{{asset('storage/'.$Product->image)}}" class="card-img-top" alt="{{$Product->name}}">
         </div>
