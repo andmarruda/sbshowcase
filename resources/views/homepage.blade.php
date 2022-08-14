@@ -57,6 +57,7 @@
                 'highlightcolor' => $template['templates']->highlightcolor,
                 'primarybg' => $template['templates']->primarybg,
                 'primarycolor' => $template['templates']->primarycolor,
+                'additional_observations' => ''
             ])
 
             @include('template.includes.product', [
@@ -72,6 +73,7 @@
                 'highlightcolor' => $template['templates']->highlightcolor,
                 'primarybg' => $template['templates']->primarybg,
                 'primarycolor' => $template['templates']->primarycolor,
+                'additional_observations' => ''
             ])
 
             @include('template.includes.product', [
@@ -88,6 +90,7 @@
                 'highlightcolor' => $template['templates']->highlightcolor,
                 'primarybg' => $template['templates']->primarybg,
                 'primarycolor' => $template['templates']->primarycolor,
+                'additional_observations' => ''
             ])
         </div>
     </div>
@@ -115,6 +118,7 @@
                 'highlightcolor' => $template['templates']->highlightcolor,
                 'primarybg' => $template['templates']->primarybg,
                 'primarycolor' => $template['templates']->primarycolor,
+                'additional_observations' => $prd->additional_observations
             ])
             @empty
             <div class="col-md-12">

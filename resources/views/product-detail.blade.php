@@ -12,6 +12,7 @@
                 <div class="infos">
                     <h1>{{$Product->name}}</h1>
                     <p>{{$Product->name}}</p>
+                    <p>Observação: {{$Product->additional_observations}}</p>
                     <p class="old-price">De: R${{number_format($Product->old_price, 2, ',', '.')}}</p>
                     <p class="price">Por: R${{number_format($Product->price, 2, ',', '.')}}</p>
                     <small>Em até {{$Product->installments_limit}}xR${{number_format(($Product->price / $Product->installments_limit), 2, ',', '.')}} sem juros no cartão de crédito</small><br><br>
