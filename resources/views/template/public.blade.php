@@ -10,7 +10,8 @@
 
             @include('template.includes.header-middle', [
                 'template'   => $template['templates'],
-                'general' => $template['general']
+                'general' => $template['general'],
+                'CartCount' => $template['CartCount']
             ])
 
             @include('template.includes.header-bottom', [
