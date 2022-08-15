@@ -20,7 +20,7 @@
 
         <div class="action">
             <a href="{{route('product-detail', ['id' => $id, 'name' => str_replace(' ', '-', $name)])}}" role="button" class="btn btn-light">Saiba mais</a>
-            <a href="#" role="button" class="btn" style="background-color: #{{$highlightbg}}; color: #{{$highlightcolor}}">+ Carrinho</a>
+            <a href="{{route('cart-add', ['product_id' => $id])}}" role="button" class="btn" style="background-color: #{{$highlightbg}}; color: #{{$highlightcolor}}">+ Carrinho</a>
         </div>
 
         @if(($promotion_flag ?? false))

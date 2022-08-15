@@ -45,6 +45,7 @@ Route::get('/customer-register', [CustomerAreaController::class, 'customerRegist
 Route::get('/customer-registered', [CustomerAreaController::class, 'customerRegistered'])->name('customer-registered');
 Route::post('/customer-register', [CustomerAreaController::class, 'createCustomer'])->name('create-customer');
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+Route::get('/cart/add/{product_id}', [CartController::class, 'add'])->name('cart-add')->where('product_id', '[0-9]+');
 
 Route::prefix('/customer-area')->middleware('SBCustomerAuth')->group(function() {
     Route::get('/', [CustomerAreaController::class, 'customerArea'])->name('customer-area');

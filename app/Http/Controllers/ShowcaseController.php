@@ -32,7 +32,8 @@ class ShowcaseController extends Controller
             'templates'     => Template::find(1),
             'general'       => General::find(1),
             'SocialMedia'   => SocialMediaUrl::all(),
-            'PaymentMethod' => PaymentMethod::where('installments', '>', 0)->get()
+            'PaymentMethod' => PaymentMethod::where('installments', '>', 0)->get(),
+            'CartCount'     => (new CartController())->getQuantity(),
         ];
     }
 
