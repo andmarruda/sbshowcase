@@ -71,7 +71,7 @@ class ShowcaseController extends Controller
     public function home() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         $banners = Banner::all();
-        $latest = Product::orderBy('updated_at', 'desc')->paginate(6);
+        $latest = Product::orderBy('updated_at', 'desc')->where('quantity', '>', 0)->paginate(6);
         return view('homepage', ['Banner' => $banners, 'Latest' => $latest]);
     }
 
