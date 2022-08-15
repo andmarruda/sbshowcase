@@ -16,7 +16,7 @@
                     <p class="old-price">De: R${{number_format($Product->old_price, 2, ',', '.')}}</p>
                     <p class="price">Por: R${{number_format($Product->price, 2, ',', '.')}}</p>
                     <small>Em até {{$Product->installments_limit}}xR${{number_format(($Product->price / $Product->installments_limit), 2, ',', '.')}} sem juros no cartão de crédito</small><br><br>
-                    <a href="#" role="button" class="btn" style="background-color: #{{$template['templates']->highlightbg}}; color:#{{$template['templates']->highlightcolor}};">+ Carrinho</a>
+                    <a href="{{route('cart-add', ['product_id' => $Product->id])}}" role="button" class="btn" style="background-color: #{{$template['templates']->highlightbg}}; color:#{{$template['templates']->highlightcolor}};">+ Carrinho</a>
                 </div>
             </section>
         </div>
