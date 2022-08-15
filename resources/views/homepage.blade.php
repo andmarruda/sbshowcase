@@ -45,51 +45,39 @@
     <div class="col-md-12 product-list" style="background:#{{$template['templates']->secondarybg}};">
         <div class="row">
             @include('template.includes.product', [
+                'product' => NULL,
                 'id' => 1,
                 'image' => asset('img/colchao-ortobom-queen.jpg'),
-                'name' => 'Colchão Ortobom Queen',
                 'description' => 'Colchão Ortobom Queen',
                 'old_price' => 1979,
                 'price' => 1000,
                 'installments_limit' => 10,
                 'srcset' => '',
-                'highlightbg' => $template['templates']->highlightbg,
-                'highlightcolor' => $template['templates']->highlightcolor,
-                'primarybg' => $template['templates']->primarybg,
-                'primarycolor' => $template['templates']->primarycolor,
                 'additional_observations' => ''
             ])
 
             @include('template.includes.product', [
+                'product' => NULL,
                 'id' => 1,
                 'image' => asset('img/colchao-ortobom-queen.jpg'),
-                'name' => 'Colchão Ortobom Queen',
                 'description' => 'Colchão Ortobom Queen',
                 'old_price' => 1979,
                 'price' => 1000,
                 'installments_limit' => 10,
                 'srcset' => '',
-                'highlightbg' => $template['templates']->highlightbg,
-                'highlightcolor' => $template['templates']->highlightcolor,
-                'primarybg' => $template['templates']->primarybg,
-                'primarycolor' => $template['templates']->primarycolor,
                 'additional_observations' => ''
             ])
 
             @include('template.includes.product', [
+                'product' => NULL,
                 'id' => 1,
                 'image' => asset('img/colchao-ortobom-queen.jpg'),
-                'name' => 'Colchão Ortobom Queen',
                 'description' => 'Colchão Ortobom Queen',
                 'old_price' => 1979,
                 'price' => 1000,
                 'installments_limit' => 10,
                 'srcset' => '',
                 'promotion_flag' => true,
-                'highlightbg' => $template['templates']->highlightbg,
-                'highlightcolor' => $template['templates']->highlightcolor,
-                'primarybg' => $template['templates']->primarybg,
-                'primarycolor' => $template['templates']->primarycolor,
                 'additional_observations' => ''
             ])
         </div>
@@ -104,22 +92,7 @@
     <div class="col-md-12 product-list">
         <div class="row">
             @forelse($Latest as $prd)
-            @include('template.includes.product', [
-                'id' => $prd->id,
-                'image' => asset($prd->getImage()),
-                'name' => $prd->name,
-                'description' => $prd->name,
-                'old_price' => $prd->old_price,
-                'price' => $prd->price,
-                'installments_limit' => $prd->installments_limit,
-                'srcset' => $prd->getImgSrcSet(),
-                'sizeset' => $prd->getImgSizeSet(),
-                'highlightbg' => $template['templates']->highlightbg,
-                'highlightcolor' => $template['templates']->highlightcolor,
-                'primarybg' => $template['templates']->primarybg,
-                'primarycolor' => $template['templates']->primarycolor,
-                'additional_observations' => $prd->additional_observations
-            ])
+            @include('template.includes.product', ['product' => $prd])
             @empty
             <div class="col-md-12">
                 <p>Nenhum produto encontrado</p>

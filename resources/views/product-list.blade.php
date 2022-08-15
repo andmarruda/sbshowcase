@@ -80,22 +80,7 @@
     <div class="col-md-9 product-list">
         <div class="row">
             @forelse($Products as $prd)
-                @include('template.includes.product', [
-                    'id' => $prd->id,
-                    'image' => asset($prd->getImage()),
-                    'name' => $prd->name,
-                    'description' => $prd->name,
-                    'old_price' => $prd->old_price,
-                    'price' => $prd->price,
-                    'installments_limit' => $prd->installments_limit,
-                    'srcset' => $prd->getImgSrcSet(),
-                    'sizeset' => $prd->getImgSizeSet(),
-                    'highlightbg' => $template['templates']->highlightbg,
-                    'highlightcolor' => $template['templates']->highlightcolor,
-                    'primarybg' => $template['templates']->primarybg,
-                    'primarycolor' => $template['templates']->primarycolor,
-                    'additional_observations' => $prd->additional_observations
-                ])
+                @include('template.includes.product', ['product' => $prd])
             @empty
                 <div class="col-md-12">
                     <p>Nenhum produto encontrado</p>
