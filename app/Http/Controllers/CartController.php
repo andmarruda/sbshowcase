@@ -68,6 +68,12 @@ class CartController extends Controller
     {
         $prod = Product::find($product_id);
 
+        if(is_null($prod))
+            return redirect()->route('cart')->with('message', 'Produto não encontrado');
+
+        if($prod->quantity == 0)
+            return redirect()->route('cart')->with('message', 'Produto sem estoque disponível!');
+
         $cart = session()->get('sbcart');
         if(isset($cart[$product_id])){
             $cart[$product_id]++;
@@ -124,7 +130,7 @@ class CartController extends Controller
      * @param
      * @return          \Illuminate\Http\RedirectResponse
      */
-    public function clearCart() : \Illuminate\Http\RedirectResponse
+    public function empty() : \Illuminate\Http\RedirectResponse
     {
         session()->forget('sbcart');
         return redirect()->route('cart');

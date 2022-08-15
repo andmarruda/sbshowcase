@@ -40,6 +40,7 @@ Route::get('/our-stores', [ShowcaseController::class, 'stores'])->name('our-stor
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 Route::get('/cart/add/{product_id}', [CartController::class, 'add'])->name('cart-add')->where('product_id', '[0-9]+');
 Route::get('/cart/remove/{product_id}', [CartController::class, 'remove'])->name('cart-remove')->where('product_id', '[0-9]+');
+Route::get('/cart/empty', [CartController::class, 'empty'])->name('cart-empty');
 
 //customer area
 Route::get('/customer-login', [CustomerAreaController::class, 'customerLogin'])->name('customer-login');

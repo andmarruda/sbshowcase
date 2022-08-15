@@ -9,6 +9,12 @@
             </div>
 
             <div class="card-body" id="cart-details">
+                @if(session('message'))
+                <div class="alert alert-danger">
+                    {{session('message')}}
+                </div>
+                @endif
+
                 @if(is_null($Products))
                 <div class="card mb-3">
                     <div class="row g-0">
@@ -17,11 +23,13 @@
                 </div>
                 @else
                 @foreach($Products as $product)
+                @if(!is_null($product['product']))
                 <div class="card mb-3">
                     <div class="row g-0">
                         @include('template.includes.cart-item', ['Product' => $product])
                     </div>
                 </div>
+                @endif
                 @endforeach
 
                 <div>
@@ -38,6 +46,7 @@
                             <h5>Frete:    R$   100,00</h5>
                             <h5>Total:    R$12.100,00</h5>
 
+                            <a href="{{route('cart-empty')}}" class="btn btn-outline-danger mt-3">Limpar carrinho</a>
                             <a href="#" class="btn btn-primary mt-3">Finalizar compra</a>
                         </div>
                     </div>
