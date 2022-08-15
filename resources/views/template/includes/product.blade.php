@@ -27,7 +27,11 @@
 
         <div class="action">
             <a href="{{route('product-detail', ['id' => $product->id, 'name' => str_replace(' ', '-', $product->name)])}}" role="button" class="btn btn-light">Saiba mais</a>
+            @if($product->quantity > 0)
             <a href="{{route('cart-add', ['product_id' => $product->id])}}" role="button" class="btn" style="background-color: #{{$template['templates']->highlightbg}}; color: #{{$template['templates']->highlightcolor}}">+ Carrinho</a>
+            @else
+            <a href="javascript: void(0);" role="button" class="btn" style="background-color: #{{$template['templates']->highlightbg}}; color: #{{$template['templates']->highlightcolor}}">Indisponível</a>
+            @endif
         </div>
 
         @if(($promotion_flag ?? false))
