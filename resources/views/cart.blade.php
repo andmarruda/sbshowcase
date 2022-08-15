@@ -9,17 +9,20 @@
             </div>
 
             <div class="card-body" id="cart-details">
+                @if(is_null($Products))
                 <div class="card mb-3">
                     <div class="row g-0">
-                        @include('template.includes.cart-item')
+                        <h3>Seu carrinho de compras está vazio!</h3>
                     </div>
                 </div>
-
+                @else
+                @foreach($Products as $product)
                 <div class="card mb-3">
                     <div class="row g-0">
-                        @include('template.includes.cart-item')
+                        @include('template.includes.cart-item', ['Product' => $product])
                     </div>
                 </div>
+                @endforeach
 
                 <div>
                     <div class="d-flex justify-content-between">
@@ -39,6 +42,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>

@@ -37,6 +37,9 @@ Route::get('/', [ShowcaseController::class, 'home'])->name('main');
 Route::get('/product-list/{id}/{name?}/{filter?}/{filter_id?}', [ShowcaseController::class, 'productList'])->name('product-list')->where('id', '[0-9]+')->where('filter_id', '[0-9]+');
 Route::get('/product/{id}/{name?}', [ShowcaseController::class, 'productDetail'])->name('product-detail')->where('id', '[0-9]+');
 Route::get('/our-stores', [ShowcaseController::class, 'stores'])->name('our-stores');
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+Route::get('/cart/add/{product_id}', [CartController::class, 'add'])->name('cart-add')->where('product_id', '[0-9]+');
+Route::get('/cart/remove/{product_id}', [CartController::class, 'remove'])->name('cart-remove')->where('product_id', '[0-9]+');
 
 //customer area
 Route::get('/customer-login', [CustomerAreaController::class, 'customerLogin'])->name('customer-login');
@@ -44,8 +47,6 @@ Route::post('/customer-login', [CustomerAreaController::class, 'login'])->name('
 Route::get('/customer-register', [CustomerAreaController::class, 'customerRegister'])->name('customer-register');
 Route::get('/customer-registered', [CustomerAreaController::class, 'customerRegistered'])->name('customer-registered');
 Route::post('/customer-register', [CustomerAreaController::class, 'createCustomer'])->name('create-customer');
-Route::get('/cart', [CartController::class, 'cart'])->name('cart');
-Route::get('/cart/add/{product_id}', [CartController::class, 'add'])->name('cart-add')->where('product_id', '[0-9]+');
 
 Route::prefix('/customer-area')->middleware('SBCustomerAuth')->group(function() {
     Route::get('/', [CustomerAreaController::class, 'customerArea'])->name('customer-area');

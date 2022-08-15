@@ -21,6 +21,30 @@ class CartController extends Controller
     }
 
     /**
+     * Get products inside the cart
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return          ?Array
+     */
+    public function getProducts() : ?array
+    {
+        if($this->getQuantity()==0) return null;
+
+        $prds = [];
+        $products = session()->get('sbcart');
+        foreach($products as $id => $quantity){
+            $prds[] = [
+                'product_id' => $id,
+                'product' => Product::with('category')->find($id),
+                'quantity' => $quantity
+            ];
+        }
+
+        return $prds;
+    }
+
+    /**
      * Shows the cart interface with all added products and so on
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
@@ -29,7 +53,8 @@ class CartController extends Controller
      */
     public function cart() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('cart');
+        $products = $this->getProducts();
+        return view('cart', ['Products' => $products]);
     }
 
     /**
