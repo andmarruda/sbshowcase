@@ -94,7 +94,7 @@ class CartController extends Controller
      * @param           int $quantity
      * @return          \Illuminate\Http\RedirectResponse
      */
-    public function change(int $product_id, int $quantity) : \Illuminate\Http\RedirectResponse
+    public function change(int $product_id, int $quantity, ?string $target=NULL) : \Illuminate\Http\RedirectResponse
     {
         $cart = session()->get('sbcart');
         if(isset($cart[$product_id])){
@@ -102,7 +102,7 @@ class CartController extends Controller
             session()->put('sbcart', $cart);
         }
 
-        return redirect()->route('cart');
+        return redirect()->route('cart', ['#'.$target]);
     }
 
     /**

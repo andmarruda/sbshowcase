@@ -61,7 +61,20 @@
     const cartInputItems = ({target}, sum) => {
         let input = target.closest('.input-group').querySelector('input[type="number"]');
         let newValue = Number(input.value) + (sum);
+        if(newValue == 0){
+            let a = document.getElementById('remove_product_'+ input.getAttribute('data-id'));
+            a.click();
+            return;
+        }
+        let idTarget='input-quantity-'+input.getAttribute('data-id');
         input.value = (newValue < input.min) ? input.min : (newValue > input.max) ? input.max : newValue;
+        window.location.href = input.getAttribute('data-url').replace('-99', newValue) + '/' + idTarget;
+    }
+
+    const removeFromCart = (url) => {
+        if(confirm('Deseja realmente remover este item do carrinho?')) {
+            window.location.href = url;
+        }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
