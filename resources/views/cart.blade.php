@@ -42,9 +42,9 @@
                             <p class="mb-0"><b>Cidade:</b> Ribeirão Preto - SP</p>
                         </div>
                         <div style="text-align: right;">
-                            <h5>Subtotal: R$12.000,00</h5>
-                            <h5>Frete:    R$   100,00</h5>
-                            <h5>Total:    R$12.100,00</h5>
+                            <h5 id="cart-subtotal">Subtotal: R$0,00</h5>
+                            <h5 id="cart-delivery">Frete:    Digite o cep</h5>
+                            <h5 id="cart-total">Total:    R$0,00</h5>
 
                             <a href="{{route('cart-empty')}}" class="btn btn-outline-danger mt-3">Limpar carrinho</a>
                             <a href="#" class="btn btn-primary mt-3">Finalizar compra</a>
@@ -58,6 +58,9 @@
 </div>
 
 <script>
+    const cartSubTotalValue = {{$subtotal}};
+    const shippingValue = 0;
+
     const cartInputItems = ({target}, sum) => {
         let input = target.closest('.input-group').querySelector('input[type="number"]');
         let newValue = Number(input.value) + (sum);
@@ -83,6 +86,16 @@
                 cartInputItems(event, (event.target.getAttribute('data-type') == 'minus' ? -1 : 1));
             });
         });
+
+        const cartTotal = document.getElementById('cart-total'),
+            cartSubTotal = document.getElementById('cart-subtotal'),
+            cartDelivery = document.getElementById('cart-delivery');
+
+        if(cartTotal==null || cartSubTotal==null || cartDelivery==null)
+            return;
+
+        cartSubTotal.innerText = 'Subtotal: ' + cartSubTotalValue.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+        cartTotal.innerText = 'Total: ' + (cartSubTotalValue + shippingValue).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
     });
 </script>
 @endsection

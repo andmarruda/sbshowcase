@@ -32,16 +32,20 @@ class CartController extends Controller
         if($this->getQuantity()==0) return null;
 
         $prds = [];
+        $total = 0;
         $products = session()->get('sbcart');
         foreach($products as $id => $quantity){
+            $prdModel = Product::with('category')->find($id);
             $prds[] = [
                 'product_id' => $id,
-                'product' => Product::with('category')->find($id),
+                'product' => $prdModel,
                 'quantity' => $quantity
             ];
+
+            $total += $prdModel->price * $quantity;
         }
 
-        return $prds;
+        return ['Products' => $prds, 'subtotal' => $total];
     }
 
     /**
@@ -54,7 +58,10 @@ class CartController extends Controller
     public function cart() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         $products = $this->getProducts();
-        return view('cart', ['Products' => $products]);
+        if($products==null) 
+            return view('cart', ['Products' => NULL, 'subtotal' => 0]);
+
+        return view('cart', ['Products' => $products['Products'], 'subtotal' => $products['subtotal']]);
     }
 
     /**
