@@ -74,12 +74,12 @@ class CustomerAreaController extends Controller
      * Show view of customer login
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
-     * @param
+     * @param           ?string $redirect=NULL
      * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function customerLogin() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function customerLogin(?string $redirect=NULL) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('customer-login');
+        return view('customer-login', ['redirect' => $redirect]);
     }
 
     /**

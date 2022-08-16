@@ -44,7 +44,7 @@ Route::get('/cart/empty', [CartController::class, 'empty'])->name('cart-empty');
 Route::get('/cart/change/{product_id}/{quantity}/{target?}', [CartController::class, 'change'])->name('cart-change')->where('product_id', '[0-9]+')->where('quantity', '[0-9]+');
 
 //customer area
-Route::get('/customer-login', [CustomerAreaController::class, 'customerLogin'])->name('customer-login');
+Route::get('/customer-login/{redirect?}', [CustomerAreaController::class, 'customerLogin'])->name('customer-login');
 Route::post('/customer-login', [CustomerAreaController::class, 'login'])->name('customer-logging-in');
 Route::get('/customer-register', [CustomerAreaController::class, 'customerRegister'])->name('customer-register');
 Route::get('/customer-registered', [CustomerAreaController::class, 'customerRegistered'])->name('customer-registered');

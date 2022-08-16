@@ -34,6 +34,7 @@
 
                 <div>
                     <div class="d-flex justify-content-between">
+                        @if($logged)
                         <div>
                             <h4>Endereço de entrega</h4>
                             <p class="mb-0"><b>Endereço:</b> Rua tal, 123 - Centro</p>
@@ -41,6 +42,16 @@
                             <p class="mb-0"><b>Complemento:</b> </p>
                             <p class="mb-0"><b>Cidade:</b> Ribeirão Preto - SP</p>
                         </div>
+                        @else
+                        <div>
+                            <h4>Calcular frete</h4>
+                            <div class="input-group mb-3">
+                                <input type="text" maxlength="9" class="form-control" placeholder="CEP">
+                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Calcular</button>
+                            </div>
+                            <p>Ou faça <a href="{{route('customer-login')}}">login</a> para calcular o frete</p>
+                        </div>
+                        @endif
                         <div style="text-align: right;">
                             <h5 id="cart-subtotal">Subtotal: R$0,00</h5>
                             <h5 id="cart-delivery">Frete:    Digite o cep</h5>

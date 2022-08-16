@@ -61,7 +61,12 @@ class CartController extends Controller
         if($products==null) 
             return view('cart', ['Products' => NULL, 'subtotal' => 0]);
 
-        return view('cart', ['Products' => $products['Products'], 'subtotal' => $products['subtotal']]);
+        if(session_status() != PHP_SESSION_ACTIVE)
+            session_start();
+
+        $customer = new CustomerAreaController();
+
+        return view('cart', ['Products' => $products['Products'], 'subtotal' => $products['subtotal'], 'logged' => $customer->isLogged()]);
     }
 
     /**
