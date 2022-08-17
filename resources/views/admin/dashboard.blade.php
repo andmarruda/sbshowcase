@@ -1,10 +1,7 @@
 @extends('template.admin')
 
 @section('page')
-<form method="post" action="{{route('users.save')}}" autocomplete="off">
-    <input type="hidden" name="id" id="id" value="{{$User->id ?? ''}}">
-    @csrf
-
+<div class="col-md-12">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
@@ -57,17 +54,66 @@
     </div>
 
     <div class="row" style="background:#{{$template['templates']->secondarybg}}; padding-top:1rem; padding-bottom:1rem; margin-bottom:2rem;">
-        <div class="col-md-4" style="margin-bottom:0;">
-            @include('admin.dashboard-highlight')
+        <div class="col-md-4" style="margin-bottom:0;" data-target="1">
+            @include('admin.dashboard-highlight', ['product' => $General->highlightProduct1()->first()])
         </div>
 
-        <div class="col-md-4" style="margin-bottom:0;">
-            @include('admin.dashboard-highlight')
+        <div class="col-md-4" style="margin-bottom:0;" data-target="2">
+            @include('admin.dashboard-highlight', ['product' => $General->highlightProduct2()->first()])
         </div>
 
-        <div class="col-md-4" style="margin-bottom:0;">
-            @include('admin.dashboard-highlight')
+        <div class="col-md-4" style="margin-bottom:0;" data-target="3">
+            @include('admin.dashboard-highlight', ['product' => $General->highlightProduct3()->first()])
         </div>
     </div>
-</form>
+</div>
+
+<div class="modal fade" id="dashboard-product" tabindex="-1">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Pesquisar produto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form class="row g-3" id="formModalSearch" action="javascript: jsSearchModal('http://beta.biosonocolchoes.com.br/admin/category/search');" autocomplete="off">
+                <input type="hidden" name="highlight_target" id="highlight_target" value="">
+                @csrf
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="searchInput" name="searchInput" placeholder="Nome do produto" required="">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
+                </div>
+            </form>
+            <table class="table table-bordered table-striped" style="margin-top:2rem;">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>Medida</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    const highlight_choosed = ({target}) => {
+        let number = target.closest('.col-md-4').getAttribute('data-target');
+        document.getElementById('highlight_target').value = number;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('dashboard-product').addEventListener('hidden.bs.modal', function (event) {
+            document.getElementById('highlight_target').value = '';
+        });
+    } );
+</script>
+
 @endsection

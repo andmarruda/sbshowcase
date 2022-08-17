@@ -8,7 +8,50 @@ use Illuminate\Database\Eloquent\Model;
 class General extends Model
 {
     use HasFactory;
-    protected $fillable = ['brand', 'brand_image', 'slogan', 'section', 'google_analytics', 'google_optimize_script', 'highlight_img_1', 'highlight_text_1', 'highlight_img_2', 'highlight_text_2', 'company_name', 'company_doc', 'blog_url', 'whatsapp_number'];
+    protected $fillable = [
+        'brand', 'brand_image', 'slogan', 
+        'section', 'google_analytics', 'google_optimize_script', 
+        'highlight_img_1', 'highlight_text_1', 'highlight_img_2', 
+        'highlight_text_2', 'company_name', 'company_doc', 
+        'blog_url', 'whatsapp_number', 'highlight_product_1', 
+        'highlight_product_2', 'highlight_product_3'
+    ];
+
+    /**
+     * Get highlight product 1
+     * @version     1.0.0
+     * @author      Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return      \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function highlightProduct1() : \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Product::class, 'highlight_product_1', 'id');
+    }
+
+    /**
+     * Get highlight product 2
+     * @version     1.0.0
+     * @author      Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return      \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function highlightProduct2() : \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Product::class, 'highlight_product_2', 'id');
+    }
+
+    /**
+     * Get highlight product 1
+     * @version     1.0.0
+     * @author      Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return      \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function highlightProduct3() : \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Product::class, 'highlight_product_3', 'id');
+    }
 
     /**
      * Returns complete path for brand image
