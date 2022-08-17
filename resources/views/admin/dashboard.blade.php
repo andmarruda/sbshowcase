@@ -13,22 +13,40 @@
 
     <div class="row" style="margin-top:2rem;">
         <div class="col-md-6">
-
+            <h4>Pedidos no mês atual</h4>
         </div>
 
         <div class="col-md-6">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Produtos sem estoque</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Produtos com pouco estoque</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-            </div>
+            <div class="alert alert-info">Aqui é mostrado produtos que tem menos de 5 disponível para venda!</div>
+
+            <table class="table table-bordered table-striped" style="margin-top:2rem;">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>Medida</th>
+                        <th>Em estoque</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($Products as $product)
+                    <tr>
+                        <td>{{$product->id}}</td>
+                        <td>{{$product->name}}</td>
+                        <td>{{$product->category()->first()->name}}</td>
+                        <td>{{$product->measure()->first()->getLabel()}}</td>
+                        <td>{{$product->quantity}}</td>
+                        <td><a href="#" class="btn btn-outline-primary" role="button"><i class="fa-solid fa-file-pen"></i> Editar</a></td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="6">Nenhum produto encontrado!</td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -38,35 +56,17 @@
         </div>
     </div>
 
-    <div class="row" style="background:#{{$template['templates']->secondarybg}}; padding-top:1rem; padding-bottom:1rem;">
+    <div class="row" style="background:#{{$template['templates']->secondarybg}}; padding-top:1rem; padding-bottom:1rem; margin-bottom:2rem;">
         <div class="col-md-4" style="margin-bottom:0;">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <a href="#" class="btn btn-primary">Pesquisar</a>
-                </div>
-            </div>
+            @include('admin.dashboard-highlight')
         </div>
 
         <div class="col-md-4" style="margin-bottom:0;">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <a href="#" class="btn btn-primary">Pesquisar</a>
-                </div>
-            </div>
+            @include('admin.dashboard-highlight')
         </div>
 
         <div class="col-md-4" style="margin-bottom:0;">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <a href="#" class="btn btn-primary">Pesquisar</a>
-                </div>
-            </div>
+            @include('admin.dashboard-highlight')
         </div>
     </div>
 </form>

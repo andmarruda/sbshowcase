@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class DashboardController extends Controller
 {
@@ -15,6 +16,7 @@ class DashboardController extends Controller
      */
     public function adminView() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('admin.dashboard');
+        $product = Product::where('quantity', '<', 5)->orderBy('quantity')->get();
+        return view('admin.dashboard', ['Products' => $product]);
     }
 }
