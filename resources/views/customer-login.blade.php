@@ -10,6 +10,7 @@
 
             <div class="card-body">
                 <form method="post" action="{{route('customer-logging-in')}}" autocomplete="off">
+                    <input type="hidden" name="redirect" value="{{$redirect ?? ''}}">
                     @csrf
                     <div class="mb-3">
                         <label for="user" class="form-label">Email / CPF / CNPJ</label>
@@ -19,10 +20,6 @@
                         <label for="password" class="form-label">Senha</label>
                         <input type="password" class="form-control" id="password" name="password" required="" placeholder="Senha">
                     </div>
-
-                    @if($errors->any())
-                    errou
-                    @endif
 
                     @include('template.includes.alert-error')
 

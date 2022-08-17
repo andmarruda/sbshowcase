@@ -52,7 +52,7 @@
                                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Calcular</button>
                                 </div>
                             </form>
-                            <p>Ou faça <a href="{{route('customer-login', ['redirect' => route('cart')])}}">login</a> para calcular o frete</p>
+                            <p>Ou faça <a href="{{route('customer-login', ['redirect' => 'cart'])}}">login</a> para calcular o frete</p>
                         </div>
                         @endif
                         <div style="text-align: right;">

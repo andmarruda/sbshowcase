@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\City;
@@ -264,9 +265,12 @@ class CustomerAreaController extends Controller
             $_SESSION['sbcustomer-area']['email'] = $customer->email;
             $_SESSION['sbcustomer-area']['name'] = $customer->name;
             $_SESSION['sbcustomer-area']['id'] = $customer->id;
+            if($r->input('redirect') != '' && Route::has($r->input('redirect')))
+                return redirect()->route($r->input('redirect'));
+
             return redirect()->route('customer-area');
         } else {
-            return redirect()->route('customer-login')->withErrors(['user' => 'E-mail ou senha incorretos']);
+            return redirect()->route('customer-login', ['redirect' => $r->input('redirect') ?? ''])->withErrors(['user' => 'E-mail ou senha incorretos']);
         }
     }
 
