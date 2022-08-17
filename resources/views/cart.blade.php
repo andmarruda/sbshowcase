@@ -118,7 +118,11 @@
             });
         });
 
+        @if(!$logged)
         calculateTotals();
+        @else
+        calculateTotals({{\App\Models\DeliverySettings::where('city_id', '=', $customerAddress->city_id)->first()->price ?? 'null'}});
+        @endif
         let cartZipCode = document.getElementById('cart-zip-code');
         if(cartZipCode !== null){
             VMasker(cartZipCode).maskPattern("99999-999");
