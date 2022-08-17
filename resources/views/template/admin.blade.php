@@ -102,9 +102,14 @@
         <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{asset('js/fontawesome/all.min.js')}}"></script>
         <script src="{{asset('js/sbadmin.js')}}"></script>
+        
         @if(\Request::route()->getName()=='product')
         <script src="{{asset('js/highlight.min.js')}}"></script>
         <script src="{{asset('js/quill.min.js')}}"></script>
+        @endif
+
+        @if(\Request::route()->getName()=='dashboard')
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
         @endif
     </body>
 </html>
