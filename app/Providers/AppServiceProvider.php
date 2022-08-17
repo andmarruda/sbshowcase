@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::defaultSimpleView('pagination.simple-bootstrap-5');
         Paginator::defaultView('pagination.bootstrap-5');
         //Public template informations
-        View::composer(['template.public', 'homepage', 'product-detail', 'product-list', 'template.customer', 'template.includes.product'], PublicTemplateComposer::class);
+        View::composer(['template.public', 'homepage', 'product-detail', 'product-list', 'template.customer', 'template.includes.product', 'admin.dashboard'], PublicTemplateComposer::class);
         View::composer('admin.product', ProductFormComposer::class);
         View::composer('template.includes.eligible-delivery', EligibleDeliveryComposer::class);
     }
