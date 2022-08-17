@@ -66,8 +66,8 @@ class CartController extends Controller
             session_start();
 
         $customer = new CustomerAreaController();
-
-        return view('cart', ['Products' => $products['Products'], 'subtotal' => $products['subtotal'], 'logged' => $customer->isLogged()]);
+        $address = $customer->isLogged() ? $customer->getCustomerAddress() : NULL;
+        return view('cart', ['Products' => $products['Products'], 'subtotal' => $products['subtotal'], 'logged' => $customer->isLogged(), 'customerAddress' => $address]);
     }
 
     /**

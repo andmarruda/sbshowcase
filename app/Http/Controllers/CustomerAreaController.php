@@ -217,6 +217,18 @@ class CustomerAreaController extends Controller
     }
 
     /**
+     * Returns data from customer
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param
+     * @return         array
+     */
+    public function getCustomerAddress() : array
+    {
+        return Customer::select('address', 'number', 'neighborhood', 'zip_code', 'complement', 'city_id', 'state_id')->find($_SESSION['sbcustomer-area']['id'])->toArray();
+    }
+
+    /**
      * Returns blade of customer area "registration data"
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >

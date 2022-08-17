@@ -37,9 +37,9 @@
                         @if($logged)
                         <div>
                             <h4>Endereço de entrega</h4>
-                            <p class="mb-0"><b>Endereço:</b> Rua tal, 123 - Centro</p>
-                            <p class="mb-0"><b>CEP:</b> 14010-060</p>
-                            <p class="mb-0"><b>Complemento:</b> </p>
+                            <p class="mb-0"><b>Endereço:</b> {{$customerAddress['address'] ?? ''}}, {{$customerAddress['number'] ?? ''}} - {{$customerAddress['neighborhood'] ?? ''}}</p>
+                            <p class="mb-0"><b>CEP:</b> {{$customerAddress['zip_code'] ?? ''}}</p>
+                            <p class="mb-0"><b>Complemento:</b> {{$customerAddress['complement'] ?? ''}}</p>
                             <p class="mb-0"><b>Cidade:</b> Ribeirão Preto - SP</p>
                         </div>
                         @else
