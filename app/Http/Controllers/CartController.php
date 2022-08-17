@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DeliverySettings;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
@@ -146,5 +147,21 @@ class CartController extends Controller
     {
         session()->forget('sbcart');
         return redirect()->route('cart');
+    }
+
+    /**
+     * Calculates shippiment value
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $request
+     * @return          \Illuminate\Http\RedirectResponse
+     */
+    public function calculateShipping(Request $request) : \Illuminate\Http\JsonResponse
+    {
+        $city = DeliverySettings::where('city_id', $request->input('ibge'))->first();
+        if(is_null($city))
+            return response()->json(['shipping' => false]);
+
+        return response()->json($city->toArray());
     }
 }
