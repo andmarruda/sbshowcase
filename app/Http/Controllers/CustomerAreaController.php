@@ -223,9 +223,9 @@ class CustomerAreaController extends Controller
      * @param
      * @return         array
      */
-    public function getCustomerAddress() : array
+    public function getCustomerAddress() : Customer
     {
-        return Customer::select('address', 'number', 'neighborhood', 'zip_code', 'complement', 'city_id', 'state_id')->find($_SESSION['sbcustomer-area']['id'])->toArray();
+        return Customer::select('address', 'number', 'neighborhood', 'zip_code', 'complement', 'city_id', 'state_id')->find($_SESSION['sbcustomer-area']['id']);
     }
 
     /**
