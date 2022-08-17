@@ -43,7 +43,7 @@
         @include('template.includes.eligible-delivery')
 
         <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
-        @if(\Request::route()->getName()=='customer-register')
+        @if(\Request::route()->getName()=='customer-register' || \Request::route()->getName()=='cart')
         <script src="{{asset('js/sbpublic.js')}}"></script>
         <script src="{{asset('js/vanilla-masker.min.js')}}"></script>
         @endif

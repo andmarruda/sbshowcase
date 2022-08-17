@@ -46,7 +46,7 @@
                         <div>
                             <h4>Calcular frete</h4>
                             <div class="input-group mb-3">
-                                <input type="text" maxlength="9" class="form-control" placeholder="CEP">
+                                <input type="text" maxlength="9" autocomplete="off" class="form-control" id="cart-zip-code" name="cart-zip-code" placeholder="CEP">
                                 <button class="btn btn-outline-secondary" type="button" id="button-addon2">Calcular</button>
                             </div>
                             <p>Ou faça <a href="{{route('customer-login')}}">login</a> para calcular o frete</p>
@@ -91,13 +91,7 @@
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('cart-details').querySelectorAll('.input-group button').forEach(button => {
-            button.addEventListener('click', (event) => {
-                cartInputItems(event, (event.target.getAttribute('data-type') == 'minus' ? -1 : 1));
-            });
-        });
-
+    const calculateTotals = (shippingVal=null) => {
         const cartTotal = document.getElementById('cart-total'),
             cartSubTotal = document.getElementById('cart-subtotal'),
             cartDelivery = document.getElementById('cart-delivery');
@@ -106,7 +100,21 @@
             return;
 
         cartSubTotal.innerText = 'Subtotal: ' + cartSubTotalValue.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-        cartTotal.innerText = 'Total: ' + (cartSubTotalValue + shippingValue).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+        cartTotal.innerText = 'Total: ' + (cartSubTotalValue + (shippingVal || shippingValue)).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('cart-details').querySelectorAll('.input-group button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                cartInputItems(event, (event.target.getAttribute('data-type') == 'minus' ? -1 : 1));
+            });
+        });
+
+        calculateTotals();
+        let cartZipCode = document.getElementById('cart-zip-code');
+        if(cartZipCode !== null){
+            VMasker(cartZipCode).maskPattern("99999-999");
+        }
     });
 </script>
 @endsection
