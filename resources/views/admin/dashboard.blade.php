@@ -35,7 +35,7 @@
                         <td>{{$product->category()->first()->name}}</td>
                         <td>{{$product->measure()->first()->getLabel()}}</td>
                         <td>{{$product->quantity}}</td>
-                        <td><a href="#" class="btn btn-outline-primary" role="button"><i class="fa-solid fa-file-pen"></i> Editar</a></td>
+                        <td><a href="{{route('product', ['id' => $product->id])}}" class="btn btn-outline-primary" role="button"><i class="fa-solid fa-file-pen"></i> Editar</a></td>
                     </tr>
                     @empty
                     <tr>
@@ -149,7 +149,7 @@
     const confirmHighlight = (product_id) => {
         if(confirm("Deseja alterar o produto de destaque?")){
             let form = document.getElementById('form-change-highlight-product');
-            form.querySelector('#highlight_target').value = '';
+            form.querySelector('#highlight_target').value = document.getElementById('highlight_target').value;
             form.querySelector('#product_id').value = product_id;
             form.submit();
         }
