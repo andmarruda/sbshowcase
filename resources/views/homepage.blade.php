@@ -41,48 +41,31 @@
     <h1>Promoções</h1>
 </div>
 
+@php
+    $hp1 = $template['general']->highlightProduct1()->first();
+    $hp2 = $template['general']->highlightProduct2()->first();
+    $hp3 = $template['general']->highlightProduct3()->first(); 
+@endphp
+
+@if(!is_null($hp1) || !is_null($hp2) || !is_null($hp3))
 <div class="row" style="margin-bottom:2rem;">
     <div class="col-md-12 product-list" style="background:#{{$template['templates']->secondarybg}};">
         <div class="row">
-            @include('template.includes.product', [
-                'product' => NULL,
-                'id' => 1,
-                'image' => asset('img/colchao-ortobom-queen.jpg'),
-                'description' => 'Colchão Ortobom Queen',
-                'old_price' => 1979,
-                'price' => 1000,
-                'installments_limit' => 10,
-                'srcset' => '',
-                'additional_observations' => ''
-            ])
+            @if(!is_null($hp1))
+            @include('template.includes.product', ['product' => $template['general']->highlightProduct1()->first()])
+            @endif
 
-            @include('template.includes.product', [
-                'product' => NULL,
-                'id' => 1,
-                'image' => asset('img/colchao-ortobom-queen.jpg'),
-                'description' => 'Colchão Ortobom Queen',
-                'old_price' => 1979,
-                'price' => 1000,
-                'installments_limit' => 10,
-                'srcset' => '',
-                'additional_observations' => ''
-            ])
+            @if(!is_null($hp2))
+            @include('template.includes.product', ['product' => $template['general']->highlightProduct2()->first()])
+            @endif
 
-            @include('template.includes.product', [
-                'product' => NULL,
-                'id' => 1,
-                'image' => asset('img/colchao-ortobom-queen.jpg'),
-                'description' => 'Colchão Ortobom Queen',
-                'old_price' => 1979,
-                'price' => 1000,
-                'installments_limit' => 10,
-                'srcset' => '',
-                'promotion_flag' => true,
-                'additional_observations' => ''
-            ])
+            @if(!is_null($hp3))
+            @include('template.includes.product', ['product' => $template['general']->highlightProduct3()->first()])
+            @endif
         </div>
     </div>
 </div>
+@endif
 
 <div class="col-md-12" style="margin-bottom:2rem;">
     <h1>Novidades</h1>
