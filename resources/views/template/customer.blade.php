@@ -24,6 +24,25 @@
                                     <a class="nav-link active" aria-current="page" href="{{route('customer-registration-data')}}">Dados cadastrais</a>
                                 </li>
 
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Contatos
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        @foreach($template['SocialMedia'] as $label => $sn)
+                                        <li><a class="dropdown-item" href="{{$sn->url}}" target="_blank">{{$sn->socialMedia()->first()->name}}</a></li>
+                                        @endforeach
+
+                                        @if(!is_null($template['general']->whatsapp_number))
+                                        <li class="dropdown-item">
+                                            <a href="tel:{{$template['general']->whatsapp_number}}" title="Whatsapp">
+                                                <img src="{{asset('images/icon-zap.png')}}" alt="Whatsapp" style="width:20px; height:20px;"> {{$template['general']->whatsapp_number}}
+                                            </a>
+                                        </li>
+                                        @endif
+                                    </ul>
+                                </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="javascript: void(0);" data-bs-toggle="modal" data-bs-target="#logoutModal">Sair</a>
                                 </li>
