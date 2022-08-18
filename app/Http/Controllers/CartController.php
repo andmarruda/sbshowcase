@@ -164,4 +164,16 @@ class CartController extends Controller
 
         return response()->json($city->toArray());
     }
+
+    /**
+     * Shows order confirmation
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           
+     * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function orderConfirmation() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    {
+        return view('confirmation');
+    }
 }

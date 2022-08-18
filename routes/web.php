@@ -44,6 +44,9 @@ Route::get('/cart/empty', [CartController::class, 'empty'])->name('cart-empty');
 Route::get('/cart/change/{product_id}/{quantity}/{target?}', [CartController::class, 'change'])->name('cart-change')->where('product_id', '[0-9]+')->where('quantity', '[0-9]+');
 Route::post('/cart/calculate-shipping', [CartController::class, 'calculateShipping'])->name('cart-calculate-shipping');
 
+//order confirmation
+Route::get('/order-confirmation', [CartController::class, 'orderConfirmation'])->name('order-confirmation');
+
 //customer area
 Route::get('/customer-login/{redirect?}', [CustomerAreaController::class, 'customerLogin'])->name('customer-login');
 Route::post('/customer-login', [CustomerAreaController::class, 'login'])->name('customer-logging-in');

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerAreaController;
 
 if(session_status() != PHP_SESSION_ACTIVE)
@@ -22,7 +23,7 @@ class SBCustomerAuth
     {
         $ca = new CustomerAreaController();
         if(!$ca->isLogged())
-            return redirect()->route('customer-login');
+            return redirect()->route('customer-login', ['redirect' => Route::currentRouteName()]);
 
         return $next($request);
     }
