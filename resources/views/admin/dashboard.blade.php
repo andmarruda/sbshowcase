@@ -76,7 +76,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form class="row g-3" id="formModalSearch" action="javascript: jsSearchModal('http://beta.biosonocolchoes.com.br/admin/category/search');" autocomplete="off">
+            <form class="row g-3" id="formModalSearchDashboard" action="javascript: searchProductDashboard('{{{route('search-product')}}}');" autocomplete="off">
                 <input type="hidden" name="highlight_target" id="highlight_target" value="">
                 @csrf
                 <div class="col-md-6">
@@ -86,13 +86,11 @@
                     <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
                 </div>
             </form>
-            <table class="table table-bordered table-striped" style="margin-top:2rem;">
+            <table class="table table-bordered table-striped" style="margin-top:2rem;" id="gridDashboardProduct">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Produto</th>
-                        <th>Categoria</th>
-                        <th>Medida</th>
                         <th>Ação</th>
                     </tr>
                 </thead>
@@ -103,6 +101,12 @@
   </div>
 </div>
 
+<form style="display:none;" id="form-change-highlight-product" action="{{route('update-highlight-product')}}" method="post">
+    @csrf
+    <input type="hidden" name="highlight_target" id="highlight_target" value="">
+    <input type="hidden" name="product_id" id="product_id" value="">
+</form>
+
 <script>
     const highlight_choosed = ({target}) => {
         let number = target.closest('.col-md-4').getAttribute('data-target');
@@ -112,8 +116,44 @@
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('dashboard-product').addEventListener('hidden.bs.modal', function (event) {
             document.getElementById('highlight_target').value = '';
+            let tbody = document.getElementById('gridDashboardProduct').querySelector('TBODY');
+            tbody.innerHTML = '';
         });
-    } );
+    });
+
+    const searchProductDashboard = async (url) => {
+        let fd = new FormData(document.getElementById('formModalSearchDashboard'));
+        let tbody = document.getElementById('gridDashboardProduct').querySelector('TBODY');
+        tbody.innerHTML = '';
+        let f = await fetch(url, {
+            method: 'POST',
+            body: fd
+        });
+
+        let j = await f.json();
+        if(j.length > 0){
+            for(let i of j){
+                tbody.innerHTML += '<tr>\
+                    <td>'+i.id+'</td>\
+                    <td>'+i.name+'</td>\
+                    <td><a href="javascript: void(0);" onclick="javascript: confirmHighlight('+ i.id +');" role="button" class="btn btn-primary">Alterar destaque</a></td>\
+                </tr>';
+            }
+        } else{
+            tbody.innerHTML += '<tr>\
+                <td colspan="3">Nenhum produto encontrado!</td>\
+            </tr>';
+        }
+    }
+
+    const confirmHighlight = (product_id) => {
+        if(confirm("Deseja alterar o produto de destaque?")){
+            let form = document.getElementById('form-change-highlight-product');
+            form.querySelector('#highlight_target').value = '';
+            form.querySelector('#product_id').value = product_id;
+            form.submit();
+        }
+    }
 </script>
 
 @endsection

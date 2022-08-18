@@ -64,6 +64,19 @@ class ProductController extends Controller
     }
 
     /**
+     * Searchs enabled products with stock for highlight at dashboard
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $req
+     * @return          \Illuminate\Http\JsonResponse
+     */
+    public function searchProductJson(Request $req) : \Illuminate\Http\JsonResponse
+    {
+        $products = Product::where('quantity', '>', 0)->where('name', 'ilike', '%'. $req->input('searchInput'). '%')->orderBy('name')->get();
+        return response()->json($products);
+    }
+
+    /**
      * Returns the view of product form inside the admin
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >

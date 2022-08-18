@@ -65,6 +65,8 @@ Route::get('/admin', [UserController::class, 'loginView'])->name('admin');
 Route::post('/admin', [UserController::class, 'login'])->name('admin.login');
 Route::prefix('/admin')->middleware('SBAuth')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'adminView'])->name('dashboard');
+    Route::post('/dashboard/search-product', [ProductController::class, 'searchProductJson'])->name('search-product');
+    Route::post('/dashboard/update-highlight-product', [DashboardController::class, 'updateHighlightProduct'])->name('update-highlight-product');
 
     //Order routes
     Route::get('/order', [OrderController::class, 'adminView'])->name('order');
