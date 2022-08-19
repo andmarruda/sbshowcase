@@ -9,11 +9,10 @@
             </div>
 
             <div class="card-body">
-                <p>
-                    <b>Endereço: </b>Travessa Mario Spanó, 135 - <b>Bairro</b>> Vila tibério - <b>CEP</b> 14050-169
-                </p>
-                <p><b>Complemento:</b> Perto da igreja Santa Luzia</p>
-                <p>Ribeirão Preto - SP</p>
+                <p class="mb-0"><b>Endereço:</b> {{$customerAddress->address ?? ''}}, {{$customerAddress->number ?? ''}} - {{$customerAddress->neighborhood ?? ''}}</p>
+                <p class="mb-0"><b>CEP:</b> {{$customerAddress->zip_code ?? ''}}</p>
+                <p class="mb-0"><b>Complemento:</b> {{$customerAddress->complement ?? ''}}</p>
+                <p class="mb-0"><b>Cidade:</b> {{$customerAddress->city()->first()->city_name}} - {{$customerAddress->state()->first()->state_initials}}</p>
             </div>
         </div>
     </div>
@@ -40,41 +39,29 @@
             </div>
 
             <div class="card-body">
-                <div class="card mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="images/example.png" class="img-fluid rounded-start" alt="Produto tal" style="width:100px;">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <h5>CONJ. Box Queen Sealy Charleston Resort</h5>
-                                    <div>
-                                        <p class="price">Por: R$1.990,00</p>
+                @if(!is_null($Products))
+                    @foreach($Products as $Product)
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="images/example.png" class="img-fluid rounded-start" alt="Produto tal" style="width:100px;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <h5>{{$Product['product']->name}}</h5>
+                                        <div>
+                                            <p class="price">Quantidade: {{$Product['quantity']}}<br>Preço: R${{number_format(($Product['quantity'] * $Product['product']->price), 2, ',', '.')}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="card mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="images/example.png" class="img-fluid rounded-start" alt="Produto tal" style="width:100px;">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <h5>CONJ. Box Queen Sealy Charleston Resort</h5>
-                                    <div>
-                                        <p class="price">Por: R$1.990,00</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @else
+                    <div class="alert alert-danger">Nenhum produto selecionado!</div>
+                @endif
 
                 <div class="row">
                     <div class="col-md-12">
@@ -116,11 +103,13 @@
                     </div>
                 </div>
 
+                @if(!is_null($Products))
                 <div class="row" style="margin-top: 2rem;">
                     <div class="col" style="text-align: right;">
                         <a href="#" class="btn btn-primary">Confirmar pedido</a>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>
@@ -132,7 +121,7 @@
     const generatesOptions = (max_installments, combobox) => {
         let html = '<option value="">Selecione</option>';
         for(let i=1; i<=max_installments; i++){
-            html += `<option value="${i}">${i}x de ${(order_total / i).toLocaleString('pt-BR', {minimumFractionDigits: 2 , style: 'currency', currency: 'BRL'})}</option>`;
+            html += `<option value="${i}">${i}x de ${(order_total / i).toLocaleString('pt-BR', {minimumFractionDigits: 2 , style: 'currency', currency: 'BRL'})} sem juros</option>`;
         }
 
         combobox.innerHTML = html;

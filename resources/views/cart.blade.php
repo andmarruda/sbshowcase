@@ -61,7 +61,7 @@
                             <h5 id="cart-total">Total:    R$0,00</h5>
 
                             <a href="{{route('cart-empty')}}" class="btn btn-outline-danger mt-3">Limpar carrinho</a>
-                            <a href="#" class="btn btn-primary mt-3" id="finish-order-button">Finalizar compra</a>
+                            <a href="{{route('order-confirmation')}}" class="btn btn-primary mt-3" id="finish-order-button">Finalizar compra</a>
                         </div>
                     </div>
 

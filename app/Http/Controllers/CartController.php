@@ -175,7 +175,40 @@ class CartController extends Controller
      */
     public function orderConfirmation() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
+        $customer = new CustomerAreaController();
+        $customerAddress = $customer->getCustomerAddress();
+        $shipping_price = DeliverySettings::where('city_id', '=', $customerAddress->city_id)->first()->price;
+        
+        $products = $this->getProducts();
         $all_payment_methods = PaymentMethod::where('installments', '>', 0)->orderBy('name')->get();
-        return view('confirmation', ['shipping_price' => 0, 'products_price' => 1000, 'all_payment_methods' => $all_payment_methods]);
+
+        return view('confirmation', [
+            'shipping_price' => $shipping_price, 
+            'products_price' => is_null($products) ? NULL : $products['subtotal'], 
+            'Products' => is_null($products) ? NULL : $products['Products'], 
+            'all_payment_methods' => $all_payment_methods, 
+            'customerAddress' => $customerAddress
+        ]);
+    }
+
+    /**
+     * Create new order for customer
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $request
+     * @return          \Illuminate\Http\RedirectResponse
+     */
+    public function createOrder(Request $request) : \Illuminate\Http\RedirectResponse
+    {
+        $customer = new CustomerAreaController();
+        $customerAddress = $customer->getCustomerAddress();
+
+        //verifica metodo de pagamento e limite de parcelas
+        //verifica se a cidade está no sistema de entrega
+
+        return redirect()->route('order-confirmation')->with([
+            'message' => 'Pedido criado com sucesso!',
+            'order' => 1
+        ]);
     }
 }
