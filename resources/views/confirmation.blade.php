@@ -24,9 +24,9 @@
                 Total
             </div>
             <div class="card-body" style="text-align: right; font-size: 18px;">
-                <p><b>Subtotal: </b> R$12.000,00</p>
-                <p><b>Frete: </b> R$0,00</p>
-                <p><b>Total: </b> R$12.000,00</p>
+                <p><b>Subtotal: </b> R${{number_format($products_price, 2, ',', '.')}}</p>
+                <p><b>Frete: </b> R${{number_format($shipping_price, 2, ',', '.')}}</p>
+                <p><b>Total: </b> R${{number_format(($products_price + $shipping_price), 2, ',', '.')}}</p>
             </div>
         </div>
     </div>
@@ -90,32 +90,27 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="payment-method" class="form-label">Forma de pagamento</label>
-                                        <select class="form-control" id="payment-method" name="payment-method" required="">
-                                            <option value="1">Cartão Visa</option>
-                                            <option value="2">Cartão Master</option>
-                                            <option value="3">PIX</option>
-                                        </select>
-                                    </div>
+                                <form autocomplete="off">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="payment-method" class="form-label">Forma de pagamento</label>
+                                            <select class="form-control" id="payment-method" name="payment-method" required="">
+                                                <option value="">Selecione</option>
+                                                @foreach($all_payment_methods as $method)
+                                                <option value="{{ $method->id }}" data-max-installments="{{$method->installments}}">{{ $method->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
 
-                                    <div class="col">
-                                        <label for="installments" class="form-label">Parcelas</label>
-                                        <select class="form-control" id="installments" name="installments" required="">
-                                            <option value="1">1x</option>
-                                            <option value="2">2x</option>
-                                            <option value="3">3x</option>
-                                            <option value="4">4x</option>
-                                            <option value="5">5x</option>
-                                            <option value="6">6x</option>
-                                            <option value="7">7x</option>
-                                            <option value="8">8x</option>
-                                            <option value="9">9x</option>
-                                            <option value="10">10x</option>
-                                        </select>
+                                        <div class="col">
+                                            <label for="installments" class="form-label">Parcelas</label>
+                                            <select class="form-control" id="installments" name="installments" required="">
+                                                <option value="">Selecione</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -130,4 +125,34 @@
         </div>
     </div>
 </div>
+
+<script>
+    const order_total = {{$products_price + $shipping_price}};
+
+    const generatesOptions = (max_installments, combobox) => {
+        let html = '<option value="">Selecione</option>';
+        for(let i=1; i<=max_installments; i++){
+            html += `<option value="${i}">${i}x de ${(order_total / i).toLocaleString('pt-BR', {minimumFractionDigits: 2 , style: 'currency', currency: 'BRL'})}</option>`;
+        }
+
+        combobox.innerHTML = html;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const installments = document.getElementById('installments');
+        installments.disabled = true;
+
+        document.getElementById('payment-method').addEventListener('change', ({target}) => {
+            if(target.value==''){
+                installments.value = '';
+                installments.disabled = true;
+                return;
+            }
+
+            installments.disabled = false;
+            let max = target.querySelector('option:checked').dataset.maxInstallments;
+            generatesOptions(max, installments);
+        });
+    });
+</script>
 @endsection

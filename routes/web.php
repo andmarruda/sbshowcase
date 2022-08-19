@@ -45,7 +45,7 @@ Route::get('/cart/change/{product_id}/{quantity}/{target?}', [CartController::cl
 Route::post('/cart/calculate-shipping', [CartController::class, 'calculateShipping'])->name('cart-calculate-shipping');
 
 //order confirmation
-Route::get('/order-confirmation', [CartController::class, 'orderConfirmation'])->name('order-confirmation');
+Route::get('/order-confirmation', [CartController::class, 'orderConfirmation'])->name('order-confirmation')->middleware('SBCustomerAuth');
 
 //customer area
 Route::get('/customer-login/{redirect?}', [CustomerAreaController::class, 'customerLogin'])->name('customer-login');

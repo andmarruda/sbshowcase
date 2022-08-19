@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PaymentMethod;
 use App\Models\DeliverySettings;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -174,6 +175,7 @@ class CartController extends Controller
      */
     public function orderConfirmation() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('confirmation');
+        $all_payment_methods = PaymentMethod::where('installments', '>', 0)->orderBy('name')->get();
+        return view('confirmation', ['shipping_price' => 0, 'products_price' => 1000, 'all_payment_methods' => $all_payment_methods]);
     }
 }
