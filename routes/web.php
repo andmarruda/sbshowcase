@@ -20,6 +20,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerAreaController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\EmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -152,4 +153,10 @@ Route::prefix('/admin')->middleware('SBAuth')->group(function(){
     Route::post('/users/search', [UserController::class, 'search'])->name('users.search');
     Route::get('/users/change-password', [UserController::class, 'changePasswordView'])->name('change-password');
     Route::post('/users/change-password', [UserController::class, 'changePassword'])->name('users.change-password');
+
+    //email providers configuration
+    Route::get('/email/providers', [EmailController::class, 'providers'])->name('email.providers');
+
+    //email to be notified when a new order is placed
+    Route::get('/email/notifications', [EmailController::class, 'notifications'])->name('email.notifications');
 });

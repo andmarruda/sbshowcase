@@ -40,6 +40,7 @@
                                         Configurações
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{{route('email.notifications')}}">Email notificados</a></li>
                                         <li><a class="dropdown-item" href="{{route('template')}}">Template</a></li>
                                         <li><a class="dropdown-item" href="{{route('banner')}}">Banner</a></li>
                                         <li><a class="dropdown-item" href="{{route('store')}}">Lojas</a></li>
@@ -49,6 +50,7 @@
                                         <li><a class="dropdown-item" href="{{route('delivery')}}">Entrega</a></li>
                                         <li><a class="dropdown-item" href="{{route('users')}}">Usuários</a></li>
                                         <li><a class="dropdown-item" href="{{route('change-password')}}">Alterar senha</a></li>
+                                        <li><a class="dropdown-item" href="{{route('email.providers')}}">Provedor de Email</a></li>
                                     </ul>
                                 </li>
 

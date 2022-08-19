@@ -202,9 +202,11 @@ class CartController extends Controller
     {
         $customer = new CustomerAreaController();
         $customerAddress = $customer->getCustomerAddress();
+        $shipping_price = DeliverySettings::where('city_id', '=', $customerAddress->city_id);
+        if($shipping_price->count() == 0)
+            return redirect()->route('cart')->withErrors(['message', 'Infelizmente não entregamos em sua cidade!']);
 
         //verifica metodo de pagamento e limite de parcelas
-        //verifica se a cidade está no sistema de entrega
 
         return redirect()->route('order-confirmation')->with([
             'message' => 'Pedido criado com sucesso!',
