@@ -1,7 +1,7 @@
 @extends('template.admin')
 
 @section('page')
-<form method="post" action="{{route('category.save')}}" autocomplete="off">
+<form method="post" action="{{route('email.providers.save')}}" autocomplete="off">
     <input type="hidden" name="id" id="id" value="{{$EmailProvider->id ?? ''}}">
     @csrf
 
@@ -33,8 +33,16 @@
     </div>
 
     <div class="mb-3">
-        <label for="category" class="form-label">SMTP Secure</label>
-        <input type="text" minlength="3" maxlength="100" class="form-control" id="category" name="category" placeholder="Nome da categoria" required value="{{$EmailProvider->name ?? ''}}">
+        <label for="secure" class="form-label">SMTP Secure</label>
+        @php
+            $smtpSecure = ['tls' => 'tls', 'ssl' => 'ssl'];
+        @endphp
+        <select class="form-control" id="secure" name="secure">
+            <option value="">Selecione</option>
+            @foreach($smtpSecure as $key => $value)
+                <option value="{{$key}}" @if(!is_null($EmailProvider) && $EmailProvider->secure == $key) selected @endif>{{$value}}</option>
+            @endforeach
+        </select>
     </div>
 
     @include('template.includes.alert-error')

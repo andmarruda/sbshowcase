@@ -156,6 +156,7 @@ Route::prefix('/admin')->middleware('SBAuth')->group(function(){
 
     //email providers configuration
     Route::get('/email/providers', [EmailController::class, 'providers'])->name('email.providers');
+    Route::post('/email/providers/save', [EmailController::class, 'saveProviders'])->name('email.providers.save');
 
     //email to be notified when a new order is placed
     Route::get('/email/notifications', [EmailController::class, 'notifications'])->name('email.notifications');
