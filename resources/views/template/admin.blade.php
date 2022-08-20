@@ -40,7 +40,7 @@
                                         Configurações
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="{{route('email.notifications')}}">Email notificados</a></li>
+                                        <li><a class="dropdown-item" href="{{route('email.notifications')}}">Notificar emails</a></li>
                                         <li><a class="dropdown-item" href="{{route('template')}}">Template</a></li>
                                         <li><a class="dropdown-item" href="{{route('banner')}}">Banner</a></li>
                                         <li><a class="dropdown-item" href="{{route('store')}}">Lojas</a></li>

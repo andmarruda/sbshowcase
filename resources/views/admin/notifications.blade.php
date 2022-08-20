@@ -8,18 +8,18 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Configurações</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Email notificados</li>
+            <li class="breadcrumb-item active" aria-current="page">Notificar emails</li>
         </ol>
     </nav>
 
     <div class="mb-3">
-        <label for="mail_name" class="form-label">Nome do contato</label>
-        <input type="text" minlength="3" maxlength="100" class="form-control" id="mail_name" name="mail_name" placeholder="Nome do contato" required value="{{$EmailNotificate->name ?? ''}}">
+        <label for="name" class="form-label">Nome do contato</label>
+        <input type="text" minlength="3" maxlength="100" class="form-control" id="name" name="name" placeholder="Nome do contato" required value="{{$EmailNotificate->name ?? ''}}">
     </div>
 
     <div class="mb-3">
-        <label for="mail" class="form-label">Email</label>
-        <input type="mail" class="form-control" id="mail" name="mail" placeholder="Email" required value="{{$EmailNotificate->email ?? ''}}">
+        <label for="email" class="form-label">Email</label>
+        <input type="mail" class="form-control" id="email" name="email" placeholder="Email" required value="{{$EmailNotificate->email ?? ''}}">
     </div>
 
     @include('template.includes.alert-error')
@@ -41,5 +41,5 @@
     </div>
 </form>
 
-@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar email de contato', 'placeholder' => 'Email de contato', 'route' => route('email.notifications.search'), 'loadRoute' => route('email.notifications'), 'ths' => ['#', 'Nome', 'Ativa?']])
+@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar nome do contato', 'placeholder' => 'Nome do contato', 'route' => route('email.notifications.search'), 'loadRoute' => route('email.notifications'), 'ths' => ['#', 'Nome', 'Ativa?']])
 @endsection
