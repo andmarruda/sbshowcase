@@ -1,7 +1,7 @@
 @extends('template.admin')
 
 @section('page')
-<form method="post" action="{{route('category.save')}}" autocomplete="off">
+<form method="post" action="{{route('email.notifications.save')}}" autocomplete="off">
     <input type="hidden" name="id" id="id" value="{{$EmailNotificate->id ?? ''}}">
     @csrf
 
@@ -36,10 +36,10 @@
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa-solid fa-magnifying-glass"></i> Pesquisar</button>
 
         @if(!is_null($EmailNotificate))
-        @include('template.includes.disable-enable', ['enabled' => is_null($EmailNotificate->deleted_at), 'route' => route('category.delete'), 'id' => $EmailNotificate->id, 'token' => csrf_token()])
+        @include('template.includes.disable-enable', ['enabled' => is_null($EmailNotificate->deleted_at), 'route' => route('email.notifications.delete'), 'id' => $EmailNotificate->id, 'token' => csrf_token()])
         @endif
     </div>
 </form>
 
-@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar email de contato', 'placeholder' => 'Email de contato', 'route' => route('category.search'), 'loadRoute' => route('category'), 'ths' => ['#', 'Nome', 'Ativa?']])
+@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar email de contato', 'placeholder' => 'Email de contato', 'route' => route('email.notifications.search'), 'loadRoute' => route('email.notifications'), 'ths' => ['#', 'Nome', 'Ativa?']])
 @endsection

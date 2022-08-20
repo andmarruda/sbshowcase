@@ -161,7 +161,7 @@ Route::prefix('/admin')->middleware('SBAuth')->group(function(){
     Route::post('/email/providers/delete', [EmailController::class, 'delete'])->name('email.providers.delete');
 
     //email to be notified when a new order is placed
-    Route::get('/email/notifications', [EmailController::class, 'notifications'])->name('email.notifications');
+    Route::get('/email/notifications/{id?}', [EmailController::class, 'notifications'])->name('email.notifications')->where('id', '[0-9]+');
     Route::post('/email/notifications/save', [EmailController::class, 'saveNotifications'])->name('email.notifications.save');
     Route::post('/email/notifications/search', [EmailController::class, 'searchNotifications'])->name('email.notifications.search');
     Route::post('/email/notifications/delete', [EmailController::class, 'deleteNotifications'])->name('email.notifications.delete');
