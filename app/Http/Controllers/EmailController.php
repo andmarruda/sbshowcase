@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\EmailProvider;
 
@@ -16,7 +17,39 @@ class EmailController extends Controller
      */
     public function providers(?int $id=NULL) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('admin.providers', ['EmailProvider' => NULL]);
+        $provider = is_null($id) ? NULL : EmailProvider::withTrashed()->find($id);
+        return view('admin.providers', ['EmailProvider' => $provider]);
+    }
+
+    /**
+     * Search providers
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           \Illuminate\Http\Request $request
+     * @return          \Illuminate\Http\JsonResponse
+     */
+    public function searchProviders(Request $request) : \Illuminate\Http\JsonResponse
+    {
+        $providers = EmailProvider::withTrashed()->select(DB::raw('email as name, *'))->where('email', 'ilike', '%'.$request->input('search').'%')->get();
+        return response()->json($providers);
+    }
+
+    /**
+     * Delete provider
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           \Illuminate\Http\Request $request
+     * @return          \Illuminate\Http\JsonResponse
+     */
+    public function delete(Request $request) : \Illuminate\Http\JsonResponse
+    {
+        $provider = EmailProvider::withTrashed()->find($request->input('id'));
+        if(!is_null($provider->deleted_at))
+            $provider->restore();
+        else
+            $provider->delete();
+
+        return response()->json(['success' => true]);
     }
 
     /**
@@ -56,8 +89,8 @@ class EmailController extends Controller
         $provider->fill([
             'host' => $request->input('host'),
             'port' => $request->input('port'),
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
+            'email' => $request->input('username'),
+            'password' => $request->input('pass'),
             'secure' => $request->input('secure')
         ]);
         $saved = $provider->save();

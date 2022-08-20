@@ -24,12 +24,12 @@
 
     <div class="mb-3">
         <label for="username" class="form-label">Usuário</label>
-        <input type="text" minlength="3" class="form-control" id="username" name="username" placeholder="Usuário" required value="{{$EmailProvider->username ?? ''}}">
+        <input type="text" minlength="3" class="form-control" id="username" name="username" placeholder="Usuário" required value="{{$EmailProvider->email ?? ''}}">
     </div>
 
     <div class="mb-3">
         <label for="pass" class="form-label">Senha</label>
-        <input type="password" minlength="3" class="form-control" id="pass" name="pass" placeholder="Senha" required value="{{$EmailProvider->pass ?? ''}}">
+        <input type="password" minlength="3" class="form-control" id="pass" name="pass" placeholder="Senha" required value="{{$EmailProvider->password ?? ''}}">
     </div>
 
     <div class="mb-3">
@@ -59,10 +59,10 @@
         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa-solid fa-magnifying-glass"></i> Pesquisar</button>
 
         @if(!is_null($EmailProvider))
-        @include('template.includes.disable-enable', ['enabled' => is_null($EmailProvider->deleted_at), 'route' => route('category.delete'), 'id' => $EmailProvider->id, 'token' => csrf_token()])
+        @include('template.includes.disable-enable', ['enabled' => is_null($EmailProvider->deleted_at), 'route' => route('email.providers.delete'), 'id' => $EmailProvider->id, 'token' => csrf_token()])
         @endif
     </div>
 </form>
 
-@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar categoria', 'placeholder' => 'Categoria', 'route' => route('category.search'), 'loadRoute' => route('category'), 'ths' => ['#', 'Categoria', 'Ativa?']])
+@include('template.includes.search-modal', ['modalTitle' => 'Pesquisar provedor de email', 'placeholder' => 'Provedor de email', 'route' => route('email.providers.search'), 'loadRoute' => route('email.providers'), 'ths' => ['#', 'Email', 'Ativa?']])
 @endsection

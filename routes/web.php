@@ -155,9 +155,14 @@ Route::prefix('/admin')->middleware('SBAuth')->group(function(){
     Route::post('/users/change-password', [UserController::class, 'changePassword'])->name('users.change-password');
 
     //email providers configuration
-    Route::get('/email/providers', [EmailController::class, 'providers'])->name('email.providers');
+    Route::get('/email/providers/{id?}', [EmailController::class, 'providers'])->name('email.providers')->where('id', '[0-9]+');
     Route::post('/email/providers/save', [EmailController::class, 'saveProviders'])->name('email.providers.save');
+    Route::post('/email/providers/search', [EmailController::class, 'searchProviders'])->name('email.providers.search');
+    Route::post('/email/providers/delete', [EmailController::class, 'delete'])->name('email.providers.delete');
 
     //email to be notified when a new order is placed
     Route::get('/email/notifications', [EmailController::class, 'notifications'])->name('email.notifications');
+    Route::post('/email/notifications/save', [EmailController::class, 'saveNotifications'])->name('email.notifications.save');
+    Route::post('/email/notifications/search', [EmailController::class, 'searchNotifications'])->name('email.notifications.search');
+    Route::post('/email/notifications/delete', [EmailController::class, 'deleteNotifications'])->name('email.notifications.delete');
 });
