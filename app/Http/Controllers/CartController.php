@@ -241,7 +241,7 @@ class CartController extends Controller
                 $oc->saveShippmentData(
                     $order->id, $customerAddress->phone, $customerAddress->address, 
                     $customerAddress->number, $customerAddress->complement, $customerAddress->neighborhood, 
-                    $customerAddress->zipcode, $customerAddress->city_id, $customerAddress->state_id
+                    $customerAddress->zip_code, $customerAddress->city_id, $customerAddress->state_id
                 );
 
                 foreach($products['Products'] as $product){
