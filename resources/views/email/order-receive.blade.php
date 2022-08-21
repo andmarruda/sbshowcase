@@ -70,9 +70,25 @@
                             Produtos
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            @foreach($Products as $Product)
+                            <div class="card mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="images/example.png" class="img-fluid rounded-start" alt="Produto tal" style="width:100px;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <h5>{{$Product['product']->name}}</h5>
+                                                <div>
+                                                    <p class="price">Quantidade: {{$Product['quantity']}}<br>Preço: R${{number_format(($Product['quantity'] * $Product['product']->price), 2, ',', '.')}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
