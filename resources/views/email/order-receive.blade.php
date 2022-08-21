@@ -28,10 +28,69 @@
                 </div>
             </div>
 
-            <div class="row">
-                Seu pedido nº foi realizado com sucesso.
+            <div class="row" style="margin-top:2rem;">
+                <div class="col-md-12">
+                    <h4>Seu pedido nº {{$Order->id}} foi realizado com sucesso.</h4>
+                </div>
+            </div>
 
-                
+            <div class="row" style="margin-top:2rem;">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            Endereço de entrega / cobrança
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-0"><b>Endereço:</b> {{$OrderAddress->address ?? ''}}, {{$OrderAddress->number ?? ''}} - {{$OrderAddress->neighborhood ?? ''}}</p>
+                            <p class="mb-0"><b>CEP:</b> {{$OrderAddress->zip_code ?? ''}}</p>
+                            <p class="mb-0"><b>Complemento:</b> {{$OrderAddress->complement ?? ''}}</p>
+                            <p class="mb-0"><b>Cidade:</b> {{$OrderAddress->city()->first()->city_name}} - {{$OrderAddress->state()->first()->state_initials}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            Totais
+                        </div>
+                        <div class="card-body" style="text-align:right; font-size:20px;">
+                            <p><b>Subtotal: </b> R${{number_format($Order->subtotal, 2, ',', '.')}}</p>
+                            <p><b>Frete: </b> R${{number_format($Order->shippment_price, 2, ',', '.')}}</p>
+                            <p><b>Total: </b> R${{number_format($Order->total, 2, ',', '.')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:2rem;">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Produtos
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:2rem;">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Forma de pagamento
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

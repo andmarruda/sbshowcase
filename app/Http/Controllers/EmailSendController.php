@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mail\OrderReceive;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\OrderAddress;
 
 class EmailSendController extends Controller
 {
@@ -27,8 +27,9 @@ class EmailSendController extends Controller
         $mailer->to('test-0jilqufrm@srv1.mail-tester.com')->send(new OrderReceive());
     }
 
-    public function teste2()
+    public function teste2(?int $id=NULL)
     {
-        return view('email.order-receive');
+        $order = is_null($id) ? NULL : Order::find($id);
+        return view('email.order-receive', ['Order' => $order, 'OrderAddress' => $order->address()->first()]);
     }
 }
