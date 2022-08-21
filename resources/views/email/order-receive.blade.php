@@ -31,6 +31,9 @@
             <div class="row" style="margin-top:2rem;">
                 <div class="col-md-12">
                     <h4>Seu pedido nº {{$Order->id}} foi realizado com sucesso.</h4>
+                    <p>Para acompanhar seu pedido acesse a área do cliente <a href="{{route('customer-login')}}" alt="Área do cliente" target="_blank">clicando aqui.</a></p>
+                    <p>Status do seu pedido: <strong>{{$Order->order_status()->first()->status}}</strong></p>
+                    <p>Em breve novos email informando o andamento do seu pedido serão enviados!</p>
                 </div>
             </div>
 
@@ -101,9 +104,8 @@
                             Forma de pagamento
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <div class="alert alert-info">Pagamento na entrega</div>
+                            <p>Pagamento através de {{$PaymentMethod->payment_method()->first()->name}} em {{$PaymentMethod->installments}}x de R${{number_format($PaymentMethod->installment_price, 2, ',', '.')}} sem juros</p>
                         </div>
                     </div>
                 </div>
