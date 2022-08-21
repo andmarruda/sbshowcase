@@ -77,7 +77,7 @@
                                     </div>
                                 </div>
 
-                                <form autocomplete="off">
+                                <form autocomplete="off" id="form-payment-method-confirmation" action="{{route('create-order')}}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col">
@@ -103,10 +103,17 @@
                     </div>
                 </div>
 
-                @if(!is_null($Products))
+                <div class="row" style="margin-top: 2rem;">
+                    @include('template.includes.alert-error')
+                    @if(!is_null(session('message')))
+                        <div class="alert alert-success">{{session('message')}}</div>
+                    @endif
+                </div>
+
+                @if(!is_null($Products) && is_null(session('message')))
                 <div class="row" style="margin-top: 2rem;">
                     <div class="col" style="text-align: right;">
-                        <a href="#" class="btn btn-primary">Confirmar pedido</a>
+                        <a href="javascript: void(0);" onclick="javascript: sendPaymetForm();" class="btn btn-primary">Confirmar pedido</a>
                     </div>
                 </div>
                 @endif
@@ -117,6 +124,10 @@
 
 <script>
     const order_total = {{$products_price + $shipping_price}};
+
+    const sendPaymetForm = () => {
+        document.getElementById('form-payment-method-confirmation').submit();
+    }
 
     const generatesOptions = (max_installments, combobox) => {
         let html = '<option value="">Selecione</option>';
@@ -142,6 +153,13 @@
             let max = target.querySelector('option:checked').dataset.maxInstallments;
             generatesOptions(max, installments);
         });
+
+        @if(!is_null(session('message')))
+        document.getElementById('form-payment-method-confirmation').addEventListener('submit', (event) => {
+            event.preventDefault();
+            return false;
+        });
+        @endif
     });
 </script>
 @endsection

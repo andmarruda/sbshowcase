@@ -6,6 +6,7 @@ use App\Models\PaymentMethod;
 use App\Models\DeliverySettings;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -201,16 +202,56 @@ class CartController extends Controller
     public function createOrder(Request $request) : \Illuminate\Http\RedirectResponse
     {
         $customer = new CustomerAreaController();
+        if(!$customer->isLogged())
+            return redirect()->route('customer.login', ['redirect' => 'order-confirmation']);
+
+        $request->validate([
+            'payment-method' => 'required|exists:payment_methods,id',
+            'installments'   => 'required|integer|min:1',
+        ], [
+            'payment-method.required' => 'Selecione um método de pagamento',
+            'payment-method.exists' => 'Método de pagamento não encontrado',
+            'installments.required' => 'Selecione o número de parcelas',
+            'installments.integer' => 'O número de parcelas deve ser um número inteiro',
+            'installments.min' => 'O número de parcelas deve ser maior que zero'
+        ]);
+
         $customerAddress = $customer->getCustomerAddress();
         $shipping_price = DeliverySettings::where('city_id', '=', $customerAddress->city_id);
         if($shipping_price->count() == 0)
-            return redirect()->route('cart')->withErrors(['message', 'Infelizmente não entregamos em sua cidade!']);
+            return redirect()->route('order-confirmation')->withErrors(['message' => 'Infelizmente não entregamos em sua cidade!']);
 
-        //verifica metodo de pagamento e limite de parcelas
+        $ds = PaymentMethod::find($request->input('payment-method'));
+        if($request->input('installments') > $ds->installments)
+            return redirect()->route('order-confirmation')->withErrors(['message' => 'Número de parcelas acima do permitido. Parcelamos no máximo em '. $ds->installments .'x nesse método de pagamento.']);
 
-        return redirect()->route('order-confirmation')->with([
-            'message' => 'Pedido criado com sucesso!',
-            'order' => 1
-        ]);
+        $products = $this->getProducts();
+        if(is_null($products))
+            return redirect()->route('order-confirmation')->withErrors(['message' => 'Seu carrinho está vazio!']);
+
+        $oc = new OrderController();
+        $shPrice = $shipping_price->first()->price;
+
+        try{
+            $customer_id = $_SESSION['sbcustomer-area']['id'];
+            $order = NULL;
+            DB::connection()->transaction(function() use(&$order, $oc, $request, $customer_id, $products, $shPrice, $customerAddress){
+                $order = $oc->newOrder($customer_id, ($products['subtotal'] + $shPrice), $products['subtotal'], $shPrice);
+                $oc->savePaymentMethod($order->id, $request->input('payment-method'), $request->input('installments'), (($products['subtotal'] + $shPrice) / $request->input('installments')));
+                $oc->saveShippmentData(
+                    $order->id, $customerAddress->phone, $customerAddress->address, 
+                    $customerAddress->number, $customerAddress->complement, $customerAddress->neighborhood, 
+                    $customerAddress->zipcode, $customerAddress->city_id, $customerAddress->state_id
+                );
+
+                foreach($products['Products'] as $product){
+                    $oc->newOrderProduct($order->id, $product['product']->id, $product['quantity'], $product['product']->price, $product['product']->name, $product['product']->old_price);
+                }
+            });
+
+            return redirect()->route('order-confirmation')->with('message', 'Pedido nº '. $order->id .' criado com sucesso! Em breve você receberá um e-mail com a confirmação do seu pedido!');
+        } catch(\Exception $err){
+            return redirect()->route('order-confirmation')->withErrors(['message' => 'Erro inesperado ao salvar seu pedido! Por favor tente novamente mais tarde!']);
+        }
     }
 }
