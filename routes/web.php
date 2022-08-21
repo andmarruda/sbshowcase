@@ -21,6 +21,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerAreaController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\EmailSendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,9 @@ use App\Http\Controllers\EmailController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/teste', [EmailSendController::class, 'teste'])->name('teste');
+Route::get('/teste2', [EmailSendController::class, 'teste2'])->name('teste2');
 
 //public
 Route::get('/', [ShowcaseController::class, 'home'])->name('main');
