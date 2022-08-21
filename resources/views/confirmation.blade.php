@@ -44,7 +44,7 @@
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="{{$Product['product']->getImage()}}" srcset="{{$Product['product']->getImgSrcSet()}}" sizes="{{$Product['product']->getImgSizeSet()}}" class="img-fluid rounded-start" alt="Produto tal" style="width:100px;">
+                                <img src="{{$Product['product']->getImage()}}" srcset="{{$Product['product']->getImgSrcSet()}}" sizes="{{$Product['product']->getImgSizeSet()}}" class="img-fluid rounded-start" alt="{{$Product['product']->name}}" style="width:100px;">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">

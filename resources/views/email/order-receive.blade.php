@@ -74,14 +74,14 @@
                             <div class="card mb-3">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="images/example.png" class="img-fluid rounded-start" alt="Produto tal" style="width:100px;">
+                                        <img src="{{$Product->product()->first()->getImage()}}" srcset="{{$Product->product()->first()->getImgSrcSet()}}" sizes="{{$Product->product()->first()->getImgSizeSet()}}" class="img-fluid rounded-start" alt="{{$Product->product_name}}" style="width:100px;">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between">
-                                                <h5>{{$Product['product']->name}}</h5>
+                                                <h5>{{$Product->product_name}}</h5>
                                                 <div>
-                                                    <p class="price">Quantidade: {{$Product['quantity']}}<br>Preço: R${{number_format(($Product['quantity'] * $Product['product']->price), 2, ',', '.')}}</p>
+                                                    <p class="price">Quantidade: {{$Product->quantity}}<br>Preço: R${{number_format(($Product->quantity * $Product->price), 2, ',', '.')}}</p>
                                                 </div>
                                             </div>
                                         </div>

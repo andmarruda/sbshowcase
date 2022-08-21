@@ -30,6 +30,6 @@ class EmailSendController extends Controller
     public function teste2(?int $id=NULL)
     {
         $order = is_null($id) ? NULL : Order::find($id);
-        return view('email.order-receive', ['Order' => $order, 'OrderAddress' => $order->address()->first()]);
+        return view('email.order-receive', ['Order' => $order, 'OrderAddress' => $order->address()->first(), 'Products' => $order->products()->get()]);
     }
 }
