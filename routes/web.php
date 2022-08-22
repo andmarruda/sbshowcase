@@ -52,6 +52,7 @@ Route::post('/cart/calculate-shipping', [CartController::class, 'calculateShippi
 //order confirmation
 Route::get('/order-confirmation', [CartController::class, 'orderConfirmation'])->name('order-confirmation')->middleware('SBCustomerAuth');
 Route::post('/order-confirmation', [CartController::class, 'createOrder'])->name('create-order')->middleware('SBCustomerAuth');
+Route::get('/confirmed-order/{id}', [CartController::class, 'confirmedOrder'])->name('confirmed-order')->middleware('SBCustomerAuth')->where('id', '[0-9]+');
 
 //customer area
 Route::get('/customer-login/{redirect?}', [CustomerAreaController::class, 'customerLogin'])->name('customer-login');

@@ -7,6 +7,7 @@ use App\Models\DeliverySettings;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use App\Models\Order;
 
 class CartController extends Controller
 {
@@ -190,6 +191,19 @@ class CartController extends Controller
             'all_payment_methods' => $all_payment_methods, 
             'customerAddress' => $customerAddress
         ]);
+    }
+
+    /**
+     * Show the order confirmed
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           int $id
+     * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function confirmedOrder(int $id) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    {
+        $order = Order::find($id);
+        return view('', ['Order' => $order, 'OrderAddress' => $order->address()->first(), 'Products' => $order->products()->get(), 'PaymentMethod' => $order->payment_method()->first()]);
     }
 
     /**

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Mail\OrderReceive;
 use App\Models\Order;
-use App\Models\OrderAddress;
 
 class EmailSendController extends Controller
 {
