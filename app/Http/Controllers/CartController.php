@@ -143,13 +143,16 @@ class CartController extends Controller
      * Clear the cart
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
-     * @param
+     * @param           bool $redirect=true
      * @return          \Illuminate\Http\RedirectResponse
      */
-    public function empty() : \Illuminate\Http\RedirectResponse
+    public function empty(bool $redirect=true) : ?\Illuminate\Http\RedirectResponse
     {
         session()->forget('sbcart');
-        return redirect()->route('cart');
+        if($redirect)
+            return redirect()->route('cart');
+
+        return null;
     }
 
     /**
@@ -203,7 +206,10 @@ class CartController extends Controller
     public function confirmedOrder(int $id) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         $order = Order::find($id);
-        return view('', ['Order' => $order, 'OrderAddress' => $order->address()->first(), 'Products' => $order->products()->get(), 'PaymentMethod' => $order->payment_method()->first()]);
+        if($order->customer_id != $_SESSION['sbcustomer-area']['id'])
+            return abort(404);
+
+        return view('confirmed-order', ['Order' => $order, 'OrderAddress' => $order->address()->first(), 'Products' => $order->products()->get(), 'PaymentMethod' => $order->payment_method()->first()]);
     }
 
     /**
@@ -263,7 +269,8 @@ class CartController extends Controller
                 }
             });
 
-            return redirect()->route('order-confirmation')->with('message', 'Pedido nº '. $order->id .' criado com sucesso! Em breve você receberá um e-mail com a confirmação do seu pedido!');
+            $this->empty(false);
+            return redirect()->route('confirmed-order', ['id' => $order->id]);
         } catch(\Exception $err){
             return redirect()->route('order-confirmation')->withErrors(['message' => 'Erro inesperado ao salvar seu pedido! Por favor tente novamente mais tarde!']);
         }
