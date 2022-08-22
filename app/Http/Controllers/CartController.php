@@ -209,7 +209,8 @@ class CartController extends Controller
         if($order->customer_id != $_SESSION['sbcustomer-area']['id'])
             return abort(404);
 
-        return view('confirmed-order', ['Order' => $order, 'OrderAddress' => $order->address()->first(), 'Products' => $order->products()->get(), 'PaymentMethod' => $order->payment_method()->first()]);
+        $oc = new OrderController();
+        return view('confirmed-order', $oc->getOrderDetails($id));
     }
 
     /**

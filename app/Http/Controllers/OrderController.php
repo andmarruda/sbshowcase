@@ -126,4 +126,22 @@ class OrderController extends Controller
 
         return $o;
     }
+
+    /**
+     * Get all detailed order informations
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           int $order_id
+     * @return          array['Order' => \App\Models\Order, 'OrderAddress' => \App\Models\OrderDelivery, 'Products' => \App\Models\OrderProduct, 'PaymentMethod' => \App\Models\OrderPaymentMethod]
+     */
+    public function getOrderDetails(int $order_id) : array
+    {
+        $order = Order::find($order_id);
+        return [
+            'Order' => $order, 
+            'OrderAddress' => $order->address()->first(), 
+            'Products' => $order->products()->get(), 
+            'PaymentMethod' => $order->payment_method()->first()
+        ];
+    }
 }
