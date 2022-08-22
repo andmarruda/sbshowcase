@@ -271,6 +271,10 @@ class CartController extends Controller
             });
 
             $this->empty(false);
+
+            $email = new EmailSendController();
+            $email->orderDetailEmail($order->id, $_SESSION['sbcustomer-area']['email']);
+
             return redirect()->route('confirmed-order', ['id' => $order->id]);
         } catch(\Exception $err){
             return redirect()->route('order-confirmation')->withErrors(['message' => 'Erro inesperado ao salvar seu pedido! Por favor tente novamente mais tarde!']);

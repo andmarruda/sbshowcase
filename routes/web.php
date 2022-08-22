@@ -34,8 +34,7 @@ use App\Http\Controllers\EmailSendController;
 |
 */
 
-Route::get('/teste', [EmailSendController::class, 'teste'])->name('teste');
-Route::get('/teste2/{id?}', [EmailSendController::class, 'teste2'])->name('teste2')->where('id', '[0-9]+');
+
 
 //public
 Route::get('/', [ShowcaseController::class, 'home'])->name('main');
