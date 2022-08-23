@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Order;
 use App\Models\City;
 use App\Rules\CnpjCpf;
 
@@ -201,7 +202,20 @@ class CustomerAreaController extends Controller
      */
     public function customerArea() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('customer-area.orders');
+        return view('customer-area.orders', ['Orders' => Order::withTrashed()->where('customer_id', '=', $_SESSION['sbcustomer-area']['id'])->get()]);
+    }
+
+    /**
+     * Returns blade with order details of customer area
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           int $order_id
+     * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function orderDetail(int $order_id) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    {
+        $oc = new OrderController();
+        return view('customer-area.orderDetail', $oc->getOrderDetails($order_id));
     }
 
     /**
