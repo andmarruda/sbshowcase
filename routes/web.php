@@ -34,7 +34,7 @@ use App\Http\Controllers\EmailSendController;
 |
 */
 
-
+Route::get('/teste', [EmailSendController::class, 'orderAdminAdvice']);
 
 //public
 Route::get('/', [ShowcaseController::class, 'home'])->name('main');

@@ -14,7 +14,7 @@ class General extends Model
         'highlight_img_1', 'highlight_text_1', 'highlight_img_2', 
         'highlight_text_2', 'company_name', 'company_doc', 
         'blog_url', 'whatsapp_number', 'highlight_product_1', 
-        'highlight_product_2', 'highlight_product_3'
+        'highlight_product_2', 'highlight_product_3', 'prefer_email'
     ];
 
     /**
