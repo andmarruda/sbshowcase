@@ -28,6 +28,11 @@
     </div>
 
     <div class="mb-3">
+        <label for="prefer_email" class="form-label">Email principal</label>
+        <input type="email" minlength="10" maxlength="200" class="form-control" id="prefer_email" name="prefer_email" placeholder="Email principal" required value="{{$General->prefer_email ?? ''}}">
+    </div>
+
+    <div class="mb-3">
         <label for="slogan" class="form-label">Slogan</label>
         <input type="text" minlength="50" maxlength="200" class="form-control" id="slogan" name="slogan" placeholder="Slogan" required value="{{$General->slogan}}">
     </div>
@@ -53,8 +58,13 @@
     </div>
 
     <div class="mb-3">
-        <label for="highlight_img_1" class="form-label">Icone destaque 1</label>
+        <label for="highlight_img_1" class="form-label">Icone destaque 1<br><small>"Recomendado 30 pixels x 30 pixels"</small></label>
         <input type="file" class="form-control" id="highlight_img_1" name="highlight_img_1" placeholder="Icone destaque 1">
+    </div>
+
+    <div class="mb-3">
+        Caso queira utilizar outros icones utilize a biblioteca aberta do <a href="https://www.iconfinder.com/" target="_blank">https://www.iconfinder.com/</a>.<br>
+        Não esqueça de filtrar por icones gratuítos. Utilizar png com fundo transparente.
     </div>
 
     <div class="mb-3">
@@ -68,8 +78,13 @@
     </div>
 
     <div class="mb-3">
-        <label for="highlight_img_2" class="form-label">Icone destaque 2</label>
+        <label for="highlight_img_2" class="form-label">Icone destaque 2<br><small>"Recomendado 30 pixels x 30 pixels"</small></label>
         <input type="file" class="form-control" id="highlight_img_2" name="highlight_img_2" placeholder="Icone destaque 2">
+    </div>
+
+    <div class="mb-3">
+        Caso queira utilizar outros icones utilize a biblioteca aberta do <a href="https://www.iconfinder.com/" target="_blank">https://www.iconfinder.com/</a>.<br>
+        Não esqueça de filtrar por icones gratuítos. Utilizar png com fundo transparente.
     </div>
 
     <div class="mb-3">

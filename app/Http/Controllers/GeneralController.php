@@ -32,8 +32,11 @@ class GeneralController extends Controller
         'highlight_text_2.min'          => 'O campo texto destacado 1 deve ter no mínimo 15 caracteres',
         'highlight_text_2.max'          => 'O campo texto destacado 1 deve ter no máximo 50 caracteres',
         'brand_image'                   => 'O campo imagem da marca é obrigatório', 
-        'highlight_img_1'                   => 'O campo imagem da marca é obrigatório', 
-        'highlight_img_2'                   => 'O campo imagem da marca é obrigatório'
+        'highlight_img_1'               => 'O campo imagem da marca é obrigatório', 
+        'highlight_img_2'               => 'O campo imagem da marca é obrigatório',
+        'prefer_email.required'         => 'O campo email principal é obrigatório',
+        'prefer_email.min'              => 'O campo email principal deve conter no mínimo 10 caracteres',
+        'prefer_email.max'              => 'O campo email principal deve conter no máximo 200 caracteres'
     ];
 
     /**
@@ -90,7 +93,8 @@ class GeneralController extends Controller
             'highlight_text_2'  => 'required|min:15|max:50',
             'brand_image'       => 'nullable|mimes:'. $filetypes. '|max:'. ImageController::ALLOWED_SIZE,
             'highlight_img_1'   => 'nullable|mimes:'. $filetypes. '|max:'. ImageController::ALLOWED_SIZE,
-            'highlight_img_2'   => 'nullable|mimes:'. $filetypes. '|max:'. ImageController::ALLOWED_SIZE
+            'highlight_img_2'   => 'nullable|mimes:'. $filetypes. '|max:'. ImageController::ALLOWED_SIZE,
+            'prefer_email'      => 'required|min:15|max:200'
         ], $this->requestMessages);
 
         $general = General::find(1);
@@ -121,7 +125,8 @@ class GeneralController extends Controller
             'company_name'              => $r->input('company_name'), 
             'company_doc'               => $r->input('company_doc'), 
             'blog_url'                  => $r->input('blog_url'),
-            'whatsapp_number'           => $r->input('whatsapp_number')
+            'whatsapp_number'           => $r->input('whatsapp_number'),
+            'prefer_email'              => $r->input('prefer_email')
         ]);
         $saved = $general->save();
         return redirect()->route('general')->with('saved', $saved);
