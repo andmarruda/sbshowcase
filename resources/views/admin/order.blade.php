@@ -121,7 +121,7 @@
                         @else
                         <td><span class="badge" style="background:red; border:1px solid #000;">&nbsp;</span> Cancelado</td>
                         @endif
-                        <td><a href="#" class="btn btn-outline-primary">Detalhes</a></td>
+                        <td><a href="{{route('admin.order-detail', ['id' => $order->id])}}" class="btn btn-outline-primary">Detalhes</a></td>
                     </tr>
                     @empty
                     <tr>

@@ -1,7 +1,7 @@
 <div class="row" style="margin-top:2rem;">
     <div class="col-md-12">
         <h4>Seu pedido nº {{$Order->id}} foi realizado com sucesso.</h4>
-        @if(is_null(\Request::route()) || \Request::route()->getName()!='customer-order-detail'))
+        @if(is_null(\Request::route()) || !in_array(\Request::route()->getName(), ['customer-order-detail', 'admin.order-detail']))
         <p>Para acompanhar seu pedido acesse a área do cliente <a href="{{route('customer-login')}}" alt="Área do cliente" target="_blank">clicando aqui.</a></p>
         @endif
         @if(is_null($Order->deleted_at))

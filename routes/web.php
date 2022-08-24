@@ -80,6 +80,7 @@ Route::prefix('/admin')->middleware('SBAuth')->group(function(){
     //Order routes
     Route::get('/order', [OrderController::class, 'adminView'])->name('order');
     Route::post('/order/search', [OrderController::class, 'orderSearch'])->name('admin.order.search');
+    Route::get('/order/detail/{id}', [OrderController::class, 'orderDetail'])->name('admin.order-detail')->where('id', '[0-9]+');
 
     //category routes
     Route::get('/category/{id?}', [CategoryController::class, 'adminView'])->name('category')->where('id', '[0-9]+');

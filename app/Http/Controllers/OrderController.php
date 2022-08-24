@@ -51,6 +51,20 @@ class OrderController extends Controller
     }
 
     /**
+     * Returns blade with order details of admin
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           int $order_id
+     * @return          \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function orderDetail(int $order_id) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    {
+        $order_status = OrderStatus::all();
+        $parameters = [...$this->getOrderDetails($order_id), 'OrderStatus' => $order_status];
+        return view('admin.orderDetail', $parameters);
+    }
+
+    /**
      * Save payment method of order
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
