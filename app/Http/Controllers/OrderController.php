@@ -40,6 +40,7 @@ class OrderController extends Controller
      */
     public function orderSearch(Request $request) : \Illuminate\Http\RedirectResponse
     {
+        $o = Order::orderBy('created_at');
         return redirect()->route('order')
             ->with('customer_name', $request->input('customer_name'))
             ->with('customer_document', $request->input('customer_document'))
