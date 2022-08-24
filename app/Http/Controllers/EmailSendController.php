@@ -66,6 +66,6 @@ class EmailSendController extends Controller
         foreach($m as $email)
             $mail = $mailer->cc($email);
 
-        $mail->send(new OrderAdvice());
+        $mail->send(new OrderAdvice('Novo pedido - Biosono'));
     }
 }

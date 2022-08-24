@@ -16,9 +16,9 @@ class OrderAdvice extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(string $subject)
     {
-        //
+        $this->subject($subject);
     }
 
     /**
