@@ -238,6 +238,8 @@ class CustomerAreaController extends Controller
         if($order->order_status_id != 1)
             return redirect()->route('customer-order-detail', ['id' => $request->input('id')])->withErrors(['id' => 'Não é possível cancelar esse pedido através do sistema. Por favor entre em contato com a equipe de pós venda.']);
 
+        $order->order_status_id = 5;
+        $order->save();
         $order->delete();
         return redirect()->route('customer-order-detail', ['id' => $request->input('id')]);
     }

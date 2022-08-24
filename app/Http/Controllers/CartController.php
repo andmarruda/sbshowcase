@@ -62,14 +62,15 @@ class CartController extends Controller
     public function cart() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         $products = $this->getProducts();
-        if($products==null) 
-            return view('cart', ['Products' => NULL, 'subtotal' => 0]);
 
         if(session_status() != PHP_SESSION_ACTIVE)
             session_start();
 
         $customer = new CustomerAreaController();
         $address = $customer->isLogged() ? $customer->getCustomerAddress() : NULL;
+        if($products==null) 
+            return view('cart', ['Products' => NULL, 'subtotal' => 0, 'logged' => $customer->isLogged(), 'customerAddress' => $address]);
+
         return view('cart', ['Products' => $products['Products'], 'subtotal' => $products['subtotal'], 'logged' => $customer->isLogged(), 'customerAddress' => $address]);
     }
 
@@ -274,6 +275,7 @@ class CartController extends Controller
 
             $email = new EmailSendController();
             $email->orderDetailEmail($order->id, $_SESSION['sbcustomer-area']['email']);
+            $email->orderAdminAdvice();
 
             return redirect()->route('confirmed-order', ['id' => $order->id]);
         } catch(\Exception $err){

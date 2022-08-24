@@ -34,8 +34,6 @@ use App\Http\Controllers\EmailSendController;
 |
 */
 
-Route::get('/teste', [EmailSendController::class, 'orderAdminAdvice']);
-
 //public
 Route::get('/', [ShowcaseController::class, 'home'])->name('main');
 Route::get('/product-list/{id}/{name?}/{filter?}/{filter_id?}', [ShowcaseController::class, 'productList'])->name('product-list')->where('id', '[0-9]+')->where('filter_id', '[0-9]+');
@@ -81,6 +79,7 @@ Route::prefix('/admin')->middleware('SBAuth')->group(function(){
 
     //Order routes
     Route::get('/order', [OrderController::class, 'adminView'])->name('order');
+    Route::post('/order/search', [OrderController::class, 'orderSearch'])->name('admin.order.search');
 
     //category routes
     Route::get('/category/{id?}', [CategoryController::class, 'adminView'])->name('category')->where('id', '[0-9]+');

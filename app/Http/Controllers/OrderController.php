@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CustomerAreaController;
 use App\Models\PaymentMethod;
+use App\Models\OrderStatus;
 use App\Models\OrderPaymentMethod;
 use App\Models\OrderDelivery;
 use App\Models\OrderProduct;
@@ -21,7 +22,32 @@ class OrderController extends Controller
      */
     public function adminView() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        return view('admin.order');
+        $order_status = OrderStatus::all();
+        /**if(session('customer_name')){
+            var_dump('1');
+            die;
+        }**/
+        $order = Order::where('order_status_id', '=', 1)->get();
+        return view('admin.order', ['OrderStatus' => $order_status, 'Orders' => $order]);
+    }
+
+    /**
+     * Search orders
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $request
+     * @return          \Illuminate\Http\RedirectResponse
+     */
+    public function orderSearch(Request $request) : \Illuminate\Http\RedirectResponse
+    {
+        return redirect()->route('order')
+            ->with('customer_name', $request->input('customer_name'))
+            ->with('customer_document', $request->input('customer_document'))
+            ->with('initial_order_date', $request->input('initial_order_date'))
+            ->with('final_order_date', $request->input('final_order_date'))
+            ->with('initial_order_date_delete', $request->input('initial_order_date_delete'))
+            ->with('final_order_date_delete', $request->input('final_order_date_delete'))
+            ->with('order_status_id', $request->input('order_status_id'));
     }
 
     /**
