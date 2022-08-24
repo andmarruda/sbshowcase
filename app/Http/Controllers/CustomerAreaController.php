@@ -241,6 +241,10 @@ class CustomerAreaController extends Controller
         $order->order_status_id = 5;
         $order->save();
         $order->delete();
+
+        $ec = new EmailSendController();
+        $ec->orderDetailEmail($request->input('id'), $_SESSION['sbcustomer-area']['email'], 'Pedido cancelado!');
+
         return redirect()->route('customer-order-detail', ['id' => $request->input('id')]);
     }
 
