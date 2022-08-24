@@ -26,7 +26,7 @@
                 </div>
                 <div class="card-body">
                     @if($Order->order_status_id==1)
-                    <form method="post" action="">
+                    <form method="post" action="{{route('customer-cancel-order')}}">
                         @csrf
                         <input type="hidden" name="id" value="{{$Order->id}}">
                         <button type="submit" class="btn btn-outline-danger">Cancelar pedido</button>

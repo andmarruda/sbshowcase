@@ -136,7 +136,7 @@ class OrderController extends Controller
      */
     public function getOrderDetails(int $order_id) : array
     {
-        $order = Order::find($order_id);
+        $order = Order::withTrashed()->find($order_id);
         return [
             'Order' => $order, 
             'OrderAddress' => $order->address()->first(), 

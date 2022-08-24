@@ -231,7 +231,7 @@ class CustomerAreaController extends Controller
             'id' => 'required'
         ], ['id.required' => 'Selecione um pedido para cancelá-lo']);
 
-        $order = Order::where('customer_id', '=', $_SESSION['sbcustomer-area']['id'])->where('id', '=', $request->input('id'))->get();
+        $order = Order::where('customer_id', '=', $_SESSION['sbcustomer-area']['id'])->where('id', '=', $request->input('id'))->first();
         if(is_null($order))
             return redirect()->route('customer-order-detail', ['id' => $request->input('id')])->withErrors(['id' => 'Não foi encontrado o pedido requerido.']);
 

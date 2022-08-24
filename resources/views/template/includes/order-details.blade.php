@@ -4,7 +4,11 @@
         @if(is_null(\Request::route()) || \Request::route()->getName()!='customer-order-detail'))
         <p>Para acompanhar seu pedido acesse a área do cliente <a href="{{route('customer-login')}}" alt="Área do cliente" target="_blank">clicando aqui.</a></p>
         @endif
+        @if(is_null($Order->deleted_at))
         <p>Status do seu pedido: <span class="badge" style="background:{{$Order->order_status()->first()->hex_color}}; border:1px solid #000;">&nbsp;</span> <strong>{{$Order->order_status()->first()->status}}</strong></p>
+        @else
+        <p>Status do seu pedido: <span class="badge" style="background:red; border:1px solid #000;">&nbsp;</span> <strong>Cancelado</strong></p>
+        @endif
         <p>Em breve novos email informando o andamento do seu pedido serão enviados!</p>
     </div>
 </div>
