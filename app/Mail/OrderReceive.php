@@ -23,10 +23,11 @@ class OrderReceive extends Mailable
      *
      * @return void
      */
-    public function __construct(int $order_id)
+    public function __construct(int $order_id, string $subject)
     {
         $oc = new OrderController();
         $this->data = $oc->getOrderDetails($order_id);
+        $this->subject($subject);
     }
 
     /**

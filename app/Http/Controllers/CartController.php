@@ -274,7 +274,7 @@ class CartController extends Controller
             $this->empty(false);
 
             $email = new EmailSendController();
-            $email->orderDetailEmail($order->id, $_SESSION['sbcustomer-area']['email']);
+            $email->orderDetailEmail($order->id, $_SESSION['sbcustomer-area']['email'], 'Pedido realizado com sucesso!');
             $email->orderAdminAdvice();
 
             return redirect()->route('confirmed-order', ['id' => $order->id]);

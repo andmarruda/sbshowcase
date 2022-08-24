@@ -45,10 +45,10 @@ class EmailSendController extends Controller
      * @param           string $customer_email
      * @return          void
      */
-    public function orderDetailEmail(int $order_id, string $customer_email)
+    public function orderDetailEmail(int $order_id, string $customer_email, string $subject)
     {
         $mailer = app()->makeWith('custom.mailer', $this->config);
-        $mailer->to($customer_email)->send(new OrderReceive($order_id));
+        $mailer->to($customer_email)->send(new OrderReceive($order_id, $subject));
     }
 
     /**
