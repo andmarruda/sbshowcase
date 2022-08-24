@@ -63,6 +63,7 @@ Route::post('/customer-register', [CustomerAreaController::class, 'createCustome
 Route::prefix('/customer-area')->middleware('SBCustomerAuth')->group(function() {
     Route::get('/', [CustomerAreaController::class, 'customerArea'])->name('customer-area');
     Route::get('/order-detail/{id}', [CustomerAreaController::class, 'orderDetail'])->name('customer-order-detail')->where('id', '[0-9]+');
+    Route::post('/order-detail/cancel', [CustomerAreaController::class, 'cancelOrder'])->name('customer-cancel-order');
     Route::get('/logout', [CustomerAreaController::class, 'logout'])->name('customer-logout');
     Route::get('/change-password', [CustomerAreaController::class, 'changePassword'])->name('customer-change-password');
     Route::post('/change-password', [CustomerAreaController::class, 'updatePassword'])->name('customer-update-password');

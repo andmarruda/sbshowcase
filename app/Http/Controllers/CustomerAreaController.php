@@ -219,6 +219,30 @@ class CustomerAreaController extends Controller
     }
 
     /**
+     * Cancel order if supports for this
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           
+     * @return          
+     */
+    public function cancelOrder(Request $request) : \Illuminate\Http\RedirectResponse
+    {
+        $request->validate([
+            'id' => 'required'
+        ], ['id.required' => 'Selecione um pedido para cancelá-lo']);
+
+        $order = Order::where('customer_id', '=', $_SESSION['sbcustomer-area']['id'])->where('id', '=', $request->input('id'))->get();
+        if(is_null($order))
+            return redirect()->route('customer-order-detail', ['id' => $request->input('id')])->withErrors(['id' => 'Não foi encontrado o pedido requerido.']);
+
+        if($order->order_status_id != 1)
+            return redirect()->route('customer-order-detail', ['id' => $request->input('id')])->withErrors(['id' => 'Não é possível cancelar esse pedido através do sistema. Por favor entre em contato com a equipe de pós venda.']);
+
+        $order->delete();
+        return redirect()->route('customer-order-detail', ['id' => $request->input('id')]);
+    }
+
+    /**
      * Returns blade of customer area "change password"
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
@@ -291,8 +315,11 @@ class CustomerAreaController extends Controller
             $_SESSION['sbcustomer-area']['email'] = $customer->email;
             $_SESSION['sbcustomer-area']['name'] = $customer->name;
             $_SESSION['sbcustomer-area']['id'] = $customer->id;
-            if($r->input('redirect') != '' && Route::has($r->input('redirect')))
-                return redirect()->route($r->input('redirect'));
+            if($r->input('redirect') != '' && Route::has($r->input('redirect'))){
+                $route = Route::getRoutes()->getByName($r->input('redirect'));
+                if(count($route->parameterNames()) == 0)
+                    return redirect()->route($r->input('redirect'));
+            }
 
             return redirect()->route('customer-area');
         } else {
