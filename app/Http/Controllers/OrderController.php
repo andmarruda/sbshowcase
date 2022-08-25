@@ -23,11 +23,7 @@ class OrderController extends Controller
     public function adminView() : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         $order_status = OrderStatus::all();
-        /**if(session('customer_name')){
-            var_dump('1');
-            die;
-        }**/
-        $order = Order::where('order_status_id', '=', 1)->get();
+        $order = session('OrderModel') ? session('OrderModel') : Order::where('order_status_id', '=', 1)->get();
         return view('admin.order', ['OrderStatus' => $order_status, 'Orders' => $order]);
     }
 
@@ -40,7 +36,33 @@ class OrderController extends Controller
      */
     public function orderSearch(Request $request) : \Illuminate\Http\RedirectResponse
     {
-        $o = Order::orderBy('created_at');
+        $o = Order::withTrashed()->orderBy('created_at');
+        if($request->input('customer_name') != ''){
+            $o = $o->whereRelation('customer', 'name', 'ilike', '%'. $request->input('customer_name'). '%');
+        }
+
+        if($request->input('customer_document')){
+            $o = $o->whereRelation('customer', 'cpf_cnpj', '=', $request->input('customer_document'));
+        }
+
+        if($request->input('initial_order_date') != '' && $request->input('final_order_date') != ''){
+            $o = $o->whereBetween('created_at', [$request->input('initial_order_date').' 00:00:00', $request->input('final_order_date'). ' 23:59:59']);
+        } else if($request->input('initial_order_date') != '' || $request->input('final_order_date') != ''){
+            $date = $request->input('initial_order_date') != '' ? $request->input('initial_order_date') : $request->input('final_order_date');
+            $o = $o->whereDate('created_at', '=', $date);
+        }
+
+        if($request->input('initial_order_date_delete') != '' && $request->input('final_order_date_delete') != ''){
+            $o = $o->whereBetween('deleted_at', [$request->input('initial_order_date_delete').' 00:00:00', $request->input('final_order_date_delete'). ' 23:59:59']);
+        } else if($request->input('initial_order_date_delete') != '' || $request->input('final_order_date_delete') != ''){
+            $date = $request->input('initial_order_date_delete') != '' ? $request->input('initial_order_date_delete') : $request->input('final_order_date_delete');
+            $o = $o->whereDate('deleted_at', '=', $date);
+        }
+
+        if($request->input('order_status_id') != ''){
+            $o = $o->where('order_status_id', '=', $request->input('order_status_id'));
+        }
+
         return redirect()->route('order')
             ->with('customer_name', $request->input('customer_name'))
             ->with('customer_document', $request->input('customer_document'))
@@ -48,7 +70,8 @@ class OrderController extends Controller
             ->with('final_order_date', $request->input('final_order_date'))
             ->with('initial_order_date_delete', $request->input('initial_order_date_delete'))
             ->with('final_order_date_delete', $request->input('final_order_date_delete'))
-            ->with('order_status_id', $request->input('order_status_id'));
+            ->with('order_status_id', $request->input('order_status_id'))
+            ->with('OrderModel', $o->get());
     }
 
     /**

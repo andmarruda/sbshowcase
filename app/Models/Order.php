@@ -58,4 +58,16 @@ class Order extends Model
     {
         return $this->belongsTo(OrderStatus::class);
     }
+
+    /**
+     * get informations about customer
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           
+     * @return          Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function customer() : \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }

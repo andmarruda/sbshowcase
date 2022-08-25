@@ -105,8 +105,10 @@
                     <tr>
                         <th>Nº do pedido</th>
                         <th>Data</th>
+                        <th>Comprador</th>
                         <th>Valor</th>
                         <th>Status</th>
+                        <th>Data cancelamento</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -115,17 +117,19 @@
                     <tr>
                         <td>{{$order->id}}</td>
                         <td>{{date('d/m/Y H:i:s', strtotime($order->created_at))}}</td>
+                        <td>{{$order->customer()->first()->name}}</td>
                         <td>R${{number_format($order->total, 2, ',', '.')}}</td>
                         @if(is_null($order->deleted_at))
                         <td><span class="badge" style="background:{{$order->order_status()->first()->hex_color}}; border:1px solid #000;">&nbsp;</span> {{$order->order_status()->first()->status}}</td>
                         @else
                         <td><span class="badge" style="background:red; border:1px solid #000;">&nbsp;</span> Cancelado</td>
                         @endif
+                        <td>{{date('d/m/Y H:i:s', strtotime($order->deleted_at))}}</td>
                         <td><a href="{{route('admin.order-detail', ['id' => $order->id])}}" class="btn btn-outline-primary">Detalhes</a></td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="5">Nenhum pedido encontrado</td>
+                        <td colspan="7">Nenhum pedido encontrado</td>
                     </tr>
                     @endforelse
                 </tbody>

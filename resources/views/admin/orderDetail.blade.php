@@ -59,6 +59,25 @@
     </div>
     @endif
 
+    <div class="row" style="margin-top:2rem;">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    Dados do cliente
+                </div>
+                <div class="card-body">
+                    <div class="card-body">
+                        <p class="mb-0"><b>Nome:</b> {{$Order->customer()->first()->name ?? ''}}</p>
+                        <p class="mb-0"><b>CPF / CNPJ:</b> {{$Order->customer()->first()->cpf_cnpj ?? ''}}</p>
+                        <p class="mb-0"><b>Aniversário:</b> {{date('d/m/Y', strtotime($Order->customer()->first()->birth_date))}}</p>
+                        <p class="mb-0"><b>Telefone/Celular:</b> {{$Order->customer()->first()->phone ?? ''}}</p>
+                        <p class="mb-0"><b>Email:</b> {{$Order->customer()->first()->email ?? ''}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @include('template.includes.order-details', ['Order' => $Order, 'OrderAddress' => $OrderAddress, 'Products' => $Products, 'PaymentMethod' => $PaymentMethod])
 </div>
 @endsection
