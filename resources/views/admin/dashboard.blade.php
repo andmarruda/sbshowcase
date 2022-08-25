@@ -11,6 +11,25 @@
     <div class="row" style="margin-top:2rem;">
         <div class="col-md-6">
             <h4>Pedidos no mês atual</h4>
+            <div class="alert alert-info">Estatística do mês corrente, referente do dia 1 ao último dia do mês.</div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($OrderStatus as $status)
+                    <tr>
+                        <td><span class="badge" style="background:{{$status->hex_color}}; border:1px solid #000;">&nbsp;</span> <strong>{{$status->status}}</strong></td>
+                        <td>R${{number_format($status->order()->whereBetween('created_at', [$initial_date, $final_date])->withTrashed()->sum('total'), 2, ',', '.')}}</td>
+                    </tr>
+                    @empty
+                    <tr><td colspan="2">Nenhum status encontrado!</td></tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
 
         <div class="col-md-6">

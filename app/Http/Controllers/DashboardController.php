@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\General;
+use App\Models\OrderStatus;
+use \DateTime;
 
 class DashboardController extends Controller
 {
@@ -19,7 +21,11 @@ class DashboardController extends Controller
     {
         $product = Product::where('quantity', '<', 5)->orderBy('quantity')->get();
         $general = General::find(1);
-        return view('admin.dashboard', ['Products' => $product, 'General' => $general]);
+        $status = OrderStatus::orderBy('id')->get();
+        $initial_date = new DateTime("first day of this month");
+        $final_date = new DateTime("last day of this month");
+
+        return view('admin.dashboard', ['Products' => $product, 'General' => $general, 'OrderStatus' => $status, 'initial_date' => $initial_date->format('Y-m-d'). ' 00:00:00', 'final_date' => $final_date->format('Y-m-d'). ' 23:59:59']);
     }
 
     /**
