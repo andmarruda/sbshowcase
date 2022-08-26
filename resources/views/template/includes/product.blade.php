@@ -34,10 +34,9 @@
             @endif
         </div>
 
-        @if(($promotion_flag ?? false))
+        @if(($product->promotion_flag ?? false))
         <div class="free-shipping position-absolute top-0 rounded-pill w-75" role="alert" style="cursor: pointer; background-color: #{{$template['templates']->primarybg}}; color: #{{$template['templates']->primarycolor}};" data-bs-toggle="modal" data-bs-target="#eligible_delivery">
-            <small>Frete grátis Elegível<br>
-            Veja cidades com frete grátis</small>
+            <small>Veja cidades com <b>FRETE GRÁTIS</b></small>
         </div>
         @endif
 

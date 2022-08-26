@@ -315,7 +315,7 @@ class CustomerAreaController extends Controller
 
         $customer = Customer::where('email', '=', $r->input('user'))->orWhere('cpf_cnpj', '=', $r->input('user'))->first();
 
-        if(!is_null($customer) && $customer->count() > 0 && password_verify($r->input('password'), $customer->first()->password)){
+        if(!is_null($customer) && $customer->count() > 0 && password_verify($r->input('password'), $customer->password)){
             session_start();
             $_SESSION['sbcustomer-area']['email'] = $customer->email;
             $_SESSION['sbcustomer-area']['name'] = $customer->name;
