@@ -81,6 +81,8 @@ Route::prefix('/admin')->middleware('SBAuth')->group(function(){
     Route::get('/order', [OrderController::class, 'adminView'])->name('order');
     Route::post('/order/search', [OrderController::class, 'orderSearch'])->name('admin.order.search');
     Route::get('/order/detail/{id}', [OrderController::class, 'orderDetail'])->name('admin.order-detail')->where('id', '[0-9]+');
+    Route::post('/order/cancel', [OrderController::class, 'adminCancelOrder'])->name('admin.order-cancel');
+    Route::post('/order/change', [OrderController::class, 'adminChangeOrder'])->name('admin.order-change');
 
     //category routes
     Route::get('/category/{id?}', [CategoryController::class, 'adminView'])->name('category')->where('id', '[0-9]+');

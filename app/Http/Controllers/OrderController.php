@@ -111,6 +111,34 @@ class OrderController extends Controller
     }
 
     /**
+     * Admin canceling some order
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $request
+     * @return          \Illuminate\Http\RedirectResponse
+     */
+    public function adminCancelOrder(Request $request) : \Illuminate\Http\RedirectResponse
+    {
+        $request->validate([
+            'id' => 'required'
+        ], ['id.required' => 'Selecione um pedido para cancelá-lo']);
+
+        $order = Order::find($request->input('id'));
+        if(is_null($order))
+            return redirect()->route('admin.order-detail', ['id' => $request->input('id')])->withErrors(['id' => 'Não foi encontrado o pedido requerido.']);
+
+        $this->cancelOrder($request->input('id'));
+        $customer = $order->customer()->first();
+        if(is_null($customer))
+        return redirect()->route('admin.order-detail', ['id' => $request->input('id')])->withErrors(['id' => 'Não foi encontrado o consumidor do pedido selecionado.']);
+
+        $ec = new EmailSendController();
+        $ec->orderDetailEmail($request->input('id'), $customer->email, 'Pedido cancelado!');
+
+        return redirect()->route('customer-order-detail', ['id' => $request->input('id')]);
+    }
+
+    /**
      * Cancel order
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >

@@ -222,8 +222,8 @@ class CustomerAreaController extends Controller
      * Cancel order if supports for this
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
-     * @param           
-     * @return          
+     * @param           Request $request
+     * @return          \Illuminate\Http\RedirectResponse
      */
     public function cancelOrder(Request $request) : \Illuminate\Http\RedirectResponse
     {

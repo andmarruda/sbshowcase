@@ -23,7 +23,7 @@
                     @if($Order->order_status_id!=4 && $Order->order_status_id!=5)
                     <div class="row">
                         <div class="col">
-                            <form method="post" action="">
+                            <form method="post" action="{{route('admin.order-change')}}">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$Order->id}}">
                                 <div class="form-floating">
@@ -43,7 +43,7 @@
                         </div>
                         
                         <div class="col">
-                            <form method="post" action="">
+                            <form method="post" action="{{route('admin.order-cancel')}}">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$Order->id}}">
                                 <button type="submit" class="btn btn-danger">Cancelar pedido</button>
