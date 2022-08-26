@@ -53,13 +53,13 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="password" class="form-label">* Senha<br><small>precisa ter entre 6 e 20 caracteres</small></label>
-                        <input type="password" class="form-control" id="password" name="password" required="" placeholder="Senha">
+                        <label for="password" class="form-label">* Senha<br><small>precisa ter entre 8 e 20 caracteres</small></label>
+                        <input type="password" class="form-control" id="password" name="password" required="" minlength="8" maxlength="20" placeholder="Senha">
                     </div>
 
                     <div class="mb-3">
-                        <label for="email" class="form-label">* Confirmação de senha<br><small>precisa ter entre 6 e 20 caracteres</small></label>
-                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required="" placeholder="Confirmação de senha">
+                        <label for="email" class="form-label">* Confirmação de senha<br><small>precisa ter entre 8 e 20 caracteres</small></label>
+                        <input type="password" class="form-control" id="password_confirmation" minlength="8" maxlength="20" name="password_confirmation" required="" placeholder="Confirmação de senha">
                     </div>
 
                     <hr>
