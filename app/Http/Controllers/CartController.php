@@ -293,6 +293,9 @@ class CartController extends Controller
                         break;
                     }
                     $oc->newOrderProduct($order->id, $product['product']->id, $product['quantity'], $product['product']->price, $product['product']->name, $product['product']->old_price);
+                    $prod = Product::find($product['product']->id);
+                    $prod->quantity = $prod->quantity - $product['quantity'];
+                    $prod->save();
                 }
             });
 

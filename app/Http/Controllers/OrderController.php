@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\CustomerAreaController;
-use App\Models\PaymentMethod;
+use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 use App\Models\OrderStatus;
 use App\Models\OrderPaymentMethod;
 use App\Models\OrderDelivery;
@@ -108,6 +108,33 @@ class OrderController extends Controller
         ]);
 
         return $orderPaymentMethod;
+    }
+
+    /**
+     * Cancel order
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           int $order_id
+     * @return          bool
+     */
+    public function cancelOrder(int $order_id) : bool
+    {
+        DB::connection()->transaction(function() use($order_id){
+            $order = Order::find($order_id);
+            $order->order_status_id = 5;
+            $order->save();
+            $order->delete();
+
+            //return quantity for products
+            $prods = $order->products()->get();
+            foreach($prods as $prod){
+                $p = Product::find($prod->product_id);
+                $p->quantity = $p->quantity + $prod->quantity;
+                $p->save();
+            }
+        });
+
+        return true;
     }
 
     /**
