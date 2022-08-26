@@ -9,7 +9,7 @@
             <div style="text-align:center; margin-right:3rem;">
                 <div class="input-group" style="width:auto;">
                     <button class="btn btn-outline-secondary" data-type="minus" type="button">-</button>
-                    <input type="number" autocomplete="off" class="textfield" id="input-quantity-{{$Product['product']->id}}" data-url="{{route('cart-change', ['product_id' => $Product['product']->id, 'quantity' => -99])}}" data-id="{{$Product['product']->id}}" step="1" min="0" max="{{$Product['product']->quantity}}" value="{{$Product['quantity']}}" style="text-align: center; width:80px;">
+                    <input type="number" autocomplete="off" class="textfield" id="input-quantity-{{$Product['product']->id}}" data-url="{{route('cart-change', ['product_id' => $Product['product']->id, 'quantity' => -99])}}" data-id="{{$Product['product']->id}}" step="1" min="0" max="{{$Product['product']->quantity}}" value="{{$Product['quantity']}}" style="text-align: center; width:80px;"  readonly="">
                     <button class="btn btn-outline-secondary" data-type="plus" type="button">+</button>
                 </div>
 

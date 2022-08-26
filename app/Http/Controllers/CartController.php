@@ -113,6 +113,11 @@ class CartController extends Controller
      */
     public function change(int $product_id, int $quantity, ?string $target=NULL) : \Illuminate\Http\RedirectResponse
     {
+        $prod = Product::find($product_id);
+        if(!$this->productHasQuantity($product_id, $quantity)){
+            return redirect()->route('cart')->withErrors(['message' => 'O produto '. $prod->name. ' não tem quantidade suficiente em estoque, quantidade disponível atualmente é de '. $prod->quantity. ' peça(s).']);
+        }
+
         $cart = session()->get('sbcart');
         if(isset($cart[$product_id])){
             $cart[$product_id] = $quantity;
@@ -215,6 +220,20 @@ class CartController extends Controller
     }
 
     /**
+     * Verify if product has enough quantity
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           int $product_id
+     * @param           int $cart_quantity
+     * @return          bool
+     */
+    public function productHasQuantity(int $product_id, int $cart_quantity) : bool
+    {
+        $p = Product::find($product_id);
+        return $p->quantity >= $cart_quantity;
+    }
+
+    /**
      * Create new order for customer
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
@@ -257,7 +276,8 @@ class CartController extends Controller
         try{
             $customer_id = $_SESSION['sbcustomer-area']['id'];
             $order = NULL;
-            DB::connection()->transaction(function() use(&$order, $oc, $request, $customer_id, $products, $shPrice, $customerAddress){
+            $error = '';
+            DB::connection()->transaction(function() use(&$order, $oc, $request, $customer_id, $products, $shPrice, $customerAddress, &$error){
                 $order = $oc->newOrder($customer_id, ($products['subtotal'] + $shPrice), $products['subtotal'], $shPrice);
                 $oc->savePaymentMethod($order->id, $request->input('payment-method'), $request->input('installments'), (($products['subtotal'] + $shPrice) / $request->input('installments')));
                 $oc->saveShippmentData(
@@ -267,9 +287,18 @@ class CartController extends Controller
                 );
 
                 foreach($products['Products'] as $product){
+                    if(!$this->productHasQuantity($product['product']->id, $product['quantity'])){
+                        $error = 'O produto '. $product['product']->name. ' não tem quantidade suficiente em estoque!';
+                        DB::rollBack();
+                        break;
+                    }
                     $oc->newOrderProduct($order->id, $product['product']->id, $product['quantity'], $product['product']->price, $product['product']->name, $product['product']->old_price);
                 }
             });
+
+            if($error!=''){
+                return redirect()->route('order-confirmation')->withErrors(['message' => $error]);
+            }
 
             $this->empty(false);
 
