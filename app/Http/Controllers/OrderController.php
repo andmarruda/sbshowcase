@@ -111,6 +111,40 @@ class OrderController extends Controller
     }
 
     /**
+     * Admin change order status
+     * @version         1.0.0
+     * @author          Anderson Arruda < andmarruda@gmail.com >
+     * @param           Request $request
+     * @return          \Illuminate\Http\RedirectResponse
+     */
+    public function adminChangeOrder(Request $request) : \Illuminate\Http\RedirectResponse
+    {
+        $request->validate([
+            'id' => 'required',
+            'order_status_id' => 'required'
+        ], ['id.required' => 'Selecione um pedido para cancelá-lo', 'order_status_id.required' => 'Selecione um status para o pedido']);
+
+        $order = Order::find($request->input('id'));
+        if(is_null($order))
+            return redirect()->route('admin.order-detail', ['id' => $request->input('id')])->withErrors(['id' => 'Não foi encontrado o pedido requerido.']);
+
+        if($order->order_status_id == $request->input('order_status_id'))
+            return redirect()->route('admin.order-detail', ['id' => $request->input('id')])->withErrors(['id' => 'O pedido já está no status escolhido!']);
+
+        $customer = $order->customer()->first();
+        if(is_null($customer))
+            return redirect()->route('admin.order-detail', ['id' => $request->input('id')])->withErrors(['id' => 'Não foi encontrado o consumidor do pedido selecionado.']);
+
+        $order->order_status_id = $request->input('order_status_id');
+        $order->save();
+
+        $ec = new EmailSendController();
+        $ec->orderDetailEmail($request->input('id'), $customer->email, 'Status do pedido alterado!');
+
+        return redirect()->route('admin.order-detail', ['id' => $request->input('id')]);
+    }
+
+    /**
      * Admin canceling some order
      * @version         1.0.0
      * @author          Anderson Arruda < andmarruda@gmail.com >
@@ -127,15 +161,15 @@ class OrderController extends Controller
         if(is_null($order))
             return redirect()->route('admin.order-detail', ['id' => $request->input('id')])->withErrors(['id' => 'Não foi encontrado o pedido requerido.']);
 
-        $this->cancelOrder($request->input('id'));
         $customer = $order->customer()->first();
         if(is_null($customer))
-        return redirect()->route('admin.order-detail', ['id' => $request->input('id')])->withErrors(['id' => 'Não foi encontrado o consumidor do pedido selecionado.']);
+            return redirect()->route('admin.order-detail', ['id' => $request->input('id')])->withErrors(['id' => 'Não foi encontrado o consumidor do pedido selecionado.']);
 
+        $this->cancelOrder($request->input('id'));
         $ec = new EmailSendController();
         $ec->orderDetailEmail($request->input('id'), $customer->email, 'Pedido cancelado!');
 
-        return redirect()->route('customer-order-detail', ['id' => $request->input('id')]);
+        return redirect()->route('admin.order-detail', ['id' => $request->input('id')]);
     }
 
     /**
