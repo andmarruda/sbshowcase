@@ -2,6 +2,12 @@
 
 @section('page')
 <div class="row">
+    <div class="col-md-12">
+        @include('template.includes.alert-error')
+    </div>
+</div>
+
+<div class="row" style="margin-top:1rem;">
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
