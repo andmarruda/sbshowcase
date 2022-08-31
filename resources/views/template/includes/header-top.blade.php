@@ -14,7 +14,7 @@
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="{{route('our-stores')}}" title="{{__('sbshowcase.our.stores')}}">{{__('sbshowcase.our.stores')}}</a></li>
                 <li class="list-inline-item">|</li>
-                <li class="list-inline-item"><a href="void(0);" title="{{__('sbshowcase.my.orders')}}">{{__('sbshowcase.my.orders')}}</a></li>
+                <li class="list-inline-item"><a href="{{route('customer-area')}}" title="{{__('sbshowcase.my.orders')}}">{{__('sbshowcase.my.orders')}}</a></li>
             </ul>
         </div>
     </div>
