@@ -1,4 +1,4 @@
-<section class="col-md-4">
+<section class="col-md-4" style="margin-top:2rem;">
     <div class="h-100 w-100">
         @if(!is_null($product))
 
@@ -7,7 +7,7 @@
             $srcset = $product->getImgSrcSet();
         @endphp
 
-        <div class="img-container">
+        <div class="img-container" style="margin:0 auto;">
             @if(strlen($srcset) > 0 && strlen($sizeset) > 0)
             <img src="{{asset($product->getImage())}}" alt="{{$product->name}}" srcset="{{$srcset}}" sizes="{{$sizeset}}">
             @else

@@ -67,7 +67,7 @@
 </div>
 @endif
 
-<div class="col-md-12" style="margin-bottom:2rem;">
+<div class="col-md-12">
     <h1>Novidades</h1>
 </div>
 
