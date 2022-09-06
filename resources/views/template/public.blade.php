@@ -47,5 +47,16 @@
         <script src="{{asset('js/sbpublic.js')}}"></script>
         <script src="{{asset('js/vanilla-masker.min.js')}}"></script>
         @endif
+        @if(!is_null($template['general']->google_analytics))
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{$template['general']->google_analytics}}"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{$template['general']->google_analytics}}');
+        </script>
+        @endif
     </body>
 </html>
