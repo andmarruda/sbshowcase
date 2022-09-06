@@ -32,7 +32,7 @@ class BannerController extends Controller
      */
     public function adminView(?int $id=NULL) : \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $banner = !is_null($id) ? Banner::find($id) : NULL;
+        $banner = !is_null($id) ? Banner::withTrashed()->find($id) : NULL;
         return view('admin.banner', ['Banner' => $banner]);
     }
 
