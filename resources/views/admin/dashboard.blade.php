@@ -12,7 +12,7 @@
         <div class="col-md-6">
             <h4>Pedidos no mês atual</h4>
             <div class="alert alert-info">Estatística do mês corrente, referente do dia 1 ao último dia do mês.</div>
-            <p><b>Período</b> {{$initial_date}} até {{$final_date}}</p>
+            <p><b>Período</b> {{date('d/m/Y H:i:s', strtotime($initial_date))}} até {{date('d/m/Y H:i:s', strtotime($final_date))}}</p>
             <table class="table table-bordered">
                 <thead>
                     <tr>
