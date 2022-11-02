@@ -22,6 +22,7 @@ use App\Http\Controllers\CustomerAreaController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\EmailSendController;
+use App\Http\Controllers\AvailablePaymentFlagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -173,4 +174,7 @@ Route::prefix('/admin')->middleware('SBAuth')->group(function(){
     Route::post('/email/notifications/save', [EmailController::class, 'saveNotifications'])->name('email.notifications.save');
     Route::post('/email/notifications/search', [EmailController::class, 'searchNotifications'])->name('email.notifications.search');
     Route::post('/email/notifications/delete', [EmailController::class, 'deleteNotifications'])->name('email.notifications.delete');
+
+    //flag of payment method
+    Route::resource('/payment-footer', AvailablePaymentFlagController::class);
 });

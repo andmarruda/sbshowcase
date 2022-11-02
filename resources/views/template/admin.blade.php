@@ -13,10 +13,6 @@
                         <div class="collapse navbar-collapse" id="admin-navbar">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{route('dashboard')}}">Dashboard</a>
-                                </li>
-
-                                <li class="nav-item">
                                     <a class="nav-link" href="{{route('order')}}">Pedidos</a>
                                 </li>
 
@@ -41,16 +37,25 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="{{route('email.notifications')}}">Notificar emails</a></li>
-                                        <li><a class="dropdown-item" href="{{route('template')}}">Template</a></li>
                                         <li><a class="dropdown-item" href="{{route('banner')}}">Banner</a></li>
                                         <li><a class="dropdown-item" href="{{route('store')}}">Lojas</a></li>
                                         <li><a class="dropdown-item" href="{{route('general')}}">Geral</a></li>
-                                        <li><a class="dropdown-item" href="{{route('social-media')}}">Redes Sociais</a></li>
                                         <li><a class="dropdown-item" href="{{route('payment-methods')}}">Formas de pagamento</a></li>
                                         <li><a class="dropdown-item" href="{{route('delivery')}}">Entrega</a></li>
                                         <li><a class="dropdown-item" href="{{route('users')}}">Usuários</a></li>
                                         <li><a class="dropdown-item" href="{{route('change-password')}}">Alterar senha</a></li>
                                         <li><a class="dropdown-item" href="{{route('email.providers')}}">Provedor de Email</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Template
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{{route('template')}}">Cores do layout</a></li>
+                                        <li><a class="dropdown-item" href="{{route('social-media')}}">Redes Sociais</a></li>
+                                        <li><a class="dropdown-item" href="{{route('payment-footer.create')}}">Bandeiras Pagamento</a></li>
                                     </ul>
                                 </li>
 

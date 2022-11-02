@@ -7,8 +7,8 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Configurações</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Template</li>
+            <li class="breadcrumb-item"><a href="#">Template</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cores do layout</li>
         </ol>
     </nav>
 

@@ -30,7 +30,7 @@
     <div class="row" style="margin-bottom:1.5rem;">
         <div class="col">
             <h6>Imagem atual</h6><hr>
-            <img src="{{!is_null($Banner) ? asset('storage/'.$Banner->image) : ''}}" srcset="{{!is_null($Banner) ? $Banner->getImgSrcSet() : ''}}" id="img-preview" class="img-thumbnail" alt="Imagem do produto">
+            <img src="{{!is_null($Banner) ? asset('storage/'.$Banner->image) : ''}}" srcset="{{!is_null($Banner) ? $Banner->getImgSrcSet() : ''}}" id="img-preview" class="img-thumbnail" alt="Imagem do banner">
         </div>
     </div>
 
